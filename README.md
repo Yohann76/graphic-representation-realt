@@ -12,22 +12,6 @@ Graphic :
 - % of portfolio in section 8, section 42, normal
 - % of portfolio in dollas/Euros...
 
-### Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-### Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
 #### How To create/use
 
 `npx create-react-app graphic-representation-realt`
@@ -38,3 +22,11 @@ go to `http://localhost:3000/`
 #### Feature
 
 - Use Docker
+
+#### Request :
+
+rmm : https://api.thegraph.com/subgraphs/name/realtoken-thegraph/rmm-realt
+xdai : https://api.thegraph.com/subgraphs/name/realtoken-thegraph/realtoken-xdai
+eth : https://api.thegraph.com/subgraphs/name/realtoken-thegraph/realtoken-eth
+
+property : https://dashboard.realt.community/api/properties
