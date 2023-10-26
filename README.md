@@ -22,6 +22,7 @@ go to `http://localhost:3000/`
 #### Feature
 
 - Use Docker
+- server : netlify
 
 #### Request :
 
@@ -30,3 +31,9 @@ xdai : https://api.thegraph.com/subgraphs/name/realtoken-thegraph/realtoken-xdai
 eth : https://api.thegraph.com/subgraphs/name/realtoken-thegraph/realtoken-eth
 
 property : https://dashboard.realt.community/api/properties
+
+#### TODO :
+
+- refactoring html template
+- count all house on api response
+- calculate type of property
