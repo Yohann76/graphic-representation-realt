@@ -37,6 +37,7 @@ From realT communitary api :
 get info for each property : https://api.realt.community/v1/token/0x4637aa1a13aa4050c6e4bcd6dde9c39e80e9dd54
 
 #### TODO :
+- Calculate % of portfolio by city
 - Calculate type of property
 - Include eth property
 - Include rmm property

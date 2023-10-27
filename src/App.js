@@ -4,7 +4,9 @@ import logo from './logo.svg';
 import './App.css';
 
 import PropertyInfo from './components/PropertyInfo';
-import { PropertyService } from '@realtoken/realt-commons'; // maybe is not function
+import PropertyChart from './components/PropertyChart';
+
+// import { PropertyService } from '@realtoken/realt-commons'; // not use // maybe is not function
 
 import { fetchPropertyInfo } from './requests/realt-communitary-api';
 import { fetchGraphQLData } from './requests/xdaiGraphQLRequest';
@@ -71,6 +73,9 @@ function App() {
 
 
       {propertyInfo && <PropertyInfo propertyInfo={propertyInfo} />}
+
+
+      {propertyInfo && <PropertyChart properties={propertyInfo} />}
 
     </div>
   );
