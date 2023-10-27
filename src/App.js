@@ -3,6 +3,7 @@ import axios from 'axios';
 import logo from './logo.svg';
 import './App.css';
 
+import PropertyInfo from './components/PropertyInfo';
 import { PropertyService } from '@realtoken/realt-commons'; // maybe is not function
 
 import { fetchPropertyInfo } from './requests/realt-communitary-api';
@@ -50,23 +51,9 @@ function App() {
         <button type="submit">Rechercher</button>
       </form>
 
-      {/* Afficher les données de l'API RealT */}
-      {propertyInfo && (
-        <div className="property-info-container">
-          <h2>Informations sur les propriétés :</h2>
-          <ul>
-            {propertyInfo.map((property, index) => (
-              <li key={index}>
-                <h3>Propriété {index + 1} :</h3>
-                <p>Adresse du contrat (UUID) : {property.uuid}</p>
-                <p>Nom de la propriété : {property.fullName}</p>
-                <p>Description : {property.tokenPrice}</p>
-                {/* Ajoutez d'autres détails de la propriété ici */}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      // component property info
+      {propertyInfo && <PropertyInfo propertyInfo={propertyInfo} />}
+
     </div>
   );
 }
