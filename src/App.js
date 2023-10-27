@@ -4,7 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import PropertyInfo from './components/PropertyInfo';
-import PropertyChart from './components/PropertyChart';
+import CityPropertyChart from './components/CityPropertyChart';
 
 // import { PropertyService } from '@realtoken/realt-commons'; // not use // maybe is not function
 
@@ -75,7 +75,7 @@ function App() {
       {propertyInfo && <PropertyInfo propertyInfo={propertyInfo} />}
 
 
-      {propertyInfo && <PropertyChart properties={propertyInfo} />}
+      {propertyInfo && <CityPropertyChart properties={propertyInfo} />}
 
     </div>
   );
