@@ -41,6 +41,8 @@ function App() {
 
   return (
     <div className="App">
+
+
       <form onSubmit={handleSearchSubmit}>
         <input
           type="text"
@@ -51,7 +53,7 @@ function App() {
         <button type="submit">Rechercher</button>
       </form>
 
-      // component property info
+
       {propertyInfo && <PropertyInfo propertyInfo={propertyInfo} />}
 
     </div>
