@@ -26,14 +26,20 @@ go to `http://localhost:3000/`
 
 #### Request :
 
-rmm : https://api.thegraph.com/subgraphs/name/realtoken-thegraph/rmm-realt
+From TheGraph :
+
 xdai : https://api.thegraph.com/subgraphs/name/realtoken-thegraph/realtoken-xdai
+rmm : https://api.thegraph.com/subgraphs/name/realtoken-thegraph/rmm-realt
 eth : https://api.thegraph.com/subgraphs/name/realtoken-thegraph/realtoken-eth
 
-property : https://dashboard.realt.community/api/properties
+From realT communitary api :
+
+get info for each property : https://api.realt.community/v1/token/0x4637aa1a13aa4050c6e4bcd6dde9c39e80e9dd54
 
 #### TODO :
 
-- refactoring html template
-- count all house on api response
-- calculate type of property
+- Refactoring html template
+- put property data in array
+- Calculate type of property
+- Include eth property
+- Include rmm property

@@ -1,21 +1,13 @@
-// Importez Axios
 import axios from 'axios';
 
-// URL de l'API RealT
-// const apiUrl = 'https://api.realt.community/'; // run basique
-const apiUrl = 'https://api.realt.community/v1/token'; // List all tokens
-
-// Fonction pour récupérer les données de l'API
-const fetchRealTData = async () => {
+export async function fetchPropertyInfo(propertyAddress) {
   try {
-    const response = await axios.get(apiUrl);
-    // Traitez les données de réponse ici
-    const data = response.data;
-    return data;
+    const response = await axios.get(`https://api.realt.community/v1/token/${propertyAddress}`);
+    const responseData = response.data;
+    console.log('Réponse de l\'API :', responseData);
+    return responseData;
   } catch (error) {
-    console.error('Erreur lors de la récupération des données de l\'API RealT :', error);
-    throw error;
+    console.error(`Erreur lors de la récupération des informations pour la propriété ${propertyAddress}:`, error);
+    return null;
   }
-};
-
-export default fetchRealTData;
+}
