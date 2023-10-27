@@ -10,7 +10,9 @@ function PropertyInfo({ propertyInfo }) {
             <th>Nb Propriété</th>
             <th>Adresse du contrat (UUID)</th>
             <th>Nom de la propriété</th>
-            <th>Description</th>
+            <th>prix Token</th>
+            <th>Nombre de token</th>
+            <th>Valeur Totale</th>
           </tr>
         </thead>
         <tbody>
@@ -20,6 +22,8 @@ function PropertyInfo({ propertyInfo }) {
               <td>{property.uuid}</td>
               <td>{property.fullName}</td>
               <td>{property.tokenPrice}</td>
+              <td>{property.amount}</td>
+              <td>{property.totalValue}</td>
             </tr>
           ))}
         </tbody>

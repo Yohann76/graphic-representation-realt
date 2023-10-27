@@ -18,24 +18,40 @@ function App() {
   const handleSearchSubmit = async (event) => {
     event.preventDefault();
 
-    // request GraphQL for wallet
     try {
+      // get data from TheGraph
       const searchData = await fetchGraphQLData(searchValue);
-      setSearchResults(searchData);
 
       if (searchData.data && searchData.data.accounts && searchData.data.accounts.length > 0) {
-        // console.log('Données de recherche :', searchData.data); // TheGraph result
-        const properties = searchData.data.accounts[0].balances.map((balance) => balance.token.address);
-        // request realt-communitary api
-        const propertyInfoPromises = properties.map((propertyAddress) => fetchPropertyInfo(propertyAddress));
+        const properties = searchData.data.accounts[0].balances;
+
+        // get data from realt api
+        const propertyInfoPromises = properties.map(async (balance) => {
+          const propertyAddress = balance.token.address;
+          const propertyData = await fetchPropertyInfo(propertyAddress);
+          return {
+            uuid: propertyData.uuid,
+            fullName: propertyData.fullName,
+            tokenPrice: propertyData.tokenPrice,
+            amount: balance.amount,
+          };
+        });
+
         const propertyInfo = await Promise.all(propertyInfoPromises);
-        // console.log('Informations sur les propriétés :', propertyInfo); // realt-communitary api result
+
+        // calculate value for each property
+        propertyInfo.forEach((property) => {
+          property.totalValue = (parseFloat(property.tokenPrice) * parseFloat(property.amount)).toFixed(2);
+        });
+
         setPropertyInfo(propertyInfo);
       } else {
         console.log('Aucune balance trouvée dans les comptes.');
+        setPropertyInfo([]);
       }
     } catch (error) {
-      console.error('Erreur lors de la recherche sur TheGraph :', error);
+      console.error('Erreur lors de la recherche sur TheGraph ou l\'API RealT :', error);
+      setPropertyInfo([]);
     }
   };
 
