@@ -10,6 +10,7 @@ import CityPropertyChart from './components/CityPropertyChart';
 
 import { fetchPropertyInfo } from './requests/realt-communitary-api';
 import { fetchGraphQLData } from './requests/xdaiGraphQLRequest';
+import { fetchRMMGraphQLData } from './requests/rmmGraphQLRequest';
 
 function App() {
   const [data, setData] = useState(null);
@@ -17,46 +18,45 @@ function App() {
   const [searchResults, setSearchResults] = useState(null);
   const [propertyInfo, setPropertyInfo] = useState(null);
 
+
   const handleSearchSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      // get data from TheGraph
-      const searchData = await fetchGraphQLData(searchValue);
+      // Effectuez la requête XDai
+      const xdaiData = await fetchGraphQLData(searchValue);
+      // Effectuez la requête RMM
+      const rmmData = await fetchRMMGraphQLData([searchValue]); // Utilisez [searchValue] comme liste d'adresses
 
-      if (searchData.data && searchData.data.accounts && searchData.data.accounts.length > 0) {
-        const properties = searchData.data.accounts[0].balances;
+      // Obtenez les adresses des propriétés depuis les résultats XDai et RMM
+      const xdaiPropertyAddresses = xdaiData.data.accounts[0]?.balances.map((balance) => balance.token.address) || [];
+      const rmmPropertyAddresses = rmmData.data.users[0]?.reserves.map((reserve) => reserve.reserve.underlyingAsset) || [];
 
-        // get data from realt api
-        const propertyInfoPromises = properties.map(async (balance) => {
-          const propertyAddress = balance.token.address;
-          const propertyData = await fetchPropertyInfo(propertyAddress);
-          return {
-            uuid: propertyData.uuid,
-            fullName: propertyData.fullName,
-            tokenPrice: propertyData.tokenPrice,
-            amount: balance.amount,
-          };
-        });
+      // Combinez les adresses de propriété de XDai et RMM
+      const combinedPropertyAddresses = [...xdaiPropertyAddresses, ...rmmPropertyAddresses];
 
-        const propertyInfo = await Promise.all(propertyInfoPromises);
+      // Obtenez les données de propriété pour chaque adresse à partir de l'API communautaire
+      const propertyInfoPromises = combinedPropertyAddresses.map(async (address) => {
+        // Utilisez une fonction pour récupérer les données de propriété depuis l'API communautaire (à ajuster selon votre structure de données)
+        const propertyData = await fetchPropertyInfo(address);
+        return {
+          uuid: propertyData.uuid,
+          fullName: propertyData.fullName,
+          tokenPrice: propertyData.tokenPrice,
+          // Autres données de propriété...
+        };
+      });
 
-        // calculate value for each property
-        propertyInfo.forEach((property) => {
-          property.totalValue = (parseFloat(property.tokenPrice) * parseFloat(property.amount)).toFixed(2);
-        });
+      // Attendez que toutes les promesses de données de propriété soient résolues
+      const propertyInfoData = await Promise.all(propertyInfoPromises);
 
-        setPropertyInfo(propertyInfo);
-      } else {
-        console.log('Aucune balance trouvée dans les comptes.');
-        setPropertyInfo([]);
-      }
+      // Mise à jour de l'état avec les données de propriété combinées
+      setPropertyInfo(propertyInfoData);
     } catch (error) {
-      console.error('Erreur lors de la recherche sur TheGraph ou l\'API RealT :', error);
+      console.error('Erreur lors de la recherche :', error);
       setPropertyInfo([]);
     }
   };
-
   return (
     <div className="App">
 
