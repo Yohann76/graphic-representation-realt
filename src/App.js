@@ -25,38 +25,74 @@ function App() {
     try {
       // Effectuez la requête XDai
       const xdaiData = await fetchGraphQLData(searchValue);
+      console.log(xdaiData);
+
       // Effectuez la requête RMM
-      const rmmData = await fetchRMMGraphQLData([searchValue]); // Utilisez [searchValue] comme liste d'adresses
+      const rmmData = await fetchRMMGraphQLData(searchValue); // Utilisez [searchValue] comme liste d'adresses
+      console.log(rmmData);
 
-      // Obtenez les adresses des propriétés depuis les résultats XDai et RMM
-      const xdaiPropertyAddresses = xdaiData.data.accounts[0]?.balances.map((balance) => balance.token.address) || [];
-      const rmmPropertyAddresses = rmmData.data.users[0]?.reserves.map((reserve) => reserve.reserve.underlyingAsset) || [];
+      // Vérifiez si les données XDai sont définies et contiennent les propriétés attendues
+      if (
+        xdaiData &&
+        xdaiData.data &&
+        xdaiData.data.accounts &&
+        xdaiData.data.accounts[0] &&
+        xdaiData.data.accounts[0].balances
+      ) {
+        const xdaiPropertyAddresses = xdaiData.data.accounts[0].balances.map((balance) => balance.token.address) || [];
+        // Continuez avec le traitement des données XDai
+        // ...
 
-      // Combinez les adresses de propriété de XDai et RMM
-      const combinedPropertyAddresses = [...xdaiPropertyAddresses, ...rmmPropertyAddresses];
+        // Effectuez les vérifications et le traitement pour les données RMM de manière similaire
+        if (
+          rmmData &&
+          rmmData.data &&
+          rmmData.data.users &&
+          rmmData.data.users[0] && // no user for the moment
+          rmmData.data.users[0].reserves
+        ) {
+          const rmmPropertyAddresses = rmmData.data.users[0].reserves.map((reserve) => reserve.reserve.underlyingAsset) || [];
+          console.log(rmmPropertyAddresses);
+          // Continuez avec le traitement des données RMM
+          // ...
 
-      // Obtenez les données de propriété pour chaque adresse à partir de l'API communautaire
-      const propertyInfoPromises = combinedPropertyAddresses.map(async (address) => {
-        // Utilisez une fonction pour récupérer les données de propriété depuis l'API communautaire (à ajuster selon votre structure de données)
-        const propertyData = await fetchPropertyInfo(address);
-        return {
-          uuid: propertyData.uuid,
-          fullName: propertyData.fullName,
-          tokenPrice: propertyData.tokenPrice,
-          // Autres données de propriété...
-        };
-      });
+          // Combinez les adresses de propriété de XDai et RMM
+          const combinedPropertyAddresses = [...xdaiPropertyAddresses, ...rmmPropertyAddresses];
 
-      // Attendez que toutes les promesses de données de propriété soient résolues
-      const propertyInfoData = await Promise.all(propertyInfoPromises);
+          // Obtenez les données de propriété pour chaque adresse à partir de l'API communautaire
+          const propertyInfoPromises = combinedPropertyAddresses.map(async (address) => {
+            // Utilisez une fonction pour récupérer les données de propriété depuis l'API communautaire (à ajuster selon votre structure de données)
+            const propertyData = await fetchPropertyInfo(address);
+            return {
+              uuid: propertyData.uuid,
+              fullName: propertyData.fullName,
+              tokenPrice: propertyData.tokenPrice,
+              // Autres données de propriété...
+            };
+          });
 
-      // Mise à jour de l'état avec les données de propriété combinées
-      setPropertyInfo(propertyInfoData);
+          // Attendez que toutes les promesses de données de propriété soient résolues
+          const propertyInfoData = await Promise.all(propertyInfoPromises);
+
+          // Mise à jour de l'état avec les données de propriété combinées
+          setPropertyInfo(propertyInfoData);
+        } else {
+          console.log('Aucune donnée RMM valide trouvée.');
+          // Gérez le cas où aucune donnée RMM n'est disponible
+          setPropertyInfo([]);
+        }
+      } else {
+        console.log('Aucune donnée XDai valide trouvée.');
+        // Gérez le cas où aucune donnée XDai n'est disponible
+        setPropertyInfo([]);
+      }
     } catch (error) {
       console.error('Erreur lors de la recherche :', error);
       setPropertyInfo([]);
     }
   };
+
+
   return (
     <div className="App">
 

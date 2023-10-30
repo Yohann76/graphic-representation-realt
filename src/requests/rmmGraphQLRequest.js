@@ -1,13 +1,13 @@
 import axios from 'axios';
 
-export const fetchRMMGraphQLData = async (addressList, skip = 0, limit = 500) => {
+export const fetchRMMGraphQLData = async (searchValue) => {
   try {
-    const graphQLQuery = `
-      query RMMQuery($addressList: [String]!) {
-        users(where: {id_in: $addressList}) {
+    const graphQLQueryRmm = `
+      {
+        users(where: { id_in: ["0x123d04f0bcd896557fd751fc2362ab8c95a0f184"] }) {
           id
           reserves(
-            where: {or: [{currentATokenBalance_gt: "0"}, {currentTotalDebt_gt: "0"}]}
+            where: { or: [{ currentATokenBalance_gt: "0" }, { currentTotalDebt_gt: "0" }] }
           ) {
             reserve {
               underlyingAsset
@@ -25,13 +25,10 @@ export const fetchRMMGraphQLData = async (addressList, skip = 0, limit = 500) =>
       }
     `;
 
-    const response = await axios.post(
+    const responseRMM = await axios.post(
       'https://api.thegraph.com/subgraphs/name/realtoken-thegraph/rmm-realt',
       {
-        query: graphQLQuery,
-        variables: {
-          addressList,
-        },
+        query: graphQLQueryRmm,
       },
       {
         headers: {
@@ -40,7 +37,7 @@ export const fetchRMMGraphQLData = async (addressList, skip = 0, limit = 500) =>
       }
     );
 
-    const rmmData = response.data;
+    const rmmData = responseRMM.data;
     return rmmData;
   } catch (error) {
     console.error('Erreur lors de la recherche sur RMM :', error);
