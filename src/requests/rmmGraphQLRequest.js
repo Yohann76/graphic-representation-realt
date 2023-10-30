@@ -36,11 +36,20 @@ export const fetchRMMGraphQLData = async (searchValue) => {
         },
       }
     );
-
     const rmmData = responseRMM.data;
+    const userData = rmmData.data.users[0];
+
+    // Exclude reserve with name =  "Wrapped XDAI"
+    const filteredReserves = userData.reserves.filter(reserve => reserve.reserve.name !== "Wrapped XDAI");
+
+    // Remplacer la liste des réserves dans userData par la nouvelle liste filtrée
+    userData.reserves = filteredReserves;
+
     return rmmData;
   } catch (error) {
     console.error('Erreur lors de la recherche sur RMM :', error);
     throw error;
   }
+
+
 };
