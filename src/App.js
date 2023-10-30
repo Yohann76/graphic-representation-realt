@@ -20,9 +20,6 @@ function App() {
   const handleSearchSubmit = async (event) => {
     event.preventDefault();
 
-    // TODO : fix bug : input form sensible case
-    // 0x123D04f0BCd896557FD751fC2362aB8c95A0f184 = error
-    // 0x123d04f0bcd896557fd751fc2362ab8c95a0f184 = run
     try {
       console.log(searchValue);
       const xdaiData = await fetchGraphQLData(searchValue);

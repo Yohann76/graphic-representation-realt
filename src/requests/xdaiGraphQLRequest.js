@@ -8,10 +8,13 @@ https://api.thegraph.com/subgraphs/name/realtoken-thegraph/realtoken-xdai/graphq
 */
 
 export const fetchGraphQLData = async (searchValue, skip = 0, limit = 500) => {
+
+  const searchValueLowerCase = searchValue.toLowerCase();
+
   try {
     const graphQLQuery = `
       {
-        accounts(where: {address: "${searchValue}"}) {
+        accounts(where: {address: "${searchValueLowerCase}"}) {
           balances(
             where: {amount_gt: "0"}
             first: ${limit}

@@ -8,10 +8,13 @@ https://api.thegraph.com/subgraphs/name/realtoken-thegraph/realtoken-eth/graphql
 */
 
 export const fetchETHGraphQLData = async (searchValue, skip = 0, limit = 500) => {
+
+  const searchValueLowerCase = searchValue.toLowerCase();
+
   try {
     const graphQLQueryEth = `
       {
-        accounts(where: {address_in: ["${searchValue}"] }) {
+        accounts(where: {address_in: ["${searchValueLowerCase}"] }) {
           balances(
             where: {amount_gt: "0"}
             first: ${limit}

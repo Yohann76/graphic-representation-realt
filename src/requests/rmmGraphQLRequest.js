@@ -7,10 +7,13 @@ https://api.thegraph.com/subgraphs/name/realtoken-thegraph/rmm-realt/graphql?que
 */
 
 export const fetchRMMGraphQLData = async (searchValue) => {
+
+  const searchValueLowerCase = searchValue.toLowerCase();
+
   try {
     const graphQLQueryRmm = `
       {
-        users(where: { id_in: ["${searchValue}"] }) {
+        users(where: { id_in: ["${searchValueLowerCase}"] }) {
           id
           reserves(
             where: { or: [{ currentATokenBalance_gt: "0" }, { currentTotalDebt_gt: "0" }] }
@@ -42,20 +45,25 @@ export const fetchRMMGraphQLData = async (searchValue) => {
         },
       }
     );
+
     const rmmData = responseRMM.data;
     const userData = rmmData.data.users[0];
 
-    // Exclude reserve with name =  "Wrapped XDAI"
-    const filteredReserves = userData.reserves.filter(reserve => reserve.reserve.name !== "Wrapped XDAI");
-
-    // replace list by list filter
-    userData.reserves = filteredReserves;
-
+    // if data found
+    if (userData) {
+      // Exclude reserve with name =  "Wrapped XDAI"
+      const filteredReserves = userData.reserves.filter(reserve => reserve.reserve.name !== "Wrapped XDAI");
+      // replace list by list filter
+      userData.reserves = filteredReserves;
+    }
+    else {
+      console.error('Aucune donnée de réserves trouvée pour cet utilisateur.');
+      return rmmData;
+    }
     return rmmData;
+
   } catch (error) {
     console.error('Erreur lors de la recherche sur TheGraph RMM :', error);
     throw error;
   }
-
-
 };
