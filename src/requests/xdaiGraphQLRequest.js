@@ -46,7 +46,7 @@ export const fetchGraphQLData = async (searchValue, skip = 0, limit = 500) => {
     const searchData = response.data;
     return searchData;
   } catch (error) {
-    console.error('Erreur lors de la recherche sur TheGraph :', error);
+    console.error('Erreur lors de la recherche sur TheGraph Xdai :', error);
     throw error;
   }
 };

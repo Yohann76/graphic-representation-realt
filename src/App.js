@@ -9,6 +9,7 @@ import CityPropertyChart from './components/CityPropertyChart';
 import { fetchPropertyInfo } from './requests/realt-communitary-api';
 import { fetchGraphQLData } from './requests/xdaiGraphQLRequest';
 import { fetchRMMGraphQLData } from './requests/rmmGraphQLRequest';
+import { fetchETHGraphQLData } from './requests/ethGraphQLRequest';
 
 function App() {
   const [data, setData] = useState(null);
@@ -20,9 +21,15 @@ function App() {
     event.preventDefault();
 
     try {
+      // fetch xdai property in search value
       const xdaiData = await fetchGraphQLData(searchValue);
       console.log(xdaiData);
 
+      // fetch eth property in search value
+      const ethData = await fetchETHGraphQLData(searchValue);
+      console.log(ethData);
+
+      // fetch rmm property in search value
       const rmmData = await fetchRMMGraphQLData(searchValue);
       console.log(rmmData);
 

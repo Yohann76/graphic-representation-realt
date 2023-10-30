@@ -47,7 +47,7 @@ export const fetchRMMGraphQLData = async (searchValue) => {
 
     return rmmData;
   } catch (error) {
-    console.error('Erreur lors de la recherche sur RMM :', error);
+    console.error('Erreur lors de la recherche sur TheGraph RMM :', error);
     throw error;
   }
 
