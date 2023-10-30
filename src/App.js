@@ -20,18 +20,41 @@ function App() {
   const handleSearchSubmit = async (event) => {
     event.preventDefault();
 
+    // TODO : fix bug : input form sensible case
+    // 0x123D04f0BCd896557FD751fC2362aB8c95A0f184 = error
+    // 0x123d04f0bcd896557fd751fc2362ab8c95a0f184 = run
     try {
+      console.log(searchValue);
       const xdaiData = await fetchGraphQLData(searchValue);
-      const ethData = await fetchETHGraphQLData(searchValue);
-      const rmmData = await fetchRMMGraphQLData(searchValue);
+      console.log(xdaiData);
 
-      const xdaiPropertyAddresses = xdaiData.data.accounts[0].balances.map((balance) => balance.token.address) || [];
-      const ethPropertyAddresses = ethData.data.accounts[0].balances.map((balance) => balance.token.address) || [];
-      const rmmPropertyAddresses = rmmData.data.users[0].reserves.map((reserve) => reserve.reserve.underlyingAsset) || [];
+      console.log(searchValue);
+      const ethData = await fetchETHGraphQLData(searchValue);
+      console.log(ethData);
+
+      console.log(searchValue);
+      const rmmData = await fetchRMMGraphQLData(searchValue);
+      console.log(rmmData);
+
+      let xdaiPropertyAddresses = [];
+      let ethPropertyAddresses = [];
+      let rmmPropertyAddresses = [];
+
+      if (xdaiData.data && xdaiData.data.accounts && xdaiData.data.accounts[0] && xdaiData.data.accounts[0].balances) {
+        xdaiPropertyAddresses = xdaiData.data.accounts[0].balances.map((balance) => balance.token.address);
+      }
+
+      if (ethData.data && ethData.data.accounts && ethData.data.accounts[0] && ethData.data.accounts[0].balances) {
+        ethPropertyAddresses = ethData.data.accounts[0].balances.map((balance) => balance.token.address);
+      }
+
+      if (rmmData.data && rmmData.data.users && rmmData.data.users[0] && rmmData.data.users[0].reserves) {
+        rmmPropertyAddresses = rmmData.data.users[0].reserves.map((reserve) => reserve.reserve.underlyingAsset);
+      }
 
       const combinedPropertyAddresses = [...xdaiPropertyAddresses, ...ethPropertyAddresses, ...rmmPropertyAddresses];
-
       const propertyInfoPromises = [];
+
       const MAX_CONCURRENT_REQUESTS = 3; // limit 3 concurent request for CORS bug from localhost
 
       for (let i = 0; i < combinedPropertyAddresses.length; i += MAX_CONCURRENT_REQUESTS) {
