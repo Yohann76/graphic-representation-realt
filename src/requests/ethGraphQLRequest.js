@@ -37,8 +37,8 @@ export const fetchETHGraphQLData = async (searchValue, skip = 0, limit = 500) =>
       }
     );
 
-    const searchData = response.data;
-    return searchData;
+    const ethData = response.data;
+    return ethData;
   } catch (error) {
     console.error('Erreur lors de la recherche sur TheGraph ETH :', error);
     throw error;

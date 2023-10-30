@@ -21,69 +21,61 @@ function App() {
     event.preventDefault();
 
     try {
-      // fetch xdai property in search value
       const xdaiData = await fetchGraphQLData(searchValue);
-      console.log(xdaiData);
-
-      // fetch eth property in search value
       const ethData = await fetchETHGraphQLData(searchValue);
-      console.log(ethData);
-
-      // fetch rmm property in search value
       const rmmData = await fetchRMMGraphQLData(searchValue);
-      console.log(rmmData);
 
-      if (xdaiData.data.accounts[0].balances) {
+      const xdaiPropertyAddresses = xdaiData.data.accounts[0].balances.map((balance) => balance.token.address) || [];
+      const ethPropertyAddresses = ethData.data.accounts[0].balances.map((balance) => balance.token.address) || [];
+      const rmmPropertyAddresses = rmmData.data.users[0].reserves.map((reserve) => reserve.reserve.underlyingAsset) || [];
 
-        const xdaiPropertyAddresses = xdaiData.data.accounts[0].balances.map((balance) => balance.token.address) || [];
-        if (rmmData.data.users[0].reserves) {
-          const rmmPropertyAddresses = rmmData.data.users[0].reserves.map((reserve) => reserve.reserve.underlyingAsset) || [];
-          console.log(rmmPropertyAddresses);
-          const combinedPropertyAddresses = [...xdaiPropertyAddresses, ...rmmPropertyAddresses];
-          const propertyInfoPromises = combinedPropertyAddresses.map(async (address) => {
-            const propertyData = await fetchPropertyInfo(address);
-            let amount = null;
-            // if adress from rmm
-            if (rmmPropertyAddresses.includes(address)) {
-              const rmmReserve = rmmData.data.users[0].reserves.find(
-                (reserve) => reserve.reserve.underlyingAsset === address
-              );
-              if (rmmReserve) {
-                const currentATokenBalance = parseFloat(rmmReserve.currentATokenBalance) / Math.pow(10, 18); // calcul from decimals to thegraph response
-                amount = currentATokenBalance.toFixed(2); // for 2 decimal
-              }
-            } else {
-              // if adress from wdai, use balance
-              const xdaiBalance = xdaiData.data.accounts[0].balances.find(
-                (balance) => balance.token.address === address
-              );
-              if (xdaiBalance) {
-                amount = parseFloat(xdaiBalance.amount);
-              }
+      const combinedPropertyAddresses = [...xdaiPropertyAddresses, ...ethPropertyAddresses, ...rmmPropertyAddresses];
+
+      const propertyInfoPromises = [];
+      const MAX_CONCURRENT_REQUESTS = 3; // limit 3 concurent request for CORS bug from localhost
+
+      for (let i = 0; i < combinedPropertyAddresses.length; i += MAX_CONCURRENT_REQUESTS) {
+        const batch = combinedPropertyAddresses.slice(i, i + MAX_CONCURRENT_REQUESTS);
+
+        const batchPromises = batch.map(async (address) => {
+          const propertyData = await fetchPropertyInfo(address);
+          let amount = null;
+
+          if (rmmPropertyAddresses.includes(address)) {
+            const rmmReserve = rmmData.data.users[0].reserves.find((reserve) => reserve.reserve.underlyingAsset === address);
+            if (rmmReserve) {
+              amount = parseFloat(rmmReserve.currentATokenBalance) / Math.pow(10, 18);
+              amount = amount.toFixed(2);
             }
-            propertyData.amount = amount;
-            return {
-              uuid: propertyData.uuid,
-              fullName: propertyData.fullName,
-              tokenPrice: propertyData.tokenPrice,
-              amount: propertyData.amount,
-            };
-          });
+          } else if (xdaiPropertyAddresses.includes(address) || ethPropertyAddresses.includes(address)) {
+            const balanceData = xdaiData.data.accounts[0].balances.find((balance) => balance.token.address === address) ||
+                              ethData.data.accounts[0].balances.find((balance) => balance.token.address === address);
 
-          const propertyInfoData = await Promise.all(propertyInfoPromises);
-          // calculate value for each property
-          propertyInfoData.forEach((property) => {
-            property.totalValue = (parseFloat(property.tokenPrice) * parseFloat(property.amount)).toFixed(2);
-          });
-          setPropertyInfo(propertyInfoData);
-        } else {
-          console.log('Aucune donnée RMM valide trouvée.');
-          setPropertyInfo([]);
-        }
-      } else {
-        console.log('Aucune donnée XDai valide trouvée.');
-        setPropertyInfo([]);
+            if (balanceData) {
+              amount = parseFloat(balanceData.amount);
+            }
+          }
+
+          propertyData.amount = amount;
+          return {
+            uuid: propertyData.uuid,
+            fullName: propertyData.fullName,
+            tokenPrice: propertyData.tokenPrice,
+            amount: propertyData.amount,
+          };
+        });
+
+        const batchResults = await Promise.all(batchPromises);
+        propertyInfoPromises.push(...batchResults);
       }
+
+      const propertyInfoData = propertyInfoPromises.filter((property) => property !== null);
+
+      propertyInfoData.forEach((property) => {
+        property.totalValue = (parseFloat(property.tokenPrice) * parseFloat(property.amount)).toFixed(2);
+      });
+
+      setPropertyInfo(propertyInfoData);
     } catch (error) {
       console.error('Erreur lors de la recherche :', error);
       setPropertyInfo([]);
