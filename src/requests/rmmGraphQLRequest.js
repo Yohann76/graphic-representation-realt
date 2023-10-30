@@ -42,7 +42,7 @@ export const fetchRMMGraphQLData = async (searchValue) => {
     // Exclude reserve with name =  "Wrapped XDAI"
     const filteredReserves = userData.reserves.filter(reserve => reserve.reserve.name !== "Wrapped XDAI");
 
-    // Remplacer la liste des réserves dans userData par la nouvelle liste filtrée
+    // replace list by list filter
     userData.reserves = filteredReserves;
 
     return rmmData;

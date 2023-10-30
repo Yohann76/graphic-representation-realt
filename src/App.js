@@ -18,20 +18,16 @@ function App() {
   const [searchResults, setSearchResults] = useState(null);
   const [propertyInfo, setPropertyInfo] = useState(null);
 
-
   const handleSearchSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      // Effectuez la requête XDai
       const xdaiData = await fetchGraphQLData(searchValue);
       console.log(xdaiData);
 
-      // Effectuez la requête RMM
-      const rmmData = await fetchRMMGraphQLData(searchValue); // Utilisez [searchValue] comme liste d'adresses
+      const rmmData = await fetchRMMGraphQLData(searchValue);
       console.log(rmmData);
 
-      // Vérifiez si les données XDai sont définies et contiennent les propriétés attendues
       if (
         xdaiData &&
         xdaiData.data &&
@@ -40,50 +36,47 @@ function App() {
         xdaiData.data.accounts[0].balances
       ) {
         const xdaiPropertyAddresses = xdaiData.data.accounts[0].balances.map((balance) => balance.token.address) || [];
-        // Continuez avec le traitement des données XDai
-        // ...
 
-        // Effectuez les vérifications et le traitement pour les données RMM de manière similaire
+        ///////////
+        // Amount for xdai // amount = balance.amount if define
+        ///////////
+
         if (
           rmmData &&
           rmmData.data &&
           rmmData.data.users &&
-          rmmData.data.users[0] && // no user for the moment
+          rmmData.data.users[0] &&
           rmmData.data.users[0].reserves
         ) {
           const rmmPropertyAddresses = rmmData.data.users[0].reserves.map((reserve) => reserve.reserve.underlyingAsset) || [];
           console.log(rmmPropertyAddresses);
-          // Continuez avec le traitement des données RMM
-          // ...
 
-          // Combinez les adresses de propriété de XDai et RMM
+          ///////////
+          // Amount for RMM // amount = use request graphrmm currentATokenBalance and decimals 5000000000000000000 / 10^18 = 5
+          ///////////
+
           const combinedPropertyAddresses = [...xdaiPropertyAddresses, ...rmmPropertyAddresses];
 
-          // Obtenez les données de propriété pour chaque adresse à partir de l'API communautaire
           const propertyInfoPromises = combinedPropertyAddresses.map(async (address) => {
-            // Utilisez une fonction pour récupérer les données de propriété depuis l'API communautaire (à ajuster selon votre structure de données)
             const propertyData = await fetchPropertyInfo(address);
             return {
               uuid: propertyData.uuid,
               fullName: propertyData.fullName,
               tokenPrice: propertyData.tokenPrice,
-              // Autres données de propriété...
+              // amount = amount from rmm or from xdai
+
             };
           });
 
-          // Attendez que toutes les promesses de données de propriété soient résolues
           const propertyInfoData = await Promise.all(propertyInfoPromises);
 
-          // Mise à jour de l'état avec les données de propriété combinées
           setPropertyInfo(propertyInfoData);
         } else {
           console.log('Aucune donnée RMM valide trouvée.');
-          // Gérez le cas où aucune donnée RMM n'est disponible
           setPropertyInfo([]);
         }
       } else {
         console.log('Aucune donnée XDai valide trouvée.');
-        // Gérez le cas où aucune donnée XDai n'est disponible
         setPropertyInfo([]);
       }
     } catch (error) {
