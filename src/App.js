@@ -6,8 +6,6 @@ import './App.css';
 import PropertyInfo from './components/PropertyInfo';
 import CityPropertyChart from './components/CityPropertyChart';
 
-// import { PropertyService } from '@realtoken/realt-commons'; // not use // maybe is not function
-
 import { fetchPropertyInfo } from './requests/realt-communitary-api';
 import { fetchGraphQLData } from './requests/xdaiGraphQLRequest';
 import { fetchRMMGraphQLData } from './requests/rmmGraphQLRequest';
@@ -28,48 +26,48 @@ function App() {
       const rmmData = await fetchRMMGraphQLData(searchValue);
       console.log(rmmData);
 
-      if (
-        xdaiData &&
-        xdaiData.data &&
-        xdaiData.data.accounts &&
-        xdaiData.data.accounts[0] &&
-        xdaiData.data.accounts[0].balances
-      ) {
+      if (xdaiData.data.accounts[0].balances) {
+
         const xdaiPropertyAddresses = xdaiData.data.accounts[0].balances.map((balance) => balance.token.address) || [];
-
-        ///////////
-        // Amount for xdai // amount = balance.amount if define
-        ///////////
-
-        if (
-          rmmData &&
-          rmmData.data &&
-          rmmData.data.users &&
-          rmmData.data.users[0] &&
-          rmmData.data.users[0].reserves
-        ) {
+        if (rmmData.data.users[0].reserves) {
           const rmmPropertyAddresses = rmmData.data.users[0].reserves.map((reserve) => reserve.reserve.underlyingAsset) || [];
           console.log(rmmPropertyAddresses);
-
-          ///////////
-          // Amount for RMM // amount = use request graphrmm currentATokenBalance and decimals 5000000000000000000 / 10^18 = 5
-          ///////////
-
           const combinedPropertyAddresses = [...xdaiPropertyAddresses, ...rmmPropertyAddresses];
-
           const propertyInfoPromises = combinedPropertyAddresses.map(async (address) => {
             const propertyData = await fetchPropertyInfo(address);
+            let amount = null;
+            // if adress from rmm
+            if (rmmPropertyAddresses.includes(address)) {
+              const rmmReserve = rmmData.data.users[0].reserves.find(
+                (reserve) => reserve.reserve.underlyingAsset === address
+              );
+              if (rmmReserve) {
+                const currentATokenBalance = parseFloat(rmmReserve.currentATokenBalance) / Math.pow(10, 18); // calcul from decimals to thegraph response
+                amount = currentATokenBalance.toFixed(2); // for 2 decimal
+              }
+            } else {
+              // if adress from wdai, use balance
+              const xdaiBalance = xdaiData.data.accounts[0].balances.find(
+                (balance) => balance.token.address === address
+              );
+              if (xdaiBalance) {
+                amount = parseFloat(xdaiBalance.amount);
+              }
+            }
+            propertyData.amount = amount;
             return {
               uuid: propertyData.uuid,
               fullName: propertyData.fullName,
               tokenPrice: propertyData.tokenPrice,
-              // amount = amount from rmm or from xdai
-
+              amount: propertyData.amount,
             };
           });
 
           const propertyInfoData = await Promise.all(propertyInfoPromises);
-
+          // calculate value for each property
+          propertyInfoData.forEach((property) => {
+            property.totalValue = (parseFloat(property.tokenPrice) * parseFloat(property.amount)).toFixed(2);
+          });
           setPropertyInfo(propertyInfoData);
         } else {
           console.log('Aucune donnée RMM valide trouvée.');
@@ -85,10 +83,8 @@ function App() {
     }
   };
 
-
   return (
     <div className="App">
-
 
       <form onSubmit={handleSearchSubmit}>
         <input
@@ -100,9 +96,7 @@ function App() {
         <button type="submit">Rechercher</button>
       </form>
 
-
       {propertyInfo && <PropertyInfo propertyInfo={propertyInfo} />}
-
 
       {propertyInfo && <CityPropertyChart properties={propertyInfo} />}
 
