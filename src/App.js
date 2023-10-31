@@ -81,6 +81,7 @@ function App() {
           return {
             uuid: propertyData.uuid,
             fullName: propertyData.fullName,
+            currency: propertyData.currency,
             tokenPrice: propertyData.tokenPrice,
             amount: propertyData.amount,
           };
