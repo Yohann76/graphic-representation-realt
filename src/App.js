@@ -5,6 +5,7 @@ import './App.css';
 
 import PropertyInfo from './components/PropertyInfo';
 import CityPropertyChart from './components/CityPropertyChart';
+import CurrencieExpositionChart from './components/CurrencieExpositionChart';
 
 import { fetchPropertyInfo } from './requests/realt-communitary-api';
 import { fetchGraphQLData } from './requests/xdaiGraphQLRequest';
@@ -118,6 +119,8 @@ function App() {
       {propertyInfo && <PropertyInfo propertyInfo={propertyInfo} />}
 
       {propertyInfo && <CityPropertyChart properties={propertyInfo} />}
+
+      {propertyInfo && <CurrencieExpositionChart properties={propertyInfo} />}
 
     </div>
   );

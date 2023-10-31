@@ -41,9 +41,14 @@ get info for each property : https://api.realt.community/v1/token/0x4637aa1a13aa
 ```
 
 ### TODO :
-- Include eth property
+- make graphic % of portfolio in dollas/Euros...
+- CityPropertyChart.js : get city from other const (maybe address, with API?)
 - make graphic for CityPropertyChart.js (80 from detroit, 15 from chicago)
+
 - make graphic each zone in USA (12 from NY, 14 from OH..)
+
+
 - % by TYPE of home mono-family/Multy-family/SFR Portfolio (where is this information?)
 - % of portfolio in section 8, section 42, basic (where is this information?)
-- CityPropertyChart.js : get city from other const (maybe address, with API?)
+
+- loader when wait response api and calculate all data for each property
