@@ -1,9 +1,16 @@
 import axios from 'axios';
 
+const axiosInstance = axios.create({
+  baseURL: 'https://api.realt.community/v1', // ou l'URL de votre API
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
 export async function fetchPropertyInfo(propertyAddress) {
   try {
-    // example : https://api.realt.community/v1/token/0x4637aa1a13aa4050c6e4bcd6dde9c39e80e9dd54
-    const response = await axios.get(`https://api.realt.community/v1/token/${propertyAddress}`);
+    // Utilisez votre instance Axios personnalisée
+    const response = await axiosInstance.get(`/token/${propertyAddress}`);
     const responseData = response.data;
     console.log('Réponse de l\'API :', responseData);
     return responseData;
