@@ -50,16 +50,15 @@ get info for each property : https://api.realt.community/v1/token/0x4637aa1a13aa
 ```
 
 ## TODO LIST TASK :
-- % make graphic each zone in USA (12 from NY, 14 from OH..)
 - % make graphic by country USA , Panama (with property address)
-
 - % by TYPE of home mono-family/Multy-family/SFR Portfolio (where is this information?)
 - % of portfolio in section 8, section 42, basic (where is this information?)
 - Improved overall design
 - layout of all graphics
 - loader when wait response api and calculate all data for each property
 
-- Calculate invest return with CSV distribution, CSV reevaluation (where CSV, methods? necessary discussion)
+- Homepage : Statistic on wallet
+- SecondPage : Calculate invest return with CSV distribution, CSV reevaluation (where CSV, methods? necessary discussion)
 
 ## Features
 
