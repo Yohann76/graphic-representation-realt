@@ -8,22 +8,35 @@ For the moment, cities must be in the constant for this to work. In the future, 
 this component calculates according to the total value of the city in the portfolio.
 */
 
-function PropertyPercentage({ properties }) {
-  const cities = ['Detroit', 'Montgomery', 'Chicago', 'Cleveland', 'Los Santos', 'Covington', 'Toledo', 'Rochester', 'Highland Park'];
+// possible solution: search by zip code
+// for the moment we extract the city name after the comma :
+// "S 10645 Stratman St, Detroit, MI 48224", "8065 Lost Shaker Ln, Kissimmee, FL 34747"
 
-  const cityValues = cities.reduce((values, city) => {
-    values[city] = 0;
-    return values;
-  }, {});
+function PropertyPercentage({ properties }) {
+
+  const cityValues = {};
 
   properties.forEach((property) => {
-    const fullName = property.fullName.toLowerCase();
-    cities.forEach((city) => {
-      if (fullName.includes(city.toLowerCase())) {
-        const propertyValue = parseFloat(property.tokenPrice) * parseFloat(property.amount);
-        cityValues[city] += propertyValue;
+    const fullName = property.fullName;
+
+    const extractCityFromFullName = (fullName) => {
+
+      const cityMatch = fullName.match(/, (.*?),/);
+      if (cityMatch && cityMatch.length >= 2) {
+        return cityMatch[1];
       }
-    });
+      return null;
+    };
+
+    const city = extractCityFromFullName(fullName);
+
+    if (city) {
+      if (!cityValues[city]) {
+        cityValues[city] = 0;
+      }
+      const propertyValue = parseFloat(property.tokenPrice) * parseFloat(property.amount);
+      cityValues[city] += propertyValue;
+    }
   });
 
   const totalPortfolioValue = properties.reduce((total, property) => {
@@ -31,7 +44,9 @@ function PropertyPercentage({ properties }) {
     return total + propertyValue;
   }, 0);
 
-  const labels = cities;
+
+  const labels = Object.keys(cityValues);
+
   const data = labels.map((city) =>
     ((cityValues[city] / totalPortfolioValue) * 100).toFixed(2)
   );
