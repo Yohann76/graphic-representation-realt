@@ -1,15 +1,12 @@
 import React from 'react';
+import { Pie } from 'react-chartjs-2';
+import Chart from 'chart.js/auto';
 
 /*
-This component calculates the % of the city in the portfolio
-For the moment, cities must be in the constant for this to work. In the future, I'll need to create a function to automatically search by property address.
-this component calculates according to the total value of the city in the portfolio.
+this component calculates the % of exposure to a currency in relation to the total value of the portfolio. The data comes from realt's community api.
 */
 
-// TODO : make a graph
-
 function CurrencieExposition({ properties }) {
-
   const currencyExposure = {};
 
   // Iterate through each property in the list of properties
@@ -34,6 +31,26 @@ function CurrencieExposition({ properties }) {
     return total + propertyValue;
   }, 0);
 
+  const labels = Object.keys(currencyExposure);
+  const data = labels.map((currency) =>
+    ((currencyExposure[currency] / totalPortfolioValue) * 100).toFixed(2)
+  );
+
+  const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+  };
+
+  const chartData = {
+    labels: labels,
+    datasets: [
+      {
+        data: data,
+        backgroundColor: ['#FF5733', '#FFC300', '#C70039', '#900C3F', '#581845'],
+      },
+    ],
+  };
+
   return (
     <div className="currency-exposure">
       <h2>Exposition de la monnaie sur la totalité du portefeuille :</h2>
@@ -44,6 +61,9 @@ function CurrencieExposition({ properties }) {
           </li>
         ))}
       </ul>
+      <div style={{ maxWidth: '400px' }}>
+        <Pie data={chartData} options={chartOptions} />
+      </div>
     </div>
   );
 }
