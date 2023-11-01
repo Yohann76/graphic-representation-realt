@@ -5,6 +5,7 @@ import './App.css';
 
 import PropertyInfo from './components/PropertyInfo';
 import CityPropertyChart from './components/CityPropertyChart';
+import StatePropertyChart from './components/StatePropertyChart';
 import CurrencieExpositionChart from './components/CurrencieExpositionChart';
 
 import { fetchPropertyInfo } from './requests/realt-communitary-api';
@@ -120,6 +121,8 @@ function App() {
       {propertyInfo && <PropertyInfo propertyInfo={propertyInfo} />}
 
       {propertyInfo && <CityPropertyChart properties={propertyInfo} />}
+
+      {propertyInfo && <StatePropertyChart properties={propertyInfo} />}
 
       {propertyInfo && <CurrencieExpositionChart properties={propertyInfo} />}
 
