@@ -52,18 +52,22 @@ function CurrencieExposition({ properties }) {
   };
 
   return (
-    <div className="currency-exposure">
-      <h2>Exposition de la monnaie sur la totalité du portefeuille :</h2>
-      <ul>
-        {Object.keys(currencyExposure).map((currency) => (
-          <li key={currency}>
-            {currency}: {((currencyExposure[currency] / totalPortfolioValue) * 100).toFixed(2)}%
-          </li>
-        ))}
-      </ul>
-      <div style={{ maxWidth: '400px' }}>
+    <div className="component-section">
+    <h2>Exposition de la monnaie sur la totalité du portefeuille :</h2>
+    <div class="component-data">
+        <div class="data-container">
+          <ul>
+            {Object.keys(currencyExposure).map((currency) => (
+              <li key={currency}>
+                {currency}: {((currencyExposure[currency] / totalPortfolioValue) * 100).toFixed(2)}%
+              </li>
+            ))}
+          </ul>
+        </div>
+      <div class="data-graph" style={{ maxWidth: '600px' }}>
         <Pie data={chartData} options={chartOptions} />
       </div>
+    </div>
     </div>
   );
 }

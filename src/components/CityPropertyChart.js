@@ -67,18 +67,22 @@ function PropertyPercentage({ properties }) {
   };
 
   return (
-    <div className="property-percentage">
-      <h2>Pourcentage de la valeur du portefeuille par ville :</h2>
-      <ul>
-        {labels.map((city) => (
-          <li key={city}>
-            {city}: {((cityValues[city] / totalPortfolioValue) * 100).toFixed(2)}%
-          </li>
-        ))}
-      </ul>
-      <div style={{ maxWidth: '400px' }}>
-        <Pie data={chartData} options={chartOptions} />
-      </div>
+    <div className="component-section">
+    <h2>Pourcentage de la valeur du portefeuille par ville :</h2>
+    <div class="component-data">
+        <div class="data-container">
+          <ul>
+            {labels.map((city) => (
+              <li key={city}>
+                {city}: {((cityValues[city] / totalPortfolioValue) * 100).toFixed(2)}%
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="data-graph" style={{ maxWidth: '600px' }}>
+          <Pie data={chartData} options={chartOptions} />
+        </div>
+    </div>
     </div>
   );
 }

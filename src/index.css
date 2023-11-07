@@ -11,3 +11,99 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.container-graph {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.container-graph > div {
+  flex-basis: calc(100% - 10px);
+  margin: 5px;
+}
+
+/* in container-graph */
+
+.component-section {
+  margin: auto;
+  padding: 5px;
+  background-color: rgb(220, 220, 220);
+}
+
+.component-data {
+  border:2px green solid;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.component-data > div {
+  flex: 1; /* Permet aux éléments de s'étendre pour occuper tout l'espace horizontal */
+  max-width: 50%; /* Largeur maximale pour chaque élément */
+  margin: 5px; /* Espacement entre les éléments */
+}
+
+.component-data > div:last-child {
+  margin-right: 0; /* Ajustement de la marge du dernier élément */
+}
+
+.component-data > div:first-child {
+  margin-left: 0; /* Ajustement de la marge du premier élément */
+}
+
+
+
+.data-container {
+  border:2px red solid;
+  width: 40%
+}
+
+.data-graph {
+  border:2px blue solid;
+  width: 60%
+}
+
+
+
+/* Property Info List / array  */
+
+.property-info-container {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+thead {
+  background-color: #f0f0f0;
+}
+
+thead th {
+  text-align: left;
+  padding: 10px;
+  font-weight: bold;
+  border-bottom: 2px solid #ccc;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tbody td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+tbody td:nth-child(3) {
+  text-align: left;
+}
+
+tbody td:nth-child(2) {
+  text-align: left;
+}
