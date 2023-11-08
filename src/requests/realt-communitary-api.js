@@ -19,3 +19,15 @@ export async function fetchPropertyInfo(propertyAddress) {
     return null;
   }
 }
+
+/*
+need API Key
+
+key : X-AUTH-REALT-TOKEN
+value : 1ccc0d6825c65261f4090266a36bea3b
+add in header
+
+link : https://api.realt.community/
+
+need other key with other referer (localhost)
+*/

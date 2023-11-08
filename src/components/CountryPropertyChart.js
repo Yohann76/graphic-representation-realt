@@ -1,12 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { Pie } from 'react-chartjs-2';
-import { Bar } from 'react-chartjs-2';
-import Chart from 'chart.js/auto';
-import axios from 'axios';
-
+import React from 'react';
 
 function PropertyByCountry({ properties }) {
-
 
   return (
     <div className="component-section">

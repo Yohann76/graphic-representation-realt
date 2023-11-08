@@ -43,6 +43,7 @@ xdai : https://api.thegraph.com/subgraphs/name/realtoken-thegraph/realtoken-xdai
 rmm : https://api.thegraph.com/subgraphs/name/realtoken-thegraph/rmm-realt
 eth : https://api.thegraph.com/subgraphs/name/realtoken-thegraph/realtoken-eth
 ```
+
 RealT communitary api :
 
 ```shell
@@ -60,13 +61,18 @@ get info for each property : https://api.realt.community/v1/token/0x4637aa1a13aa
 - layout of all graphics
 - loader when wait response api and calculate all data for each property
 
-- see API KEY COMMUNITY with api request
+- see API KEY COMMUNITY (for more data in request))
 
 ## Features
 
 - Use Docker
 - add project on netlify
-- add github action task
+- add github action
+
+## netlify
+- https://app.netlify.com/sites/graphic-realt-application/
+- domain : graphic-realt-application.netlify.app
+
 
 ## Goal
 
