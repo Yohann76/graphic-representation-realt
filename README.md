@@ -27,9 +27,7 @@ go to http://localhost:3000/
 ## Contributing
 
 We love contributors, so don't hesitate to contribute, ask questions and get in touch with the project creator: yohanndurand76@gmail.com
-
 To contribute, create a branch and propose a pull request
-
 We prefer smaller features to improve maintenance.
 
 ## Technology :
@@ -44,7 +42,6 @@ xdai : https://api.thegraph.com/subgraphs/name/realtoken-thegraph/realtoken-xdai
 rmm : https://api.thegraph.com/subgraphs/name/realtoken-thegraph/rmm-realt
 eth : https://api.thegraph.com/subgraphs/name/realtoken-thegraph/realtoken-eth
 ```
-
 RealT communitary api :
 
 ```shell
@@ -53,19 +50,16 @@ get info for each property : https://api.realt.community/v1/token/0x4637aa1a13aa
 
 ## TODO LIST TASK :
 
-- see API KEY COMMUNITY (for more data in request))
-
 - % make graphic by country USA , Panama (with property address, where is country?)
 - % by TYPE of home mono-family/Multy-family/SFR Portfolio (where is this information?)
 - % of portfolio in section 8, section 42, basic (where is this information?)
+- % of portfolio is located, not located, partially located
 
 - Improved overall design
 - layout of all graphics
 - loader when wait response api and calculate all data for each property (async response?)
 
-
-with token in api, we have a new data :
-
+With token in api, we have a new data :
 - constructionYear
 - coordinate ("42.390577", "-83.189261")
 - foundation
@@ -74,14 +68,7 @@ with token in api, we have a new data :
 - productType
 - lotSize & squareFeet
 - section8paid
-
-
-
-## Features
-
-- Use Docker
-- add project on netlify
-- add github action
+- propertyType (1 to ... ? )
 
 ## Goal
 
