@@ -64,6 +64,18 @@ get info for each property : https://api.realt.community/v1/token/0x4637aa1a13aa
 - loader when wait response api and calculate all data for each property (async response?)
 
 
+with token in api, we have a new data :
+
+- constructionYear
+- coordinate ("42.390577", "-83.189261")
+- foundation
+- heating
+- roofType
+- productType
+- lotSize & squareFeet
+- section8paid
+
+
 
 ## Features
 

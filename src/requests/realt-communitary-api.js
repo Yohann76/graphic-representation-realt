@@ -1,13 +1,17 @@
 import axios from 'axios';
 
+// docs : https://api.realt.community/
+
 const axiosInstance = axios.create({
   baseURL: 'https://api.realt.community/v1',
   headers: {
-    "X-AUTH-REALT-TOKEN" : "1ccc0d6825c65261f4090266a36bea3b", // dev key // for testing request on prod
-    "Content-Type" : "application/json"
+    "Content-Type" : "application/json",
+    "X-AUTH-REALT-TOKEN" : "1ccc0d6825c65261f4090266a36bea3b" // dev key // run on prod
+
   },
 });
 
+// fonction for get property info
 export async function fetchPropertyInfo(propertyAddress) {
   try {
     const response = await axiosInstance.get(`/token/${propertyAddress}`);
@@ -20,16 +24,5 @@ export async function fetchPropertyInfo(propertyAddress) {
   }
 }
 
-/*
-need API Key
 
-key : X-AUTH-REALT-TOKEN
-value : 1ccc0d6825c65261f4090266a36bea3b
-add in header
-
-link : https://api.realt.community/
-
-need other key with other referer (localhost)
-
-CORS, must be from this domain : https://graphic-realt-application.netlify.app/
-*/
+// TODO : function for get list property
