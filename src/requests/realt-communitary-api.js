@@ -1,15 +1,15 @@
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: 'https://api.realt.community/v1', // ou l'URL de votre API
+  baseURL: 'https://api.realt.community/v1',
   headers: {
-    'Content-Type': 'application/json',
+    "X-AUTH-REALT-TOKEN" : "1ccc0d6825c65261f4090266a36bea3b", // dev key // for testing request on prod
+    "Content-Type" : "application/json"
   },
 });
 
 export async function fetchPropertyInfo(propertyAddress) {
   try {
-    // Utilisez votre instance Axios personnalisée
     const response = await axiosInstance.get(`/token/${propertyAddress}`);
     const responseData = response.data;
     console.log('Réponse de l\'API :', responseData);
@@ -30,4 +30,6 @@ add in header
 link : https://api.realt.community/
 
 need other key with other referer (localhost)
+
+CORS, must be from this domain : https://graphic-realt-application.netlify.app/
 */

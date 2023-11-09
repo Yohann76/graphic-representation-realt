@@ -55,6 +55,7 @@ function App() {
       const combinedPropertyAddresses = [...xdaiPropertyAddresses, ...ethPropertyAddresses, ...rmmPropertyAddresses];
       const propertyInfoPromises = [];
 
+      // TODO : fix MAX_CONCURRENT_REQUESTS with all https://dashboard.realt.community/api/properties data
       const MAX_CONCURRENT_REQUESTS = 3; // limit 3 concurent request for CORS bug from localhost
 
       for (let i = 0; i < combinedPropertyAddresses.length; i += MAX_CONCURRENT_REQUESTS) {

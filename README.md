@@ -53,16 +53,17 @@ get info for each property : https://api.realt.community/v1/token/0x4637aa1a13aa
 
 ## TODO LIST TASK :
 
+- see API KEY COMMUNITY (for more data in request))
+
 - % make graphic by country USA , Panama (with property address, where is country?)
 - % by TYPE of home mono-family/Multy-family/SFR Portfolio (where is this information?)
 - % of portfolio in section 8, section 42, basic (where is this information?)
 
-
 - Improved overall design
 - layout of all graphics
-- loader when wait response api and calculate all data for each property
+- loader when wait response api and calculate all data for each property (async response?)
 
-- see API KEY COMMUNITY (for more data in request))
+
 
 ## Features
 
