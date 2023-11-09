@@ -1,8 +1,9 @@
 # Graphic-representation-realt
 
 RealT is a company that does real estate tokenization on blockchain, with the aim of exploring blockchain in order to make statistics.
-
 This project allows me to learn react and explore blockchain
+
+domain for this project : https://graphic-realt-application.netlify.app/
 
 ## Graphic :
 
@@ -68,11 +69,6 @@ get info for each property : https://api.realt.community/v1/token/0x4637aa1a13aa
 - Use Docker
 - add project on netlify
 - add github action
-
-## netlify
-- https://app.netlify.com/sites/graphic-realt-application/
-- domain : graphic-realt-application.netlify.app
-
 
 ## Goal
 
