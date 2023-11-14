@@ -25,6 +25,15 @@ function App() {
   const handleSearchSubmit = async (event) => {
     event.preventDefault();
 
+    // if input is empty
+    if (!searchValue) {
+      console.log('Input is empty');
+      // TODO fetch fetchPropertyList from realt-communitary-api for get all data from RealT
+      // TODO formate data for all component
+      return;
+    }
+
+    // if input have ethereum address
     try {
       console.log(searchValue);
       const xdaiData = await fetchGraphQLData(searchValue);
