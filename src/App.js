@@ -10,6 +10,8 @@ import CountryPropertyChart from './components/CountryPropertyChart';
 import CurrencieExpositionChart from './components/CurrencieExpositionChart';
 
 import { fetchPropertyInfo } from './requests/realt-communitary-api';
+import { fetchPropertyList } from './requests/realt-communitary-api';
+
 import { fetchGraphQLData } from './requests/xdaiGraphQLRequest';
 import { fetchRMMGraphQLData } from './requests/rmmGraphQLRequest';
 import { fetchETHGraphQLData } from './requests/ethGraphQLRequest';
