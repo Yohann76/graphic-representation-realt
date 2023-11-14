@@ -49,6 +49,7 @@ get info for each property : https://api.realt.community/v1/token/0x4637aa1a13aa
 ```
 
 ## TODO LIST TASK :
+- add data when input is empty : load all property from RealT
 
 - % make graphic by country USA , Panama (with property address, where is country?)
 - % by TYPE of home mono-family/Multy-family/SFR Portfolio (where is this information?)
@@ -58,6 +59,7 @@ get info for each property : https://api.realt.community/v1/token/0x4637aa1a13aa
 - Improved overall design
 - layout of all graphics
 - loader when wait response api and calculate all data for each property (async response?)
+
 
 With token in api, we have a new data :
 - constructionYear

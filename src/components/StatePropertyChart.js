@@ -66,20 +66,22 @@ function StatePropertyChart({ properties }) {
 
     // function for extract full name
     const extractStateFromFullName = (fullName) => {
-      // First, look for a match with the full names of the states
-      for (const state of usStates) {
-        if (fullName.includes(state.fullName)) {
-          return state.fullName;
+      if (fullName) {
+        // First, look for a match with the full names of the states
+        for (const state of usStates) {
+          if (fullName.includes(state.fullName)) {
+            return state.fullName;
+          }
+        }
+
+        // If no full name has been found, look for a match with state abbreviations
+        for (const state of usStates) {
+          if (fullName.includes(state.abbreviation)) {
+            return state.fullName; // Return the full name of the corresponding state abbreviation
+          }
         }
       }
-
-      // If no full name has been found, look for a match with state abbreviations
-      for (const state of usStates) {
-        if (fullName.includes(state.abbreviation)) {
-          return state.fullName; // Retournez le nom complet de l'État correspondant à l'abréviation
-        }
-      }
-
+    
       return null;
     };
 

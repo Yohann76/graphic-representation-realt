@@ -20,10 +20,11 @@ function PropertyPercentage({ properties }) {
     const fullName = property.fullName;
 
     const extractCityFromFullName = (fullName) => {
-
-      const cityMatch = fullName.match(/, (.*?),/);
-      if (cityMatch && cityMatch.length >= 2) {
-        return cityMatch[1];
+      if (fullName) {
+        const cityMatch = fullName.match(/, (.*?),/);
+        if (cityMatch && cityMatch.length >= 2) {
+          return cityMatch[1];
+        }
       }
       return null;
     };
