@@ -29,14 +29,32 @@ function App() {
     try {
 
       // if not ethereum address
+      // INFO : in response (with token) we have a uuid, fullName, currency, tokenPrice, totalTokens(amount) (totalValue must be calculate with tokenPrice*totalTokens )
       if (!searchValue) {
         console.log('Input is empty');
-        const allPropertyAddresses = await fetchPropertyList();
+        const allPropertyData = await fetchPropertyList();
 
-        // testing with API token if have a total token for this uuid
-        console.log(allPropertyAddresses);
-        // TODO : for each result (allPropertyAddresses), get number token from uuid (total token available with token api ?)
-        // TODO : return prepare data for component
+        if (allPropertyData && Array.isArray(allPropertyData)) {
+          // Prepare propertyInfoData from the response
+          const propertyInfoData = allPropertyData.map(property => {
+            const uuid = property.uuid || 'N/A';
+            const totalValue = (parseFloat(property.tokenPrice) * parseFloat(property.totalTokens)).toFixed(2);
+
+            return {
+              uuid: uuid,
+              fullName: property.fullName,
+              currency: property.currency,
+              tokenPrice: property.tokenPrice,
+              amount: property.totalTokens,
+              totalValue: totalValue,
+            };
+          });
+
+          // Filter out properties with uuid set to 'N/A'
+          const filteredPropertyInfoData = propertyInfoData.filter(property => property.uuid !== 'N/A');
+          // Set the propertyInfo state with the prepared data
+          setPropertyInfo(filteredPropertyInfoData);
+        }
 
         return;
       }
