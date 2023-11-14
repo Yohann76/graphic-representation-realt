@@ -49,28 +49,20 @@ get info for each property : https://api.realt.community/v1/token/0x4637aa1a13aa
 ```
 
 ## TODO LIST TASK :
-- add data when input is empty : load all property from RealT
-
-- % make graphic by country USA , Panama (with property address, where is country?)
-- % by TYPE of home mono-family/Multy-family/SFR Portfolio (where is this information?)
-- % of portfolio in section 8, section 42, basic (where is this information?)
+- % make graphic by country USA , Panama (with property address, where is country?) (use openstreet api with coordinate data?)
+- % by TYPE of home mono-family/Multy-family/SFR Portfolio (where is this information? productType ?)
 - % of portfolio is located, not located, partially located
 
 - Improved overall design
 - layout of all graphics
 - loader when wait response api and calculate all data for each property (async response?)
 
-
-With token in api, we have a new data :
-- constructionYear
-- coordinate ("42.390577", "-83.189261")
-- foundation
-- heating
-- roofType
-- productType
-- lotSize & squareFeet
-- section8paid
-- propertyType (1 to ... ? )
+add some data in top page (link dashboard):
+- average constructionYear for all wallet
+- Number property
+- Total value token wallet
+- Total number token
+- rent by day/week/month/years
 
 ## Goal
 
