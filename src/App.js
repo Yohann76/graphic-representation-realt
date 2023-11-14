@@ -67,47 +67,55 @@ function App() {
           const propertyData = await fetchPropertyInfo(address);
           let amount = null;
 
-          if (rmmPropertyAddresses.includes(address)) {
-            const rmmReserve = rmmData.data.users[0].reserves.find((reserve) => reserve.reserve.underlyingAsset === address);
-            if (rmmReserve) {
-              amount = parseFloat(rmmReserve.currentATokenBalance) / Math.pow(10, 18);
-              amount = amount.toFixed(2);
+            if (propertyData) { // Check if propertyData is defined
+              if (rmmPropertyAddresses.includes(address)) {
+                const rmmReserve = rmmData.data.users[0].reserves.find((reserve) => reserve.reserve.underlyingAsset === address);
+                if (rmmReserve) {
+                  amount = parseFloat(rmmReserve.currentATokenBalance) / Math.pow(10, 18);
+                  amount = amount.toFixed(2);
+                }
+              } else if (xdaiPropertyAddresses.includes(address) || ethPropertyAddresses.includes(address)) {
+                const balanceData = xdaiData.data.accounts[0].balances.find((balance) => balance.token.address === address) ||
+                                    ethData.data.accounts[0].balances.find((balance) => balance.token.address === address);
+
+                if (balanceData) {
+                  amount = parseFloat(balanceData.amount);
+                }
+              }
+
+              if (amount !== null) { // Check if amount is not null
+                propertyData.amount = amount;
+
+                // If uuid is not available, use a placeholder value (e.g., 'N/A')
+                const uuid = propertyData.uuid || 'N/A';
+                const totalValue = (parseFloat(propertyData.tokenPrice) * parseFloat(propertyData.amount)).toFixed(2);
+
+                return {
+                  uuid: uuid,
+                  fullName: propertyData.fullName,
+                  currency: propertyData.currency,
+                  tokenPrice: propertyData.tokenPrice,
+                  amount: propertyData.amount,
+                  totalValue: totalValue,
+                };
+              }
             }
-          } else if (xdaiPropertyAddresses.includes(address) || ethPropertyAddresses.includes(address)) {
-            const balanceData = xdaiData.data.accounts[0].balances.find((balance) => balance.token.address === address) ||
-                              ethData.data.accounts[0].balances.find((balance) => balance.token.address === address);
+            return null; // Exclude this property if any condition above is not met
+          });
 
-            if (balanceData) {
-              amount = parseFloat(balanceData.amount);
-            }
-          }
+          const batchResults = await Promise.all(batchPromises);
+          propertyInfoPromises.push(...batchResults);
+        }
 
-          propertyData.amount = amount;
-          return {
-            uuid: propertyData.uuid,
-            fullName: propertyData.fullName,
-            currency: propertyData.currency,
-            tokenPrice: propertyData.tokenPrice,
-            amount: propertyData.amount,
-          };
-        });
+        // Filter out properties with uuid set to 'N/A'
+        const propertyInfoData = propertyInfoPromises.filter((property) => property && property.uuid !== 'N/A');
 
-        const batchResults = await Promise.all(batchPromises);
-        propertyInfoPromises.push(...batchResults);
+        setPropertyInfo(propertyInfoData);
+      } catch (error) {
+        console.error('Erreur lors de la recherche :', error);
+        setPropertyInfo([]);
       }
-
-      const propertyInfoData = propertyInfoPromises.filter((property) => property !== null);
-
-      propertyInfoData.forEach((property) => {
-        property.totalValue = (parseFloat(property.tokenPrice) * parseFloat(property.amount)).toFixed(2);
-      });
-
-      setPropertyInfo(propertyInfoData);
-    } catch (error) {
-      console.error('Erreur lors de la recherche :', error);
-      setPropertyInfo([]);
-    }
-  };
+    };
 
   return (
     <div className="App">
