@@ -25,16 +25,23 @@ function App() {
   const handleSearchSubmit = async (event) => {
     event.preventDefault();
 
-    // if input is empty
-    if (!searchValue) {
-      console.log('Input is empty');
-      // TODO fetch fetchPropertyList from realt-communitary-api for get all data from RealT
-      // TODO formate data for all component
-      return;
-    }
-
     // if input have ethereum address
     try {
+
+      // if not ethereum address
+      if (!searchValue) {
+        console.log('Input is empty');
+        const allPropertyAddresses = await fetchPropertyList();
+
+        // testing with API token if have a total token for this uuid
+        console.log(allPropertyAddresses);
+        // TODO : for each result (allPropertyAddresses), get number token from uuid (total token available with token api ?)
+        // TODO : return prepare data for component
+
+        return;
+      }
+
+      // if have address in input
       console.log(searchValue);
       const xdaiData = await fetchGraphQLData(searchValue);
       console.log(xdaiData);
