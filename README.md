@@ -50,7 +50,7 @@ get info for each property : https://api.realt.community/v1/token/0x4637aa1a13aa
 
 ## TODO LIST TASK :
 - % make graphic by country USA , Panama (with property address, where is country?) (use openstreet api with coordinate data?)
-- % by TYPE of home mono-family/Multy-family/SFR Portfolio (where is this information? productType ?)
+- % by TYPE of home mono-family/Multy-family/SFR Portfolio (productType is in API)
 - % of portfolio is located, not located, partially located
 
 - Improved overall design
