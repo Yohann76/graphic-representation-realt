@@ -56,6 +56,7 @@ get info for each property : https://api.realt.community/v1/token/0x4637aa1a13aa
 - Improved overall design
 - layout of all graphics
 - loader when wait response api and calculate all data for each property (async response?)
+- add analyctics link for calculate trafic
 
 add some data in top page (link dashboard):
 - average constructionYear for all wallet
@@ -63,6 +64,7 @@ add some data in top page (link dashboard):
 - Total value token wallet
 - Total number token
 - rent by day/week/month/years
+- calculate realT fee..  (data from api)
 
 ## Goal
 
