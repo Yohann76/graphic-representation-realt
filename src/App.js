@@ -133,7 +133,7 @@ function App() {
                   tokenPrice: propertyData.tokenPrice,
                   amount: propertyData.amount,
                   totalValue: totalValue,
-                  type: property.type,
+                  type: propertyData.type,
                 };
               }
             }
