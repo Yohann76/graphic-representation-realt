@@ -48,7 +48,7 @@ function App() {
               tokenPrice: property.tokenPrice,
               amount: property.totalTokens,
               totalValue: totalValue,
-              type: property.type,
+              type: property.propertyType,
             };
           });
 
@@ -133,7 +133,7 @@ function App() {
                   tokenPrice: propertyData.tokenPrice,
                   amount: propertyData.amount,
                   totalValue: totalValue,
-                  type: propertyData.type,
+                  type: propertyData.propertyType,
                 };
               }
             }
@@ -168,14 +168,13 @@ function App() {
       </form>
 
       {propertyInfo && <PropertyInfo propertyInfo={propertyInfo} />}
-      <div class="container-graph">
 
+      <div class="container-graph">
         {propertyInfo && <CityPropertyChart properties={propertyInfo} />}
         {propertyInfo && <StatePropertyChart properties={propertyInfo} />}
         {propertyInfo && <CountryPropertyChart properties={propertyInfo} />}
         {propertyInfo && <CurrencieExpositionChart properties={propertyInfo} />}
         {propertyInfo && <TypePropertyChart properties={propertyInfo} />}
-
       </div>
 
     </div>

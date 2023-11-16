@@ -7,6 +7,8 @@ function TypePropertyChart({ properties }) {
   const propertyTypes = {
     1: 'Single Family',
     2: 'Multi Family',
+    4: 'Condominium',
+    6: 'Mixed-Use',
     10: 'Holding',
   };
 
