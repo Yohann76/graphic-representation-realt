@@ -6,7 +6,7 @@ const axiosInstance = axios.create({
   baseURL: 'https://api.realt.community/v1',
   headers: {
     "Content-Type" : "application/json",
-    "X-AUTH-REALT-TOKEN" : "1ccc0d6825c65261f4090266a36bea3b" // dev key // run on prod
+    //"X-AUTH-REALT-TOKEN" : "1ccc0d6825c65261f4090266a36bea3b" // dev key // run on prod
   },
 });
 

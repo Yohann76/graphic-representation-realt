@@ -9,6 +9,7 @@ import StatePropertyChart from './components/StatePropertyChart';
 import CountryPropertyChart from './components/CountryPropertyChart';
 import CurrencieExpositionChart from './components/CurrencieExpositionChart';
 import TypePropertyChart from './components/TypePropertyChart';
+import HeaderProperty from './components/HeaderProperty';
 
 import { fetchPropertyInfo } from './requests/realt-communitary-api';
 import { fetchPropertyList } from './requests/realt-communitary-api';
@@ -49,6 +50,7 @@ function App() {
               amount: property.totalTokens,
               totalValue: totalValue,
               type: property.propertyType,
+              constructionYear: property.constructionYear
             };
           });
 
@@ -134,6 +136,7 @@ function App() {
                   amount: propertyData.amount,
                   totalValue: totalValue,
                   type: propertyData.propertyType,
+                  constructionYear: propertyData.constructionYear,
                 };
               }
             }
@@ -167,7 +170,7 @@ function App() {
         <button type="submit">Rechercher</button>
       </form>
 
-      {propertyInfo && <PropertyInfo propertyInfo={propertyInfo} />}
+      {propertyInfo && <HeaderProperty properties={propertyInfo} />}
 
       <div class="container-graph">
         {propertyInfo && <CityPropertyChart properties={propertyInfo} />}
@@ -176,6 +179,9 @@ function App() {
         {propertyInfo && <CurrencieExpositionChart properties={propertyInfo} />}
         {propertyInfo && <TypePropertyChart properties={propertyInfo} />}
       </div>
+
+
+      {propertyInfo && <PropertyInfo propertyInfo={propertyInfo} />}
 
     </div>
   );
