@@ -6,9 +6,13 @@ function HeaderProperty({ properties }) {
   let numberOfProperties = 0;
   let totalTokenValue = 0;
   let totalConstructionYears = 0;
-  let numberOfPropertiesWithConstructionYear = 0;
+  let numberOfPropertiesWithConstructionYear = 0
+
+  // fee
   let feePerMonthTotal = 0;
   let listingFeeTotal = 0;
+  let platformPercentTotal = 0;
+  let listingFeePercentTotal = 0;
 
   properties.forEach((property) => {
 

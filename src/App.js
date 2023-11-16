@@ -141,10 +141,10 @@ function App() {
                   totalValue: totalValue,
                   type: propertyData.propertyType,
                   constructionYear: propertyData.constructionYear,
-                  feeRealtPlatformMonth: property.realtPlatform, // realt Fee per Month
-                  realtPlatformPercent: property.realtPlatformPercent, // % realT fee per Month
-                  realtListingFee: property.realtListingFee, // RealT Listing Fee
-                  realtListingFeePercent:property.realtListingFeePercent,  // RealT Listing %
+                  feeRealtPlatformMonth: propertyData.realtPlatform, // realt Fee per Month
+                  realtPlatformPercent: propertyData.realtPlatformPercent, // % realT fee per Month
+                  realtListingFee: propertyData.realtListingFee, // RealT Listing Fee
+                  realtListingFeePercent:propertyData.realtListingFeePercent,  // RealT Listing %
                 };
               }
             }
