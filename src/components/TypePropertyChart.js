@@ -4,7 +4,6 @@ import Chart from 'chart.js/auto';
 
 function TypePropertyChart({ properties }) {
 
-
   const propertyTypes = {
     1: 'Single Family',
     2: 'Multi Family',
@@ -14,7 +13,7 @@ function TypePropertyChart({ properties }) {
   const typeValues = {};
 
   properties.forEach((property) => {
-    const propertyType = property.propertyType;
+    const propertyType = property.type;
 
     // If a property type has been extracted, calculate the value of the property and add it to the corresponding type
     if (propertyTypes[propertyType]) {
@@ -30,6 +29,8 @@ function TypePropertyChart({ properties }) {
     const propertyValue = parseFloat(property.tokenPrice) * parseFloat(property.amount);
     return total + propertyValue;
   }, 0);
+
+  console.log(totalPortfolioValue);
 
   const labels = Object.keys(typeValues);
   const data = labels.map((type) =>
