@@ -50,7 +50,11 @@ function App() {
               amount: property.totalTokens,
               totalValue: totalValue,
               type: property.propertyType,
-              constructionYear: property.constructionYear
+              constructionYear: property.constructionYear,
+              feeRealtPlatformMonth: property.realtPlatform, // realt Fee per Month
+              realtPlatformPercent: property.realtPlatformPercent, // % realT fee per Month
+              realtListingFee: property.realtListingFee, // RealT Listing Fee
+              realtListingFeePercent:property.realtListingFeePercent,  // RealT Listing %
             };
           });
 
@@ -137,6 +141,10 @@ function App() {
                   totalValue: totalValue,
                   type: propertyData.propertyType,
                   constructionYear: propertyData.constructionYear,
+                  feeRealtPlatformMonth: property.realtPlatform, // realt Fee per Month
+                  realtPlatformPercent: property.realtPlatformPercent, // % realT fee per Month
+                  realtListingFee: property.realtListingFee, // RealT Listing Fee
+                  realtListingFeePercent:property.realtListingFeePercent,  // RealT Listing %
                 };
               }
             }

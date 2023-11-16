@@ -7,6 +7,8 @@ function HeaderProperty({ properties }) {
   let totalTokenValue = 0;
   let totalConstructionYears = 0;
   let numberOfPropertiesWithConstructionYear = 0;
+  let feePerMonthTotal = 0;
+  let listingFeeTotal = 0;
 
   properties.forEach((property) => {
 
@@ -17,13 +19,36 @@ function HeaderProperty({ properties }) {
       totalTokenValue += propertyValue;
     }
 
-    // verify if constructionYear is available
+    // verify if data is available
     if (property.constructionYear) {
       totalConstructionYears += parseInt(property.constructionYear, 10);
       numberOfPropertiesWithConstructionYear += 1;
     }
 
+    if (property.realtPlatform) {
+      feePerMonthTotal += parseFloat(property.realtPlatform);
+    }
+
+    if (property.realtListingFee) {
+      listingFeeTotal += parseFloat(property.realtListingFee);
+    }
+
+    if (property.realtPlatformPercent) {
+      platformPercentTotal += parseFloat(property.realtPlatformPercent);
+    }
+
+    if (property.realtListingFeePercent) {
+      listingFeePercentTotal += parseFloat(property.realtListingFeePercent);
+    }
+
   });
+
+
+  const averagePlatformPercent =
+    numberOfProperties > 0 ? (platformPercentTotal / numberOfProperties).toFixed(2) : 0;
+
+  const averageListingFeePercent =
+    numberOfProperties > 0 ? (listingFeePercentTotal / numberOfProperties).toFixed(2) : 0;
 
   // averageConstructionYear
   const averageConstructionYear =
@@ -38,7 +63,9 @@ function HeaderProperty({ properties }) {
       <h2>Informations sur les propriétés :</h2>
       <p>Nombre de propriétés : {numberOfProperties}</p>
       <p>Valeur totale des tokens : {totalTokenValue.toFixed(2)}</p>
-       <p>Moyenne d'âge de construction : {roundedAverageConstructionYear.toFixed(2)} ans</p>
+      <p>Moyenne d'âge de construction du portfeuille : {roundedAverageConstructionYear.toFixed(2)} ans</p>
+      <p>Total Frais RealT sur loyer : {feePerMonthTotal.toFixed(2)} ({averagePlatformPercent}%)</p>
+      <p>Total Frais RealT au listing : {listingFeeTotal.toFixed(2)} ({averageListingFeePercent}%)</p>
     </div>
   );
 }
