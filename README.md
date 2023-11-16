@@ -50,7 +50,6 @@ get info for each property : https://api.realt.community/v1/token/0x4637aa1a13aa
 
 ## TODO LIST TASK :
 - % make graphic by country USA , Panama (with property address, where is country?) (use openstreet api with coordinate data?)
-- % by TYPE of home mono-family/Multy-family/SFR Portfolio (productType is in API)
 - % of portfolio is located, not located, partially located
 
 - Improved overall design
@@ -58,13 +57,11 @@ get info for each property : https://api.realt.community/v1/token/0x4637aa1a13aa
 - loader when wait response api and calculate all data for each property (async response?)
 - add analyctics link for calculate trafic
 
-add some data in top page (link dashboard):
-- average constructionYear for all wallet
-- Number property
+add some data in header component (link dashboard):
 - Total value token wallet
-- Total number token
 - rent by day/week/month/years
-- calculate realT fee..  (data from api)
+
+add fee realT when display realT wallet, not with my wallet
 
 ## Goal
 
