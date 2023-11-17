@@ -24,49 +24,50 @@ function App() {
   const [searchResults, setSearchResults] = useState(null);
   const [propertyInfo, setPropertyInfo] = useState(null);
 
+  useEffect(() => {
+     const fetchData = async () => {
+       try {
+         const allPropertyData = await fetchPropertyList();
+
+         if (allPropertyData && Array.isArray(allPropertyData)) {
+           const propertyInfoData = allPropertyData.map((property) => {
+             const uuid = property.uuid || 'N/A';
+             const totalValue = (parseFloat(property.tokenPrice) * parseFloat(property.totalTokens)).toFixed(2);
+
+             return {
+               uuid: uuid,
+               fullName: property.fullName,
+               currency: property.currency,
+               tokenPrice: property.tokenPrice,
+               amount: property.totalTokens,
+               totalValue: totalValue,
+               type: property.propertyType,
+               constructionYear: property.constructionYear,
+               realtPlatform: property.realtPlatform, // realt Fee per Month
+               realtPlatformPercent: property.realtPlatformPercent, // % realT fee per Month
+               realtListingFee: property.realtListingFee, // RealT Listing Fee
+               realtListingFeePercent: property.realtListingFeePercent, // RealT Listing %
+             };
+           });
+
+           const filteredPropertyInfoData = propertyInfoData.filter((property) => property.uuid !== 'N/A');
+           setPropertyInfo(filteredPropertyInfoData);
+         }
+       } catch (error) {
+         console.error('Erreur lors de la requête initiale :', error);
+         setPropertyInfo([]);
+       }
+     };
+
+     fetchData();
+
+   }, []);
+
+
   const handleSearchSubmit = async (event) => {
     event.preventDefault();
-
     // if input have ethereum address
     try {
-
-      // if not ethereum address
-      // INFO : in response (with token) we have a uuid, fullName, currency, tokenPrice, totalTokens(amount) (totalValue must be calculate with tokenPrice*totalTokens )
-      if (!searchValue) {
-        console.log('Input is empty');
-        const allPropertyData = await fetchPropertyList();
-
-        if (allPropertyData && Array.isArray(allPropertyData)) {
-          // Prepare propertyInfoData from the response
-          const propertyInfoData = allPropertyData.map(property => {
-            const uuid = property.uuid || 'N/A';
-            const totalValue = (parseFloat(property.tokenPrice) * parseFloat(property.totalTokens)).toFixed(2);
-
-            return {
-              uuid: uuid,
-              fullName: property.fullName,
-              currency: property.currency,
-              tokenPrice: property.tokenPrice,
-              amount: property.totalTokens,
-              totalValue: totalValue,
-              type: property.propertyType,
-              constructionYear: property.constructionYear,
-              realtPlatform: property.realtPlatform, // realt Fee per Month
-              realtPlatformPercent: property.realtPlatformPercent, // % realT fee per Month
-              realtListingFee: property.realtListingFee, // RealT Listing Fee
-              realtListingFeePercent:property.realtListingFeePercent,  // RealT Listing %
-            };
-          });
-
-          // Filter out properties with uuid set to 'N/A'
-          const filteredPropertyInfoData = propertyInfoData.filter(property => property.uuid !== 'N/A');
-          // Set the propertyInfo state with the prepared data
-          setPropertyInfo(filteredPropertyInfoData);
-        }
-
-        return;
-      }
-
       // if have address in input
       console.log(searchValue);
       const xdaiData = await fetchGraphQLData(searchValue);
