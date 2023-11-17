@@ -49,21 +49,25 @@ get info for each property : https://api.realt.community/v1/token/0x4637aa1a13aa
 ```
 
 ## TODO LIST TASK :
-- % make graphic by country USA , Panama (with property address, where is country?) (use openstreet api with coordinate data?)
-- % of portfolio is located, not located, partially located
 
+Graphics :
+- % make graphic by country USA , Panama (with property address, where is country?) (use openstreet api with coordinate data?)
+- % of portfolio is located, not located, partially located (in $)
+- % add composition on wallet fee/construction/
+
+Other :
+- update %graphic% for add % in graphics legend (for remove left part data)
 - Improved overall design
 - layout of all graphics
 - loader when wait response api and calculate all data for each property (async response?)
 - add analyctics link for calculate trafic
 
-add some data in header component (link dashboard):
-- Total value token wallet
+Header (link dashboard):
 - rent by day/week/month/years
-
-add fee realT when display realT wallet, not with my wallet
+- add total fee realT when display realT wallet, not with my wallet
+- manage different currency for each graphic (convert each monney in $ for have correct proportion in %)
 
 ## Goal
 
 - Homepage : Statistic on wallet (graph, % wallet)
-- SecondPage : Calculate invest return with CSV distribution, CSV reevaluation (where CSV, methods? necessary discussion)
+- Later : SecondPage : Calculate invest return with CSV distribution, CSV reevaluation (where CSV, methods? necessary discussion)
