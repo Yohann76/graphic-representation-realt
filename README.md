@@ -48,12 +48,16 @@ RealT communitary api :
 get info for each property : https://api.realt.community/v1/token/0x4637aa1a13aa4050c6e4bcd6dde9c39e80e9dd54
 ```
 
-## TODO LIST TASK :
+## TODO LIST TASK for V1:
 
 Graphics :
 - % make graphic by country USA , Panama (with property address, where is country?) (use openstreet api with coordinate data?)
 - % of portfolio is located, not located, partially located (in $)
-- % add composition on wallet fee/construction/
+- % add composition on wallet fee/construction/value asset property/renovation
+
+PropertyInfo Table :
+- add in array property (price per interior sqft, price per door, rent by month)
+- can sort each table column
 
 Other :
 - update %graphic% for add % in graphics legend (for remove left part data)
@@ -61,13 +65,18 @@ Other :
 - layout of all graphics
 - loader when wait response api and calculate all data for each property (async response?)
 - add analyctics link for calculate trafic
+- if input is empty, run useEffect
 
 Header (link dashboard):
 - rent by day/week/month/years
 - add total fee realT when display realT wallet, not with my wallet
 - manage different currency for each graphic (convert each monney in $ for have correct proportion in %)
 
-## Goal
+## Goal in version
 
-- Homepage : Statistic on wallet (graph, % wallet)
-- Later : SecondPage : Calculate invest return with CSV distribution, CSV reevaluation (where CSV, methods? necessary discussion)
+- V1 : Homepage : Statistic on wallet (graph, % wallet)
+- V1 : page for manage version and add contact informations for manage idee
+
+- V2 : page to compare different real estate markets according to your portfolio
+
+- V3 SecondPage : Calculate invest return with CSV distribution, CSV reevaluation (where CSV, methods? necessary discussion)
