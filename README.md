@@ -3,16 +3,19 @@
 RealT is a company that does real estate tokenization on blockchain, with the aim of exploring blockchain in order to make statistics.
 This project allows me to learn react and explore blockchain
 
-domain for this project : https://graphic-realt-application.netlify.app/
+Domain for this project : https://graphic-realt-application.netlify.app/
+
+This project aims to produce reliable statistics on a realT wallet.
 
 ## Graphic :
 
 ```shell
-- % by TYPE of home mono-family/Multy-family/SFR Portfolio
-- % by country USA (see in state ?), Panama....
 - % of portfolio by city (Detroit, Cleveland)
+- % by each state in ISA
+- % by country USA, Panama
+- % by TYPE of home mono-family/Multy-family/SFR Portfolio (type of property)
+- % of portfolio in currency
 - % of portfolio in section 8, section 42, normal
-- % of portfolio in dollas/Euros...
 ```
 
 ## How To create/use
@@ -23,12 +26,6 @@ cd graphic-representation-realt
 npm install, npm update, , npm start
 go to http://localhost:3000/
 ```
-
-## Contributing
-
-We love contributors, so don't hesitate to contribute, ask questions and get in touch with the project creator: yohanndurand76@gmail.com
-To contribute, create a branch and propose a pull request
-We prefer smaller features to improve maintenance.
 
 ## Technology :
 
@@ -47,3 +44,11 @@ RealT communitary api :
 ```shell
 get info for each property : https://api.realt.community/v1/token/0x4637aa1a13aa4050c6e4bcd6dde9c39e80e9dd54
 ```
+
+Express for future backend ?
+
+## Contributing
+
+We love contributors, so don't hesitate to contribute, ask questions and get in touch with the project creator: yohanndurand76@gmail.com
+To contribute, create a branch and propose a pull request
+We prefer smaller features to improve maintenance.

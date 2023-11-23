@@ -8,7 +8,13 @@
 ## V2 :
 
 - V2 : page to compare different real estate markets according to your portfolio
-- V2 : page single property : (picture, link realT, active, distribution, start value, all invest return in this property) (need nodeJS API ? )
+- V2 : page single property
+
+Single property page informations :
+- display information : picture, link realT, active, distribution, start value, all invest return in this property)
+- need nodeJS API with Express ? Why ?
+
+Purpose : picture of property in background css single page
 
 ## V3 :
 
@@ -18,3 +24,4 @@
 ## V4 :
 
 - V4 : add graph return distribution per week, and previzualise
+- V4 : add gain % (include start price, rent, evaluation..) for each row in property info
