@@ -108,6 +108,32 @@ function StatePropertyChart({ properties }) {
     ((stateValues[state] / totalPortfolioValue) * 100).toFixed(2)
   );
 
+  const chartData = {
+    labels: labels,
+    datasets: [
+      {
+        data: data,
+        backgroundColor: [
+          '#00BFFF',
+          '#1E90FF',
+          '#32CD32',
+          '#FF4500',
+          '#800080',
+          '#8B4513',
+          '#FFD700',
+          '#FF69B4',
+          '#008080',
+          '#4682B4',
+          '#00FF7F',
+          '#FF6347',
+          '#7B68EE',
+          '#D2B48C',
+          '#FFA07A',
+        ],
+      },
+    ],
+  };
+  
   const chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
@@ -143,36 +169,10 @@ function StatePropertyChart({ properties }) {
     },
   };
 
-  const chartData = {
-    labels: labels,
-    datasets: [
-      {
-        data: data,
-        backgroundColor: [
-          '#00BFFF',
-          '#1E90FF',
-          '#32CD32',
-          '#FF4500',
-          '#800080',
-          '#8B4513',
-          '#FFD700',
-          '#FF69B4',
-          '#008080',
-          '#4682B4',
-          '#00FF7F',
-          '#FF6347',
-          '#7B68EE',
-          '#D2B48C',
-          '#FFA07A',
-        ],
-      },
-    ],
-  };
-
   return (
     <div className="component-graph section">
     <h2>Répartition de la valeur du portefeuille par État</h2>
-      <div class="data-graph" style={{ maxWidth: '600px' }}>
+      <div class="graph" style={{ maxWidth: '600px' }}>
         <Pie data={chartData} options={chartOptions} />
       </div>
     </div>
