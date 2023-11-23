@@ -109,7 +109,7 @@ function StatePropertyChart({ properties }) {
   );
 
   const chartData = {
-    labels: labels,
+    labels: labels.map((state) => `${state}: ${((stateValues[state] / totalPortfolioValue) * 100).toFixed(2)}%`),
     datasets: [
       {
         data: data,
@@ -133,7 +133,7 @@ function StatePropertyChart({ properties }) {
       },
     ],
   };
-  
+
   const chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
@@ -150,7 +150,7 @@ function StatePropertyChart({ properties }) {
                 const percent = ((value / totalPortfolioValue) * 100).toFixed(2) + '%';
                 const backgroundColor = data.datasets[0].backgroundColor[index];
                 return {
-                  text: `${label}: ${percent}`, // Inclure le pourcentage dans le texte de la légende
+                  text: label,
                   fillStyle: backgroundColor,
                 };
               });

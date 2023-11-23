@@ -53,8 +53,7 @@ function PropertyPercentage({ properties }) {
   );
 
   const chartData = {
-    labels: labels.map((city) => `${city}: ${((cityValues[city] / totalPortfolioValue) * 100).toFixed(2)}%`), // Modifiez les labels pour inclure les noms de ville et les pourcentages
-    datasets: [
+    labels: labels.map((city) => `${city}: ${((cityValues[city] / totalPortfolioValue) * 100).toFixed(2)}%`),
       {
         data: data,
         backgroundColor: [
