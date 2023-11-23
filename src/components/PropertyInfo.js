@@ -3,7 +3,7 @@ import React from 'react';
 function PropertyInfo({ propertyInfo }) {
   return (
     <div className="property-info-container section">
-      <h2>Informations sur les propriétés :</h2>
+      <h2 class="title-property-info">Informations sur les propriétés :</h2>
       <table>
         <thead>
           <tr>

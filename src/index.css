@@ -46,6 +46,11 @@ code {
 /* Property Info List / array  */
 .property-info-container {
   font-family: Arial, sans-serif;
+  color : #1A1B1E !important;
+}
+
+.title-property-info {
+  color: white;
 }
 
 table {
