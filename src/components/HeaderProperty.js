@@ -2,7 +2,6 @@ import React from 'react';
 
 function HeaderProperty({ properties }) {
 
-
   let numberOfProperties = 0;
   let totalTokenValue = 0;
   let totalConstructionYears = 0;
