@@ -86,11 +86,11 @@ function PropertyPercentage({ properties }) {
           },
         },
       },
-    },
-    title: {
-      display: true,
-      text: 'Répartition de la valeur du portefeuille par ville',
-      fontSize: 16,
+      title: {
+        display: true,
+        text: 'Répartition de la valeur du portefeuille par ville',
+        fontSize: 16,
+      },
     },
   };
 
