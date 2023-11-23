@@ -37,7 +37,7 @@ function CurrencieExposition({ properties }) {
   );
 
   const chartData = {
-    labels: labels.map((item) => `${item}: ${((newValues[item] / totalPortfolioValue) * 100).toFixed(2)}%`),
+    labels: labels.map((item) => `${item}: ${((currencyExposure[item] / totalPortfolioValue) * 100).toFixed(2)}%`),
     datasets: [
       {
         data: data,
