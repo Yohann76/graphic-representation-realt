@@ -66,6 +66,7 @@ function App() {
 
   const handleSearchSubmit = async (event) => {
     event.preventDefault();
+
     // if input have ethereum address
     try {
       // if have address in input

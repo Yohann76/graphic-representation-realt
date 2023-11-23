@@ -171,21 +171,10 @@ function StatePropertyChart({ properties }) {
 
   return (
     <div className="component-graph section">
-    <h2>Pourcentage de la valeur du portefeuille par État :</h2>
-    <div class="component-data">
-        <div class="data-container">
-          <ul>
-            {labels.map((state) => (
-              <li key={state}>
-                {state}: {((stateValues[state] / totalPortfolioValue) * 100).toFixed(2)}%
-              </li>
-            ))}
-          </ul>
-        </div>
-      <div class="data-graph" style={{ maxWidth: '400px' }}>
+    <h2>Répartition de la valeur du portefeuille par État</h2>
+      <div class="data-graph" style={{ maxWidth: '600px' }}>
         <Pie data={chartData} options={chartOptions} />
       </div>
-    </div>
     </div>
   );
 }
