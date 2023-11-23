@@ -53,7 +53,7 @@ function PropertyPercentage({ properties }) {
   );
 
   const chartData = {
-    labels: labels,
+    labels: labels.map((city) => `${city}: ${((cityValues[city] / totalPortfolioValue) * 100).toFixed(2)}%`), // Modifiez les labels pour inclure les noms de ville et les pourcentages
     datasets: [
       {
         data: data,
@@ -61,7 +61,6 @@ function PropertyPercentage({ properties }) {
       },
     ],
   };
-
 
   const chartOptions = {
     responsive: true,
@@ -71,16 +70,13 @@ function PropertyPercentage({ properties }) {
         display: true,
         position: 'right',
         labels: {
-          // Utilisez une fonction personnalisée pour générer les étiquettes de la légende
           generateLabels: function (chart) {
             const data = chart.data;
             if (data.labels.length && data.datasets.length) {
               const legendLabels = data.labels.map((label, index) => {
-                const value = data.datasets[0].data[index];
-                const percent = ((value / totalPortfolioValue) * 100).toFixed(2) + '%';
                 const backgroundColor = data.datasets[0].backgroundColor[index];
                 return {
-                  text: `${label} ${percent}`, // Personnalisez l'étiquette avec le nom de la ville et le pourcentage
+                  text: label,
                   fillStyle: backgroundColor,
                 };
               });
