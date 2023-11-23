@@ -84,6 +84,7 @@ function PropertyPercentage({ properties }) {
             }
             return [];
           },
+          color: 'white',
         },
       },
       title: {

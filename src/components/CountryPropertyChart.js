@@ -3,7 +3,7 @@ import React from 'react';
 function PropertyByCountry({ properties }) {
 
   return (
-    <div className="component-section section">
+    <div className="component-graph section">
     <h2>Répartition en pourcentage de maisons par pays :</h2>
     <div class="component-data">
         <div class="data-container">

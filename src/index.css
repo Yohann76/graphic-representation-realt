@@ -18,6 +18,7 @@ code {
   border-radius: 0.5rem;
   background-color: #25262B;
   color : #C1C2C5;
+  margin: 20px;
 }
 
 /* app */
@@ -73,15 +74,10 @@ code {
   width: 60%
 }
 
-
-
 /* Property Info List / array  */
 .property-info-container {
   font-family: Arial, sans-serif;
-  margin: 20px;
 }
-
-
 
 table {
   width: 100%;
