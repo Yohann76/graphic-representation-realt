@@ -45,7 +45,7 @@ code {
 
 /* header Info Container */
 .header-info-container {
-  color : white;
+  color : white; !important
 }
 
 /* Property Info List / array  */

@@ -49,9 +49,9 @@ function App() {
                realtListingFee: property.realtListingFee, // RealT Listing Fee
                realtListingFeePercent: property.realtListingFeePercent, // RealT Listing %
                // rent
-               netRentDay: property.netRentDay,,  // totalNetRentDay
-               netRentMonth: property.netRentMonth,,  // totalNetRentMonth
-               netRentYear: property.netRentYear,,  // totalNetRentYear
+               netRentDay: property.netRentDay,  // totalNetRentDay
+               netRentMonth: property.netRentMonth,  // totalNetRentMonth
+               netRentYear: property.netRentYear,  // totalNetRentYear
              };
            });
 
@@ -154,9 +154,9 @@ function App() {
                   realtListingFee: propertyData.realtListingFee, // RealT Listing Fee
                   realtListingFeePercent:propertyData.realtListingFeePercent,  // RealT Listing %
                   // rent
-                  netRentDay: propertyData.netRentDay,,  // totalNetRentDay
-                  netRentMonth: propertyData.netRentMonth,,  // totalNetRentMonth
-                  netRentYear: propertyData.netRentYear,,  // totalNetRentYear
+                  netRentDay: propertyData.netRentDay,  // totalNetRentDay
+                  netRentMonth: propertyData.netRentMonth,  // totalNetRentMonth
+                  netRentYear: propertyData.netRentYear,  // totalNetRentYear
                 };
               }
             }
