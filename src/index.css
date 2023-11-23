@@ -21,6 +21,7 @@ code {
   justify-content: space-between;
   margin:20px;
   padding:10px;
+  padding-bottom: 25px;
 }
 
 .container-graph > div {

@@ -36,13 +36,8 @@ function CurrencieExposition({ properties }) {
     ((currencyExposure[currency] / totalPortfolioValue) * 100).toFixed(2)
   );
 
-  const chartOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-  };
-
   const chartData = {
-    labels: labels,
+    labels: labels.map((item) => `${item}: ${((newValues[item] / totalPortfolioValue) * 100).toFixed(2)}%`),
     datasets: [
       {
         data: data,
@@ -67,23 +62,46 @@ function CurrencieExposition({ properties }) {
     ],
   };
 
+
+  const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: true,
+        position: 'right',
+        labels: {
+          generateLabels: function (chart) {
+            const data = chart.data;
+            if (data.labels.length && data.datasets.length) {
+              const legendLabels = data.labels.map((label, index) => {
+                const backgroundColor = data.datasets[0].backgroundColor[index];
+                return {
+                  text: label,
+                  fillStyle: backgroundColor,
+                };
+              });
+              return legendLabels;
+            }
+            return [];
+          },
+          color: 'white',
+        },
+      },
+      title: {
+        display: false,
+        text: 'Répartition de la valeur du portefeuille par ville',
+        fontSize: 16,
+      },
+    },
+  };
+
   return (
     <div className="component-graph section">
-    <h2>Exposition de la monnaie sur la totalité du portefeuille :</h2>
-    <div class="component-data">
-        <div class="data-container">
-          <ul>
-            {Object.keys(currencyExposure).map((currency) => (
-              <li key={currency}>
-                {currency}: {((currencyExposure[currency] / totalPortfolioValue) * 100).toFixed(2)}%
-              </li>
-            ))}
-          </ul>
-        </div>
-      <div class="data-graph" style={{ maxWidth: '600px' }}>
+    <h2>Répartition de la valeur du portefeuille par monnaie</h2>
+      <div class="graph" style={{ maxWidth: '600px' }}>
         <Pie data={chartData} options={chartOptions} />
       </div>
-    </div>
     </div>
   );
 }

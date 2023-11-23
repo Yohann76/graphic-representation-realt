@@ -4,20 +4,7 @@ function PropertyByCountry({ properties }) {
 
   return (
     <div className="component-graph section">
-    <h2>Répartition en pourcentage de maisons par pays :</h2>
-    <div class="component-data">
-        <div class="data-container">
-          <ul>
-              <li>
-               exemple
-              </li>
-          </ul>
-        </div>
-
-      <div class="data-graph" style={{ maxWidth: '600px' }}>
-            <p> chart </p>
-      </div>
-    </div>
+    <h2>Répartition de la valeur du portefeuille par pays </h2>
     </div>
   );
 }
