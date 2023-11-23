@@ -65,11 +65,6 @@ function PropertyPercentage({ properties }) {
   const chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
-    layout: {
-      padding: {
-        top: 40, // Ajustez cette valeur pour faire de la place pour le titre
-      },
-    },
     plugins: {
       legend: {
         display: true,
@@ -92,7 +87,7 @@ function PropertyPercentage({ properties }) {
         },
       },
       title: {
-        display: true,
+        display: false,
         text: 'Répartition de la valeur du portefeuille par ville',
         fontSize: 16,
       },
@@ -101,20 +96,11 @@ function PropertyPercentage({ properties }) {
 
   return (
     <div className="component-section">
-    <h2>Pourcentage de la valeur du portefeuille par ville :</h2>
+    <h2>Répartition de la valeur du portefeuille par ville</h2>
     <div class="component-data">
-        <div class="data-container">
-          <ul>
-            {labels.map((city) => (
-              <li key={city}>
-                {city}: {((cityValues[city] / totalPortfolioValue) * 100).toFixed(2)}%
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div class="data-graph" style={{ maxWidth: '600px' }}>
-          <Pie data={chartData} options={chartOptions} />
-        </div>
+      <div class="data-graph" style={{ maxWidth: '600px' }}>
+        <Pie data={chartData} options={chartOptions} />
+      </div>
     </div>
     </div>
   );
