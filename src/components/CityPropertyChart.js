@@ -95,7 +95,7 @@ function PropertyPercentage({ properties }) {
   };
 
   return (
-    <div className="component-graph">
+    <div className="component-graph section">
     <h2>Répartition de la valeur du portefeuille par ville</h2>
       <div class="graph" style={{ maxWidth: '600px' }}>
         <Pie data={chartData} options={chartOptions} />

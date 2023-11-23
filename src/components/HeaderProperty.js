@@ -62,7 +62,7 @@ function HeaderProperty({ properties }) {
   const roundedAverageConstructionYear = Math.round(averageConstructionYear);
 
   return (
-    <div className="property-info-container">
+    <div className="property-info-container section">
       <h2>Informations sur les propriétés :</h2>
       <p>Nombre de propriétés : {numberOfProperties}</p>
       <p>Valeur totale des tokens : {totalTokenValue.toFixed(2)}</p>

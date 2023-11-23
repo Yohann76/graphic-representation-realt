@@ -56,7 +56,7 @@ function TypePropertyChart({ properties }) {
   };
 
   return (
-    <div className="component-section">
+    <div className="component-section section">
       <h2>Pourcentage de la valeur du portefeuille par Type de Propriété :</h2>
       <div class="component-data">
         <div class="data-container">
