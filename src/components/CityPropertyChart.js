@@ -65,6 +65,11 @@ function PropertyPercentage({ properties }) {
   const chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
+    layout: {
+      padding: {
+        top: 40, // Ajustez cette valeur pour faire de la place pour le titre
+      },
+    },
     plugins: {
       legend: {
         display: true,
