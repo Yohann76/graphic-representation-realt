@@ -108,9 +108,9 @@ function StatePropertyChart({ properties }) {
     ((stateValues[state] / totalPortfolioValue) * 100).toFixed(2)
   );
 
+
   const chartData = {
     labels: labels.map((state) => `${state}: ${((stateValues[state] / totalPortfolioValue) * 100).toFixed(2)}%`),
-    datasets: [
       {
         data: data,
         backgroundColor: [

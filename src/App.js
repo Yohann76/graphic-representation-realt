@@ -186,10 +186,9 @@ function App() {
         {propertyInfo && <CityPropertyChart properties={propertyInfo} />}
         {propertyInfo && <StatePropertyChart properties={propertyInfo} />}
         {propertyInfo && <CountryPropertyChart properties={propertyInfo} />}
-        {propertyInfo && <CurrencieExpositionChart properties={propertyInfo} />}
         {propertyInfo && <TypePropertyChart properties={propertyInfo} />}
+        {propertyInfo && <CurrencieExpositionChart properties={propertyInfo} />}
       </div>
-
 
       {propertyInfo && <PropertyInfo propertyInfo={propertyInfo} />}
 
