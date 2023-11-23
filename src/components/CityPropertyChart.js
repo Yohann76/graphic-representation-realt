@@ -54,6 +54,7 @@ function PropertyPercentage({ properties }) {
 
   const chartData = {
     labels: labels.map((city) => `${city}: ${((cityValues[city] / totalPortfolioValue) * 100).toFixed(2)}%`),
+    datasets: [
       {
         data: data,
         backgroundColor: [
