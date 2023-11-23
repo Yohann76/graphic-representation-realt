@@ -43,6 +43,11 @@ code {
   max-width: 49%
 }
 
+/* header Info Container */
+.header-info-container {
+  color : white;
+}
+
 /* Property Info List / array  */
 .property-info-container {
   font-family: Arial, sans-serif;
