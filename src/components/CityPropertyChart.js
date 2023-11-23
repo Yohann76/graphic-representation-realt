@@ -52,11 +52,6 @@ function PropertyPercentage({ properties }) {
     ((cityValues[city] / totalPortfolioValue) * 100).toFixed(2)
   );
 
-  const chartOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-  };
-
   const chartData = {
     labels: labels,
     datasets: [
@@ -65,6 +60,37 @@ function PropertyPercentage({ properties }) {
         backgroundColor: ['#FF5733', '#FFC300', '#C70039', '#900C3F', '#581845', '#FF5733', '#FFC300', '#C70039', '#900C3F'],
       },
     ],
+  };
+
+
+  const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: true,
+        position: 'right',
+        labels: {
+          // Utilisez une fonction personnalisée pour générer les étiquettes de la légende
+          generateLabels: function (chart) {
+            const data = chart.data;
+            if (data.labels.length && data.datasets.length) {
+              const legendLabels = data.labels.map((label, index) => {
+                const value = data.datasets[0].data[index];
+                const percent = ((value / totalPortfolioValue) * 100).toFixed(2) + '%';
+                const backgroundColor = data.datasets[0].backgroundColor[index];
+                return {
+                  text: `${label} ${percent}`, // Personnalisez l'étiquette avec le nom de la ville et le pourcentage
+                  fillStyle: backgroundColor,
+                };
+              });
+              return legendLabels;
+            }
+            return [];
+          },
+        },
+      },
+    },
   };
 
   return (
