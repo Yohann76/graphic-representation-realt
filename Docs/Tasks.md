@@ -25,3 +25,6 @@
 - rent by day/week/month/years
 - add total fee realT when display realT wallet, not with my wallet
 - manage different currency for each graphic (convert each monney in $ for have correct proportion in %)
+- Total in $
+- Number city
+- Number country
