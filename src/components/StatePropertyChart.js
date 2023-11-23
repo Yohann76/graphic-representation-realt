@@ -111,6 +111,36 @@ function StatePropertyChart({ properties }) {
   const chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: true,
+        position: 'right',
+        labels: {
+          generateLabels: function (chart) {
+            const data = chart.data;
+            if (data.labels.length && data.datasets.length) {
+              const legendLabels = data.labels.map((label, index) => {
+                const value = data.datasets[0].data[index];
+                const percent = ((value / totalPortfolioValue) * 100).toFixed(2) + '%';
+                const backgroundColor = data.datasets[0].backgroundColor[index];
+                return {
+                  text: `${label}: ${percent}`, // Inclure le pourcentage dans le texte de la légende
+                  fillStyle: backgroundColor,
+                };
+              });
+              return legendLabels;
+            }
+            return [];
+          },
+          color: 'white',
+        },
+      },
+      title: {
+        display: false,
+        text: 'Répartition de la valeur du portefeuille par État',
+        fontSize: 16,
+      },
+    },
   };
 
   const chartData = {

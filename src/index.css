@@ -14,20 +14,7 @@ code {
     monospace;
 }
 
-.section {
-  border-radius: 0.5rem;
-  background-color: #25262B;
-  color : #C1C2C5;
-  margin: 20px;
-}
-
-.component-graph {
-  color : #C1C2C5;
-  margin: 20px;
-}
-
-/* app */
-
+/* contain all graphic */
 .container-graph {
   display: flex;
   flex-wrap: wrap;
@@ -40,6 +27,25 @@ code {
   flex-basis: calc(100% - 10px);
   margin: 5px;
 }
+
+.section {
+  border-radius: 0.5rem;
+  background-color: #25262B;
+  color : #C1C2C5;
+  margin: 20px;
+}
+
+.component-graph {
+  color : #C1C2C5;
+  margin: 20px;
+  width: 50% ;
+  max-width: 50%
+}
+
+/* app */
+
+
+
 
 /* in container-graph */
 
