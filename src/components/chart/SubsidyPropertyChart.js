@@ -18,10 +18,6 @@ function SubsidyPropertyChart({ properties }) {
   const labels = Object.keys(subsidyTotals);
   const data = labels.map((label) => subsidyTotals[label]);
 
-  while (backgroundColors.length < labels.length) {
-    backgroundColors.push('#000000');
-  }
-
   const chartData = {
     labels: labels,
     datasets: [
