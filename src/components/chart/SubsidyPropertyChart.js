@@ -18,8 +18,11 @@ function SubsidyPropertyChart({ properties }) {
   const labels = Object.keys(subsidyTotals);
   const data = labels.map((label) => subsidyTotals[label]);
 
+  const totalProperties = properties.length;
+  const percentageData = data.map((count) => ((count / totalProperties) * 100).toFixed(2));
+
   const chartData = {
-    labels: labels,
+    labels: labels.map((label, index) => `${label}: ${percentageData[index]}%`),
     datasets: [
       {
         data: data,
