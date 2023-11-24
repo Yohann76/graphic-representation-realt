@@ -3,7 +3,6 @@ import { Pie } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 
 function SubsidyPropertyChart({ properties }) {
-
   const subsidyTotals = {};
 
   properties.forEach((property) => {
@@ -12,17 +11,22 @@ function SubsidyPropertyChart({ properties }) {
     if (!subsidyTotals[subsidyBy]) {
       subsidyTotals[subsidyBy] = 0;
     }
-    subsidyTotals[subsidyBy] += 1;
+    const propertyValue = parseFloat(property.tokenPrice) * parseFloat(property.amount);
+    subsidyTotals[subsidyBy] += propertyValue;
   });
 
   const labels = Object.keys(subsidyTotals);
   const data = labels.map((label) => subsidyTotals[label]);
 
-  const totalProperties = properties.length;
-  const percentageData = data.map((count) => ((count / totalProperties) * 100).toFixed(2));
+  const totalPortfolioValue = properties.reduce((total, property) => {
+    const propertyValue = parseFloat(property.tokenPrice) * parseFloat(property.amount);
+    return total + propertyValue;
+  }, 0);
+
+  const percentageData = data.map((value) => ((value / totalPortfolioValue) * 100).toFixed(2));
 
   const chartData = {
-    labels: labels.map((label, index) => `${label}: ${percentageData[index]}%`),
+     labels: labels.map((label, index) => `${label}: ${percentageData[index]}%`),
     datasets: [
       {
         data: data,
