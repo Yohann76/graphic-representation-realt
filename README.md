@@ -11,11 +11,14 @@ This project aims to produce reliable statistics on a realT wallet.
 
 ```shell
 - % of portfolio by city (Detroit, Cleveland)
-- % by each state in ISA
+- % by each state in USA
 - % by country USA, Panama
 - % by TYPE of home mono-family/Multy-family/SFR Portfolio (type of property)
 - % of portfolio in currency
+
+- % of portfolio is located, not located, partially located (in $)
 - % of portfolio in section 8, section 42, normal
+- % add composition on wallet fee/construction/value asset property/renovation
 ```
 
 ## How To create/use

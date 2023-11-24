@@ -4,12 +4,15 @@ import logo from './logo.svg';
 import './App.css';
 
 import PropertyInfo from './components/PropertyInfo';
-import CityPropertyChart from './components/CityPropertyChart';
-import StatePropertyChart from './components/StatePropertyChart';
-import CountryPropertyChart from './components/CountryPropertyChart';
-import CurrencieExpositionChart from './components/CurrencieExpositionChart';
-import TypePropertyChart from './components/TypePropertyChart';
 import HeaderProperty from './components/HeaderProperty';
+
+// chart
+import CityPropertyChart from './components/chart/CityPropertyChart';
+import StatePropertyChart from './components/chart/StatePropertyChart';
+import CountryPropertyChart from './components/chart/CountryPropertyChart';
+import CurrencieExpositionChart from './components/chart/CurrencieExpositionChart';
+import TypePropertyChart from './components/chart/TypePropertyChart';
+import UnitsPropertyChart from './components/chart/UnitsPropertyChart';
 
 import { fetchPropertyInfo } from './requests/realt-communitary-api';
 import { fetchPropertyList } from './requests/realt-communitary-api';
@@ -53,6 +56,10 @@ function App() {
                netRentDayPerToken: property.netRentDayPerToken,  // netRentDayPerToken
                netRentMonthPerToken: property.netRentMonthPerToken,  // netRentMonthPerToken
                netRentYearPerToken: property.netRentYearPerToken,  // netRentYearPerToken
+               // unit
+               totalUnits: property.totalUnits,
+               rentedUnits: property.rentedUnits,
+
              };
            });
 
@@ -158,6 +165,9 @@ function App() {
                   netRentDayPerToken: propertyData.netRentDayPerToken,  // totalNetRentDay
                   netRentMonthPerToken: propertyData.netRentMonthPerToken,  // totalNetRentMonth
                   netRentYearPerToken: propertyData.netRentYearPerToken,  // totalNetRentYear
+                  // unit
+                  totalUnits: propertyData.totalUnits,
+                  rentedUnits: propertyData.rentedUnits,
                 };
               }
             }

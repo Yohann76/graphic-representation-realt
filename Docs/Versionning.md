@@ -3,18 +3,18 @@
 ## V1 :
 
 - V1 : Homepage : Statistic on wallet (graph, % wallet)
-- V1 : page for manage version and add contact informations for manage idee
+- V1 : page for manage version and add contact informations for manage idee (in nav header next to input)
 
 ## V2 :
 
-- V2 : page to compare different real estate markets according to your portfolio
+- V2 : page (for each market) to compare different real estate markets according to your portfolio (on purchase price, rent..)
+  - realt wallet average purchase price
+  - purchase price of realt estate market (from zillow...?)
+  - my average wallet purchase price
 - V2 : page single property
-
-Single property page informations :
-- display information : picture, link realT, active, distribution, start value, all invest return in this property)
-- need nodeJS API with Express ? Why ?
-
-Purpose : picture of property in background css single page
+  - display information : picture, link realT, active, distribution, start value, all invest return in this property)
+  - need nodeJS API with Express ? Why ?
+  Purpose : picture of property in background css single page
 
 ## V3 :
 

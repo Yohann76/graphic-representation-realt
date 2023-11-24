@@ -9,6 +9,7 @@
 - Add in array property (price per interior sqft, price per door, rent by month)
 - Can sort each table column
 - Formate all data with space (example : 6 978,63)
+- unit xx/xx(xx%)
 
 ## Other :
 - Improved overall design
@@ -23,9 +24,10 @@
 - Add .env data
 
 ## Header (link dashboard):
-- fix bug : count rent with netRentDayPerToken, not netRentDay, and calculate with amount token
-- add total fee realT when display realT wallet, not with my wallet
+- improve design for header (rent section, fee section...)
+- add total fee realT
 - manage different currency for each graphic (convert each monney in $ for have correct proportion in %)
 - Number city
 - Number country
 - Formate all data with space (example : 6 978,63)
+- located unit xx/xx(xx%)
