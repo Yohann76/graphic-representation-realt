@@ -50,15 +50,15 @@ function HeaderProperty({ properties }) {
     }
 
     if (property.netRentDayPerToken) {
-      totalNetRentDay += parseFloat(property.netRentDayPerToken) * parseFloat(property.totalTokens);
+      totalNetRentDay += parseFloat(property.netRentDayPerToken) * parseFloat(property.amount);
     }
 
     if (property.netRentMonthPerToken) {
-      totalNetRentMonth += parseFloat(property.netRentMonthPerToken) * parseFloat(property.totalTokens);
+      totalNetRentMonth += parseFloat(property.netRentMonthPerToken) * parseFloat(property.amount);
     }
 
     if (property.netRentYearPerToken) {
-      totalNetRentYear += parseFloat(property.netRentYearPerToken) * parseFloat(property.totalTokens);
+      totalNetRentYear += parseFloat(property.netRentYearPerToken) * parseFloat(property.amount);
     }
 
   });
