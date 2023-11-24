@@ -86,9 +86,9 @@ function HeaderProperty({ properties }) {
       <p>Total Frais RealT sur loyer : {feePerMonthTotal.toFixed(2)} ({averagePlatformPercent}%)</p>
       <p>Total Frais RealT au listing : {listingFeeTotal.toFixed(2)} ({averageListingFeePercent}%)</p>
 
-      <p>Total Loyers par jour : {netRentDayPerToken.toFixed(2)}</p>
-      <p>Total Loyers par mois : {netRentMonthPerToken.toFixed(2)}</p>
-      <p>Total Loyers par an : {netRentYearPerToken.toFixed(2)}</p>
+      <p>Total Loyers par jour : {totalNetRentDay.toFixed(2)}</p>
+      <p>Total Loyers par mois : {totalNetRentMonth.toFixed(2)}</p>
+      <p>Total Loyers par an : {totalNetRentYear.toFixed(2)}</p>
 
     </div>
   );
