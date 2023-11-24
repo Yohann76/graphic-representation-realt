@@ -4,17 +4,56 @@ import Chart from 'chart.js/auto';
 
 function SubsidyPropertyChart({ properties }) {
 
-  // property.subsidyBy
+  const subsidyTotals = {};
 
-  // value possible in property.subsidyBy
-  // "section 42"
-  // "section 8"
-  // null
+  properties.forEach((property) => {
+    const subsidyBy = property.subsidyBy || 'Non Subventionné';
+
+    if (!subsidyTotals[subsidyBy]) {
+      subsidyTotals[subsidyBy] = 0;
+    }
+    subsidyTotals[subsidyBy] += 1;
+  });
+
+  const labels = Object.keys(subsidyTotals);
+  const data = labels.map((label) => subsidyTotals[label]);
+
+  while (backgroundColors.length < labels.length) {
+    backgroundColors.push('#000000');
+  }
+
+  const chartData = {
+    labels: labels,
+    datasets: [
+      {
+        data: data,
+        backgroundColor: [
+          '#00BFFF',
+          '#1E90FF',
+          '#32CD32',
+          '#FF4500',
+          '#800080',
+          '#8B4513',
+          '#FFD700',
+          '#FF69B4',
+          '#008080',
+          '#4682B4',
+          '#00FF7F',
+          '#FF6347',
+          '#7B68EE',
+          '#D2B48C',
+          '#FFA07A',
+        ],
+      },
+    ],
+  };
 
   return (
     <div className="component-graph section">
-      <h2>Répartition de la valeur du portefeuille loyer subventionné</h2>
-
+      <h2>Répartition de la valeur du portefeuille par loyer subventionné</h2>
+      <div className="graph" style={{ maxWidth: '600px' }}>
+        <Pie data={chartData} />
+      </div>
     </div>
   );
 }

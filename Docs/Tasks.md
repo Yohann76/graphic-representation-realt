@@ -1,9 +1,10 @@
 ## TODO LIST (V1)
 
 ## Graphics :
-- % of portfolio is located, not located, partially located (in $)
 - % make graphic by country USA , Panama (with property address, where is country?) (use openstreet api with coordinate data?)
 - % add composition on wallet fee/construction/value asset property/renovation
+
+Check that the data is correct in relation to the portfolio in $ and not in relation to the number of houses.
 
 ## PropertyInfo Table :
 - Add in array property (price per interior sqft, price per door, rent by month)
