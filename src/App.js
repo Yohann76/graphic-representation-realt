@@ -24,6 +24,7 @@ function App() {
   const [searchResults, setSearchResults] = useState(null);
   const [propertyInfo, setPropertyInfo] = useState(null);
 
+  // realT wallet
   useEffect(() => {
      const fetchData = async () => {
        try {
@@ -49,9 +50,9 @@ function App() {
                realtListingFee: property.realtListingFee, // RealT Listing Fee
                realtListingFeePercent: property.realtListingFeePercent, // RealT Listing %
                // rent
-               netRentDay: property.netRentDay,  // totalNetRentDay
-               netRentMonth: property.netRentMonth,  // totalNetRentMonth
-               netRentYear: property.netRentYear,  // totalNetRentYear
+               netRentDayPerToken: property.netRentDayPerToken,  // netRentDayPerToken
+               netRentMonthPerToken: property.netRentMonthPerToken,  // netRentMonthPerToken
+               netRentYearPerToken: property.netRentYearPerToken,  // netRentYearPerToken
              };
            });
 
@@ -68,7 +69,7 @@ function App() {
 
    }, []);
 
-
+  // user wallet from input
   const handleSearchSubmit = async (event) => {
     event.preventDefault();
 
@@ -154,9 +155,9 @@ function App() {
                   realtListingFee: propertyData.realtListingFee, // RealT Listing Fee
                   realtListingFeePercent:propertyData.realtListingFeePercent,  // RealT Listing %
                   // rent
-                  netRentDay: propertyData.netRentDay,  // totalNetRentDay
-                  netRentMonth: propertyData.netRentMonth,  // totalNetRentMonth
-                  netRentYear: propertyData.netRentYear,  // totalNetRentYear
+                  netRentDayPerToken: propertyData.netRentDayPerToken,  // totalNetRentDay
+                  netRentMonthPerToken: propertyData.netRentMonthPerToken,  // totalNetRentMonth
+                  netRentYearPerToken: propertyData.netRentYearPerToken,  // totalNetRentYear
                 };
               }
             }

@@ -16,13 +16,14 @@
 - Add analyctics link for calculate trafic
 - If input is empty, run useEffect for load data when website is load
 - Legend for each graphic must be is white
-- Design input
+- Design input (in navbar in header?)
 - Put input in url parameter ??
 - Add other type of property (to 100%...)
 - Add localhost token (waiting token for localhost)
 - Add .env data
 
 ## Header (link dashboard):
+- fix bug : count rent with netRentDayPerToken, not netRentDay, and calculate with amount token
 - add total fee realT when display realT wallet, not with my wallet
 - manage different currency for each graphic (convert each monney in $ for have correct proportion in %)
 - Number city

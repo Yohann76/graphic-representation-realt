@@ -49,16 +49,16 @@ function HeaderProperty({ properties }) {
       listingFeePercentTotal += parseFloat(property.realtListingFeePercent);
     }
 
-    if (property.netRentDay) {
-      totalNetRentDay += parseFloat(property.netRentDay);
+    if (property.netRentDayPerToken) {
+      totalNetRentDay += parseFloat(property.netRentDayPerToken) * parseFloat(property.totalTokens);
     }
 
-    if (property.netRentMonth) {
-      totalNetRentMonth += parseFloat(property.netRentMonth);
+    if (property.netRentMonthPerToken) {
+      totalNetRentMonth += parseFloat(property.netRentMonthPerToken) * parseFloat(property.totalTokens);
     }
 
-    if (property.netRentYear) {
-      totalNetRentYear += parseFloat(property.netRentYear);
+    if (property.netRentYearPerToken) {
+      totalNetRentYear += parseFloat(property.netRentYearPerToken) * parseFloat(property.totalTokens);
     }
 
   });
@@ -86,9 +86,9 @@ function HeaderProperty({ properties }) {
       <p>Total Frais RealT sur loyer : {feePerMonthTotal.toFixed(2)} ({averagePlatformPercent}%)</p>
       <p>Total Frais RealT au listing : {listingFeeTotal.toFixed(2)} ({averageListingFeePercent}%)</p>
 
-      <p>Total Loyers par jour : {totalNetRentDay.toFixed(2)}</p>
-      <p>Total Loyers par mois : {totalNetRentMonth.toFixed(2)}</p>
-      <p>Total Loyers par an : {totalNetRentYear.toFixed(2)}</p>
+      <p>Total Loyers par jour : {netRentDayPerToken.toFixed(2)}</p>
+      <p>Total Loyers par mois : {netRentMonthPerToken.toFixed(2)}</p>
+      <p>Total Loyers par an : {netRentYearPerToken.toFixed(2)}</p>
 
     </div>
   );
