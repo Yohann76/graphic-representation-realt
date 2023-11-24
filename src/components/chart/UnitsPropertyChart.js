@@ -17,7 +17,10 @@ function UnitsPropertyChart({ properties }) {
   const percentageRentedUnits = totalUnits > 0 ? ((totalRentedUnits / totalUnits) * 100).toFixed(2) : 0;
 
   const chartData = {
-    labels: ['Unités Louées', 'Unités Non Louées'],
+    labels: [
+      `Unité louée: ${percentageRentedUnits}%`,
+      `Unité non louée: ${(100 - percentageRentedUnits).toFixed(2)}%`,
+    ],
     datasets: [
       {
         data: [percentageRentedUnits, 100 - percentageRentedUnits],
