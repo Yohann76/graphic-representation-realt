@@ -44,11 +44,44 @@ function SubsidyPropertyChart({ properties }) {
     ],
   };
 
+  const chartOptions = {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: true,
+          position: 'right',
+          labels: {
+            generateLabels: function (chart) {
+              const data = chart.data;
+              if (data.labels.length && data.datasets.length) {
+                const legendLabels = data.labels.map((label, index) => {
+                  const backgroundColor = data.datasets[0].backgroundColor[index];
+                  return {
+                    text: label,
+                    fillStyle: backgroundColor,
+                  };
+                });
+                return legendLabels;
+              }
+              return [];
+            },
+            color: 'white',
+          },
+        },
+        title: {
+          display: false,
+          text: 'Répartition de la valeur du portefeuille par loyer subventionné',
+          fontSize: 16,
+        },
+      },
+    };
+
   return (
     <div className="component-graph section">
       <h2>Répartition de la valeur du portefeuille par loyer subventionné</h2>
-      <div className="graph" style={{ maxWidth: '600px' }}>
-        <Pie data={chartData} />
+      <div class="graph" style={{ maxWidth: '600px' }}>
+        <Pie data={chartData} options={chartOptions} />
       </div>
     </div>
   );
