@@ -13,6 +13,7 @@ import CountryPropertyChart from './components/chart/CountryPropertyChart';
 import CurrencieExpositionChart from './components/chart/CurrencieExpositionChart';
 import TypePropertyChart from './components/chart/TypePropertyChart';
 import UnitsPropertyChart from './components/chart/UnitsPropertyChart';
+import SubsidyPropertyChart from './components/chart/SubsidyPropertyChart';
 
 import { fetchPropertyInfo } from './requests/realt-communitary-api';
 import { fetchPropertyList } from './requests/realt-communitary-api';
@@ -59,7 +60,8 @@ function App() {
                // unit
                totalUnits: property.totalUnits,
                rentedUnits: property.rentedUnits,
-
+               // subsidy
+               subsidyBy:property.subsidyBy,
              };
            });
 
@@ -168,6 +170,8 @@ function App() {
                   // unit
                   totalUnits: propertyData.totalUnits,
                   rentedUnits: propertyData.rentedUnits,
+                  // subsidy
+                  subsidyBy:propertyData.subsidyBy,
                 };
               }
             }
@@ -210,6 +214,7 @@ function App() {
         {propertyInfo && <TypePropertyChart properties={propertyInfo} />}
         {propertyInfo && <CurrencieExpositionChart properties={propertyInfo} />}
         {propertyInfo && <UnitsPropertyChart properties={propertyInfo} />}
+        {propertyInfo && <SubsidyPropertyChart properties={propertyInfo} />}
       </div>
 
       {propertyInfo && <PropertyInfo propertyInfo={propertyInfo} />}
