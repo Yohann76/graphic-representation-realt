@@ -209,6 +209,7 @@ function App() {
         {propertyInfo && <CountryPropertyChart properties={propertyInfo} />}
         {propertyInfo && <TypePropertyChart properties={propertyInfo} />}
         {propertyInfo && <CurrencieExpositionChart properties={propertyInfo} />}
+        {propertyInfo && <UnitsPropertyChart properties={propertyInfo} />}
       </div>
 
       {propertyInfo && <PropertyInfo propertyInfo={propertyInfo} />}
