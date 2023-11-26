@@ -44,10 +44,11 @@ function App() {
                fullName: property.fullName,
                currency: property.currency,
                tokenPrice: property.tokenPrice,
-               amount: property.totalTokens,
-               totalValue: totalValue,
+               amount: property.totalTokens, // amount from blockchain
+               totalValue: totalValue, // amount * tokenPrice
                type: property.propertyType,
                constructionYear: property.constructionYear,
+               totalInvestment: property.totalInvestment, // total value
                // fee
                realtPlatform: property.realtPlatform, // realt Fee per Month
                realtPlatformPercent: property.realtPlatformPercent, // % realT fee per Month
@@ -154,10 +155,11 @@ function App() {
                   fullName: propertyData.fullName,
                   currency: propertyData.currency,
                   tokenPrice: propertyData.tokenPrice,
-                  amount: propertyData.amount,
-                  totalValue: totalValue,
+                  amount: propertyData.amount, // amount from blockchain
+                  totalValue: totalValue, // amount * tokenPrice
                   type: propertyData.propertyType,
                   constructionYear: propertyData.constructionYear,
+                  totalInvestment: propertyData.totalInvestment, // total value
                   // fee
                   realtPlatform: propertyData.realtPlatform, // realt Fee per Month
                   realtPlatformPercent: propertyData.realtPlatformPercent, // % realT fee per Month
