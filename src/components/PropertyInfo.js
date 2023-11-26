@@ -2,16 +2,20 @@ import React from 'react';
 
 function PropertyInfo({ propertyInfo }) {
 
-  // Calculate price per door
   propertyInfo.forEach((property) => {
+    // Calculate price per door
     if (property.totalUnits > 1) {
       property.pricePerDoor = (property.totalInvestment / property.totalUnits).toFixed(2);
     } else {
       property.pricePerDoor = '-';
     }
+    // calculate price per sqft (interior) (TODO later : transform sqft -> m2)
+    if (property.squareFeet) {
+      property.pricePerSqft = (property.totalInvestment / property.squareFeet).toFixed(2);
+    } else {
+      property.pricePerSqft = '-';
+    }
   });
-
-  // calculate price per sqft (todo later : transform sqft -> m2)
 
   return (
     <div className="property-info-container section">
@@ -38,7 +42,7 @@ function PropertyInfo({ propertyInfo }) {
               <td>{property.tokenPrice}</td>
               <td>{property.amount}</td>
               <td>{property.pricePerDoor}</td>
-              <td></td>
+              <td>{property.pricePerSqft}</td>
               <td>{property.totalValue}</td>
             </tr>
           ))}

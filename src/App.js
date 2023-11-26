@@ -49,6 +49,7 @@ function App() {
                type: property.propertyType,
                constructionYear: property.constructionYear,
                totalInvestment: property.totalInvestment, // total value
+               squareFeet : property.squareFeet, // interior sqft
                // fee
                realtPlatform: property.realtPlatform, // realt Fee per Month
                realtPlatformPercent: property.realtPlatformPercent, // % realT fee per Month
@@ -160,6 +161,7 @@ function App() {
                   type: propertyData.propertyType,
                   constructionYear: propertyData.constructionYear,
                   totalInvestment: propertyData.totalInvestment, // total value
+                  squareFeet : propertyData.squareFeet, // interior sqft
                   // fee
                   realtPlatform: propertyData.realtPlatform, // realt Fee per Month
                   realtPlatformPercent: propertyData.realtPlatformPercent, // % realT fee per Month
