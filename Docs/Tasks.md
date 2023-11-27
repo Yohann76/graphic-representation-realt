@@ -1,7 +1,6 @@
 ## TODO LIST (V1)
 
 ## Graphics :
-- % make graphic by country USA , Panama (with property address, where is country?) (use openstreet api with coordinate data?)
 - % add composition on wallet fee/construction/value asset property/renovation
 
 Check that the data is correct in relation to the portfolio in $ and not in relation to the number of houses.
@@ -22,6 +21,8 @@ Check that the data is correct in relation to the portfolio in $ and not in rela
 - Put input in url parameter ??
 - Add other type of property (to 100%...)
 - Add .env data
+
+- All website must be in english
 
 ## Header (link dashboard):
 - improve design for header (rent section, fee section...)
