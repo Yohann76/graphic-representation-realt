@@ -16,8 +16,7 @@ This project aims to produce reliable statistics on a realT wallet.
 - % by TYPE of home mono-family/Multy-family/SFR Portfolio (type of property)
 - % of portfolio in currency
 - % of portfolio is located, not located
-
-- % of portfolio in section 8, section 42, normal (subsidyBy ("Section 8"), of null)
+- % of portfolio in section 8, section 42, normal
 
 - % add composition on wallet fee/construction/value asset property/renovation/insurance/utility
   - fee
