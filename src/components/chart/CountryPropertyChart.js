@@ -4,8 +4,7 @@ import Chart from 'chart.js/auto';
 
 function CountryPropertyChart({ properties }) {
 
-  // Créez une constante avec des noms de pays (France, Panama, Canada, etc.)
-  const countryNames = ['France', 'Panama', 'Canada', /* Ajoutez d'autres pays ici */];
+  const countryNames = ['France', 'Panama', 'Canada','Espagne', 'Angleterre', 'Argentine', 'Allemagne'];
 
   // get all state with abbreviation
   const usStates = [
