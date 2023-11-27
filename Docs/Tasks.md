@@ -7,7 +7,7 @@
 Check that the data is correct in relation to the portfolio in $ and not in relation to the number of houses.
 
 ## PropertyInfo Table :
-- Add in array property (price per interior sqft, price per door, rent by month)
+- Add in array property (rent by month)
 - Can sort each table column
 - Formate all data with space (example : 6 978,63)
 - unit xx/xx(xx%)
@@ -21,7 +21,6 @@ Check that the data is correct in relation to the portfolio in $ and not in rela
 - Design input (in navbar in header?)
 - Put input in url parameter ??
 - Add other type of property (to 100%...)
-- Add localhost token (waiting token for localhost)
 - Add .env data
 
 ## Header (link dashboard):
