@@ -5,6 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const locale = 'fr-FR'; // for formate number
+
 root.render(
   <React.StrictMode>
     <App />

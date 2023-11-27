@@ -1,4 +1,5 @@
 import React from 'react';
+import { formatNumberWithSpaces } from '../utils/numberUtils';
 
 function HeaderProperty({ properties }) {
 
@@ -80,15 +81,15 @@ function HeaderProperty({ properties }) {
   return (
     <div className="header-info-container section">
       <h2>Informations sur les propriétés :</h2>
-      <p>Nombre de propriétés : {numberOfProperties}</p>
-      <p>Valeur totale des tokens : {totalTokenValue.toFixed(2)}</p>
-      <p>Moyenne d'âge de construction du portfeuille : {roundedAverageConstructionYear.toFixed(2)} ans</p>
-      <p>Total Frais RealT sur loyer : {feePerMonthTotal.toFixed(2)} ({averagePlatformPercent}%)</p>
-      <p>Total Frais RealT au listing : {listingFeeTotal.toFixed(2)} ({averageListingFeePercent}%)</p>
+      <p>Nombre de propriétés : {formatNumberWithSpaces(numberOfProperties)}</p>
+      <p>Valeur totale des tokens : {formatNumberWithSpaces(totalTokenValue)}</p>
+      <p>Moyenne d'âge de construction du portfeuille : {formatNumberWithSpaces(roundedAverageConstructionYear)} ans</p>
+      <p>Total Frais RealT sur loyer : {formatNumberWithSpaces(feePerMonthTotal)} ({averagePlatformPercent}%)</p>
+      <p>Total Frais RealT au listing : {formatNumberWithSpaces(listingFeeTotal)} ({averageListingFeePercent}%)</p>
 
-      <p>Total Loyers par jour : {totalNetRentDay.toFixed(2)}</p>
-      <p>Total Loyers par mois : {totalNetRentMonth.toFixed(2)}</p>
-      <p>Total Loyers par an : {totalNetRentYear.toFixed(2)}</p>
+      <p>Total Loyers par jour : {formatNumberWithSpaces(totalNetRentDay)}</p>
+      <p>Total Loyers par mois : {formatNumberWithSpaces(totalNetRentMonth)}</p>
+      <p>Total Loyers par an : {formatNumberWithSpaces(totalNetRentYear)}</p>
 
     </div>
   );

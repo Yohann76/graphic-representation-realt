@@ -8,8 +8,8 @@ Check that the data is correct in relation to the portfolio in $ and not in rela
 ## PropertyInfo Table :
 - Add in array property (rent by month)
 - Can sort each table column
-- Formate all data with space (example : 6 978,63)
 - unit xx/xx(xx%)
+- Total yield in % (Total Value Actual / TT rent per Years)
 
 ## Other :
 - Improved overall design
@@ -26,9 +26,7 @@ Check that the data is correct in relation to the portfolio in $ and not in rela
 
 ## Header (link dashboard):
 - improve design for header (rent section, fee section...)
-- add total fee realT
 - manage different currency for each graphic (convert each monney in $ for have correct proportion in %)
 - Number city
 - Number country
-- Formate all data with space (example : 6 978,63)
 - located unit xx/xx(xx%)

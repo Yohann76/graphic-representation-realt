@@ -1,4 +1,5 @@
 import React from 'react';
+import { formatNumberWithSpaces } from '../utils/numberUtils';
 
 function PropertyInfo({ propertyInfo }) {
 
@@ -40,10 +41,10 @@ function PropertyInfo({ propertyInfo }) {
               <td>{property.uuid}</td>
               <td>{property.fullName}</td>
               <td>{property.tokenPrice}</td>
-              <td>{property.amount}</td>
-              <td>{property.pricePerDoor}</td>
-              <td>{property.pricePerSqft}</td>
-              <td>{property.totalValue}</td>
+              <td>{formatNumberWithSpaces(property.amount)}</td>
+              <td>{formatNumberWithSpaces(property.pricePerDoor)}</td>
+              <td>{formatNumberWithSpaces(property.pricePerSqft)}</td>
+              <td>{formatNumberWithSpaces(property.totalValue)}</td>
             </tr>
           ))}
         </tbody>
