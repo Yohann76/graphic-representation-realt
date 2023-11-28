@@ -29,4 +29,3 @@ Check that the data is correct in relation to the portfolio in $ and not in rela
 - manage different currency for each graphic (convert each monney in $ for have correct proportion in %)
 - Number city
 - Number country
-- located unit xx/xx(xx%)

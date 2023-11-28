@@ -19,6 +19,10 @@ function HeaderProperty({ properties }) {
   let totalNetRentMonth = 0;
   let totalNetRentYear = 0;
 
+  // Unit counts
+  let totalRentedUnits = 0;
+  let totalUnits = 0;
+
   properties.forEach((property) => {
 
     if (property.fullName) {
@@ -34,6 +38,7 @@ function HeaderProperty({ properties }) {
       numberOfPropertiesWithConstructionYear += 1;
     }
 
+    // fee
     if (property.realtPlatform) {
       feePerMonthTotal += parseFloat(property.realtPlatform);
     }
@@ -49,7 +54,7 @@ function HeaderProperty({ properties }) {
     if (property.realtListingFeePercent) {
       listingFeePercentTotal += parseFloat(property.realtListingFeePercent);
     }
-
+    // rent
     if (property.netRentDayPerToken) {
       totalNetRentDay += parseFloat(property.netRentDayPerToken) * parseFloat(property.amount);
     }
@@ -61,6 +66,14 @@ function HeaderProperty({ properties }) {
     if (property.netRentYearPerToken) {
       totalNetRentYear += parseFloat(property.netRentYearPerToken) * parseFloat(property.amount);
     }
+    // unit
+    if (property.rentedUnits) {
+      totalRentedUnits += parseInt(property.rentedUnits, 10);
+    }
+
+    if (property.totalUnits) {
+      totalUnits += parseInt(property.totalUnits, 10);
+    }
 
   });
 
@@ -69,6 +82,9 @@ function HeaderProperty({ properties }) {
 
   const averageListingFeePercent =
     numberOfProperties > 0 ? (listingFeePercentTotal / numberOfProperties).toFixed(2) : 0;
+
+  // unit percentage
+  const percentageRentedUnits = totalUnits > 0 ? ((totalRentedUnits / totalUnits) * 100).toFixed(2) : 0;
 
   // averageConstructionYear
   const averageConstructionYear =
@@ -90,6 +106,8 @@ function HeaderProperty({ properties }) {
       <p>Total Loyers par jour : {formatNumberWithSpaces(totalNetRentDay)}</p>
       <p>Total Loyers par mois : {formatNumberWithSpaces(totalNetRentMonth)}</p>
       <p>Total Loyers par an : {formatNumberWithSpaces(totalNetRentYear)}</p>
+
+      <p>Logements loués {totalRentedUnits} / {totalUnits} ({percentageRentedUnits} %)</p>
 
     </div>
   );
