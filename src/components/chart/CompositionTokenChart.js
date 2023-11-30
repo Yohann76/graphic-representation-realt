@@ -141,7 +141,7 @@ function CompositionTokenChart({ properties }) {
   return (
     <div className="component-graph section">
       <h2>Distributing the value of your tokens</h2>
-      <div className="graph" style={{ maxWidth: '600px' }}>
+      <div className="graph">
         <Pie data={chartData} options={chartOptions} />
       </div>
     </div>

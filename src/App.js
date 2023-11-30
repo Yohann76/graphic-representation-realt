@@ -242,11 +242,12 @@ function App() {
         {propertyInfo && <StatePropertyChart properties={propertyInfo} />}
         {propertyInfo && <CountryPropertyChart properties={propertyInfo} />}
         {propertyInfo && <TypePropertyChart properties={propertyInfo} />}
-        {propertyInfo && <CurrencieExpositionChart properties={propertyInfo} />}
-        {propertyInfo && <UnitsPropertyChart properties={propertyInfo} />}
         {propertyInfo && <SubsidyPropertyChart properties={propertyInfo} />}
         {propertyInfo && <CompositionTokenChart properties={propertyInfo} />}
         {propertyInfo && <MonthlyCostChart properties={propertyInfo} />}
+        
+        {propertyInfo && <CurrencieExpositionChart properties={propertyInfo} />}
+        {propertyInfo && <UnitsPropertyChart properties={propertyInfo} />}
       </div>
 
       {propertyInfo && <PropertyInfo propertyInfo={propertyInfo} />}

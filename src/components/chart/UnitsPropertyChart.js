@@ -81,7 +81,7 @@ function UnitsPropertyChart({ properties }) {
   return (
     <div className="component-graph section">
       <h2>Breakdown of portfolio value by location</h2>
-      <div className="graph" style={{ maxWidth: '600px' }}>
+      <div className="graph">
         <Pie data={chartData} options={chartOptions} />
       </div>
     </div>

@@ -87,7 +87,7 @@ function SubsidyPropertyChart({ properties }) {
   return (
     <div className="component-graph section">
       <h2>Breakdown of portfolio value by subsidized rent</h2>
-      <div class="graph" style={{ maxWidth: '600px' }}>
+      <div class="graph">
         <Pie data={chartData} options={chartOptions} />
       </div>
     </div>

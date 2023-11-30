@@ -99,7 +99,7 @@ function CurrencieExposition({ properties }) {
   return (
     <div className="component-graph section">
     <h2>Répartition de la valeur du portefeuille par monnaie</h2>
-      <div class="graph" style={{ maxWidth: '600px' }}>
+      <div class="graph">
         <Pie data={chartData} options={chartOptions} />
       </div>
     </div>

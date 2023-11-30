@@ -24,16 +24,21 @@ code {
   padding-bottom: 25px;
 }
 
-.container-graph > div {
-  flex-basis: calc(100% - 10px);
-  margin: 5px;
-}
-
 .section {
   border-radius: 0.5rem;
   background-color: #25262B;
   color : #C1C2C5;
   margin: 20px;
+}
+
+.graph {
+  max-width: 90%; /* old max-width on component is 600px */
+  width: 90%;
+}
+
+.container-graph > div {
+  flex-basis: calc(100% - 10px);
+  margin: 5px;
 }
 
 .component-graph {
