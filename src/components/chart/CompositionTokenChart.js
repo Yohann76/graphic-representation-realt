@@ -4,17 +4,18 @@ import Chart from 'chart.js/auto';
 
 function CompositionTokenChart({ properties }) {
 
-  // use this data property.xxxx
+  // use this data for create graphic
 
+  // data 1 : property.underlyingAssetPrice (from api)
+  // data 2 : property.miscellaneousCosts (from api)
+  // data 3 : property.realtListingFee (from api)
+  // data 4 : property.renovationReserve (from api)
+  // data 5 : property.initialMaintenanceReserve (from api)
 
-// property.underlyingAssetPrice (from api)
-// property.miscellaneousCosts (from api)
-// property.realtListingFee (from api)
-// property.renovationReserve (from api)
-// property.initialMaintenanceReserve (from api)
-// property.totalInvestment (from api)
+  // data 6 : "Administrative Fees & Rounding Difference" (calcul)
 
-// soustract totalInvestment for determine "Administrative Fees & Rounding Difference" (calcul)
+  // calcul : totalData = data1+data2+data3+data4+data5
+  // calcul : property.totalInvestment - totalData = data 6 ("Administrative Fees & Rounding Difference")
 
   return (
     <div className="component-graph section">
