@@ -41,6 +41,7 @@ function App() {
 
              return {
                uuid: uuid,
+               marketplaceLink: property.marketplaceLink,
                fullName: property.fullName,
                currency: property.currency,
                tokenPrice: property.tokenPrice,
@@ -153,6 +154,7 @@ function App() {
 
                 return {
                   uuid: uuid,
+                  marketplaceLink: propertyData.marketplaceLink,
                   fullName: propertyData.fullName,
                   currency: propertyData.currency,
                   tokenPrice: propertyData.tokenPrice,

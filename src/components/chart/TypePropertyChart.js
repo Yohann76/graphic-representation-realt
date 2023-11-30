@@ -5,8 +5,8 @@ import Chart from 'chart.js/auto';
 function TypePropertyChart({ properties }) {
 
   // for detect number type
-  const filteredProperties = properties.filter((property) => [5, 7, 8, 9].includes(property.type));
-  console.log("property type 5, 7, 8 et 9 :", filteredProperties);
+  // const filteredProperties = properties.filter((property) => [5, 7].includes(property.type));
+  // console.log("property type 5, 7 et 9 :", filteredProperties); // 5/7/9 have no property
 
   const propertyTypes = {
     1: 'Single Family',
@@ -14,6 +14,8 @@ function TypePropertyChart({ properties }) {
     3: 'Duplex',
     4: 'Condominium',
     6: 'Mixed-Use',
+    8: 'Quadplex',
+    9: 'Commercial',
     10: 'Holding SFR',
     11: 'Holding MFR',
   };
