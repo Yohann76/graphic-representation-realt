@@ -14,6 +14,7 @@ import CurrencieExpositionChart from './components/chart/CurrencieExpositionChar
 import TypePropertyChart from './components/chart/TypePropertyChart';
 import UnitsPropertyChart from './components/chart/UnitsPropertyChart';
 import SubsidyPropertyChart from './components/chart/SubsidyPropertyChart';
+import CompositionTokenChart from './components/chart/CompositionTokenChart';
 
 import { fetchPropertyInfo } from './requests/realt-communitary-api';
 import { fetchPropertyList } from './requests/realt-communitary-api';
@@ -65,6 +66,11 @@ function App() {
                rentedUnits: property.rentedUnits,
                // subsidy
                subsidyBy:property.subsidyBy,
+               // composition token
+               underlyingAssetPrice: property.underlyingAssetPrice,
+               miscellaneousCosts: property.miscellaneousCosts,
+               renovationReserve: property.renovationReserve,
+               initialMaintenanceReserve: property.initialMaintenanceReserve,
              };
            });
 
@@ -178,6 +184,11 @@ function App() {
                   rentedUnits: propertyData.rentedUnits,
                   // subsidy
                   subsidyBy:propertyData.subsidyBy,
+                  // composition token
+                  underlyingAssetPrice: propertyData.underlyingAssetPrice,
+                  miscellaneousCosts: propertyData.miscellaneousCosts,
+                  renovationReserve: propertyData.renovationReserve,
+                  initialMaintenanceReserve: propertyData.initialMaintenanceReserve,
                 };
               }
             }
@@ -221,6 +232,7 @@ function App() {
         {propertyInfo && <CurrencieExpositionChart properties={propertyInfo} />}
         {propertyInfo && <UnitsPropertyChart properties={propertyInfo} />}
         {propertyInfo && <SubsidyPropertyChart properties={propertyInfo} />}
+        {propertyInfo && <CompositionTokenChart properties={propertyInfo} />}
       </div>
 
       {propertyInfo && <PropertyInfo propertyInfo={propertyInfo} />}
