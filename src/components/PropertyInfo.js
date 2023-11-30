@@ -20,24 +20,22 @@ function PropertyInfo({ propertyInfo }) {
 
   return (
     <div className="property-info-container section">
-      <h2 class="title-property-info">Informations sur les propriétés :</h2>
+      <h2 class="title-property-info">Property information :</h2>
       <table>
         <thead>
           <tr>
-            <th>Nb Propriété</th>
-            <th>Adresse du contrat (UUID)</th>
-            <th>Nom de la propriété</th>
-            <th>prix Token</th>
-            <th>Nombre de token</th>
-            <th>Prix par porte</th>
-            <th>Prix par sqft</th>
-            <th>Valeur Totale</th>
+            <th>Contract address</th>
+            <th>Property name</th>
+            <th>Token price</th>
+            <th>Number of tokens</th>
+            <th>Price per door</th>
+            <th>Price per sqft</th>
+            <th>Total Value</th>
           </tr>
         </thead>
         <tbody>
           {propertyInfo.map((property, index) => (
-            <tr key={index}>
-              <td>{index + 1}</td>
+            <tr>
               <td>{property.uuid}</td>
               <td>{property.fullName}</td>
               <td>{property.tokenPrice}</td>

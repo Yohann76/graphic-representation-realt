@@ -29,7 +29,7 @@ function MonthlyCostChart({ properties }) {
     return property.utilities === 'Tenant-paid' ? utilities : utilities + parseFloat(property.utilities);
   }, 0);
 
-  // calcul total
+  // calcul total // no use for the moment
   const total = data1 + data2 + data3 + data4 + data5 + data6;
 
   // calcul percentage
@@ -105,7 +105,7 @@ function MonthlyCostChart({ properties }) {
       },
       title: {
         display: false,
-        text: 'Répartition des charges sur le loyer',
+        text: 'Breakdown of rental charges (gross)',
         fontSize: 16,
       },
     },
@@ -113,7 +113,7 @@ function MonthlyCostChart({ properties }) {
 
   return (
     <div className="component-graph section">
-      <h2>Répartition des charges sur le loyer</h2>
+      <h2>Breakdown of rental charges (gross)</h2>
       <div className="graph" style={{ maxWidth: '600px' }}>
         <Pie data={chartData} options={chartOptions} />
       </div>

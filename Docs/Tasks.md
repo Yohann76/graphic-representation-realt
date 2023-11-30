@@ -2,30 +2,26 @@
 
 ## Graphics :
 
-- % add composition on Monthly Cost :
+- Position graphics to better view legend
+- Legend for each graphic must be is white
+- manage different currency for each graphic (convert each monney in $ for have correct proportion in %)
 
-Check that the data is correct in relation to the portfolio in $ and not in relation to the number of houses.
+- Check that the data is correct in relation to the portfolio in $ and not in relation to the number of houses.
 
 ## PropertyInfo Table :
-- Add in array property (rent by month)
 - Can sort each table column
 - unit xx/xx(xx%)
 - Total yield in % (Total Value Actual / TT rent per Years) (purchase price and actualValue)
 
 ## Other :
 - Design input (in navbar in header?)
-- Legend for each graphic must be is white
 - Loader component when wait response api and calculate all data for each property (async response?)
 - Add analyctics link for calculate trafic
 - If input is empty, run useEffect for load data when website is load
-
 - Put input in url parameter ??
 - Add .env data
 
-- All website must be in english
-
 ## Header (link dashboard):
 - improve design for header (rent section, fee section...)
-- manage different currency for each graphic (convert each monney in $ for have correct proportion in %)
 - Number city  (use state ..? )
 - Number country (use state ..? )

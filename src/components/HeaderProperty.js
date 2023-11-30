@@ -96,18 +96,18 @@ function HeaderProperty({ properties }) {
 
   return (
     <div className="header-info-container section">
-      <h2>Informations sur les propriétés :</h2>
-      <p>Nombre de propriétés : {formatNumberWithSpaces(numberOfProperties)}</p>
-      <p>Valeur totale des tokens : {formatNumberWithSpaces(totalTokenValue)}</p>
-      <p>Moyenne d'âge de construction du portfeuille : {formatNumberWithSpaces(roundedAverageConstructionYear)} ans</p>
-      <p>Total Frais RealT sur loyer : {formatNumberWithSpaces(feePerMonthTotal)} ({averagePlatformPercent}%)</p>
-      <p>Total Frais RealT au listing : {formatNumberWithSpaces(listingFeeTotal)} ({averageListingFeePercent}%)</p>
+      <h2>Property information :</h2>
+      <p>Number of properties : {formatNumberWithSpaces(numberOfProperties)}</p>
+      <p>Total value of tokens : {formatNumberWithSpaces(totalTokenValue)}</p>
+      <p>Average age of portfolio construction : {formatNumberWithSpaces(roundedAverageConstructionYear)} ans</p>
+      <p>Total RealT rent charges : {formatNumberWithSpaces(feePerMonthTotal)} ({averagePlatformPercent}%)</p>
+      <p>Total RealT listing costs : {formatNumberWithSpaces(listingFeeTotal)} ({averageListingFeePercent}%)</p>
 
-      <p>Total Loyers par jour : {formatNumberWithSpaces(totalNetRentDay)}</p>
-      <p>Total Loyers par mois : {formatNumberWithSpaces(totalNetRentMonth)}</p>
-      <p>Total Loyers par an : {formatNumberWithSpaces(totalNetRentYear)}</p>
+      <p>Total Rents per day : {formatNumberWithSpaces(totalNetRentDay)}</p>
+      <p>Total Rents per month : {formatNumberWithSpaces(totalNetRentMonth)}</p>
+      <p>Total Rents per year : {formatNumberWithSpaces(totalNetRentYear)}</p>
 
-      <p>Logements loués {totalRentedUnits} / {totalUnits} ({percentageRentedUnits} %)</p>
+      <p>Rented Units {totalRentedUnits} / {totalUnits} ({percentageRentedUnits} %)</p>
 
     </div>
   );

@@ -164,7 +164,7 @@ function StatePropertyChart({ properties }) {
       },
       title: {
         display: false,
-        text: 'Répartition de la valeur du portefeuille par État',
+        text: 'Breakdown of portfolio value by state',
         fontSize: 16,
       },
     },
@@ -172,7 +172,7 @@ function StatePropertyChart({ properties }) {
 
   return (
     <div className="component-graph section">
-    <h2>Répartition de la valeur du portefeuille par État</h2>
+    <h2>Breakdown of portfolio value by state</h2>
       <div class="graph" style={{ maxWidth: '600px' }}>
         <Pie data={chartData} options={chartOptions} />
       </div>

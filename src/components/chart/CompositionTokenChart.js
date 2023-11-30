@@ -132,7 +132,7 @@ function CompositionTokenChart({ properties }) {
       },
       title: {
         display: false,
-        text: 'Répartition de la valeur de vos tokens',
+        text: 'Distributing the value of your tokens',
         fontSize: 16,
       },
     },
@@ -140,7 +140,7 @@ function CompositionTokenChart({ properties }) {
 
   return (
     <div className="component-graph section">
-      <h2>Répartition de la valeur de vos tokens</h2>
+      <h2>Distributing the value of your tokens</h2>
       <div className="graph" style={{ maxWidth: '600px' }}>
         <Pie data={chartData} options={chartOptions} />
       </div>

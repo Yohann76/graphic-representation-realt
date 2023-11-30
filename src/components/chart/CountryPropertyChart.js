@@ -164,7 +164,7 @@ function CountryPropertyChart({ properties }) {
         },
         title: {
           display: false,
-          text: 'Répartition de la valeur du portefeuille par pays',
+          text: 'Breakdown of portfolio value by country',
           fontSize: 16,
         },
       },
@@ -172,7 +172,7 @@ function CountryPropertyChart({ properties }) {
 
   return (
     <div className="component-graph section">
-    <h2>Répartition de la valeur du portefeuille par pays </h2>
+    <h2>Breakdown of portfolio value by country</h2>
     <div className="graph" style={{ maxWidth: '600px' }}>
       <Pie data={chartDataCountry} options={chartOptions} />
     </div>
