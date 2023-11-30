@@ -2,15 +2,7 @@
 
 ## Graphics :
 
-- % add composition on wallet fee/value asset property/renovation
-
 - % add composition on Monthly Cost :
-
-- propertyManagement : (in api) Property Management (8.00%)
-- realtPlatform : (in data) RealT Platform (2.00%)
-- propertyMaintenanceMonthly : (in api) : Maintenance Expenses
-- propertyTaxes : 225 : (in api)
-- insurance : 480 (in api)
 
 Check that the data is correct in relation to the portfolio in $ and not in relation to the number of houses.
 

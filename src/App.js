@@ -15,6 +15,7 @@ import TypePropertyChart from './components/chart/TypePropertyChart';
 import UnitsPropertyChart from './components/chart/UnitsPropertyChart';
 import SubsidyPropertyChart from './components/chart/SubsidyPropertyChart';
 import CompositionTokenChart from './components/chart/CompositionTokenChart';
+import MonthlyCostChart from './components/chart/MonthlyCostChart';
 
 import { fetchPropertyInfo } from './requests/realt-communitary-api';
 import { fetchPropertyList } from './requests/realt-communitary-api';
@@ -71,6 +72,12 @@ function App() {
                miscellaneousCosts: property.miscellaneousCosts,
                renovationReserve: property.renovationReserve,
                initialMaintenanceReserve: property.initialMaintenanceReserve,
+               // monthly Costs
+               propertyManagement: property.propertyManagement,
+               propertyMaintenanceMonthly: property.propertyMaintenanceMonthly,
+               propertyTaxes: property.propertyTaxes,
+               insurance: property.insurance,
+               utilities: property.utilities,
              };
            });
 
@@ -189,6 +196,12 @@ function App() {
                   miscellaneousCosts: propertyData.miscellaneousCosts,
                   renovationReserve: propertyData.renovationReserve,
                   initialMaintenanceReserve: propertyData.initialMaintenanceReserve,
+                  // monthly Costs
+                  propertyManagement: propertyData.propertyManagement,
+                  propertyMaintenanceMonthly: propertyData.propertyMaintenanceMonthly,
+                  propertyTaxes: propertyData.propertyTaxes,
+                  insurance: propertyData.insurance,
+                  utilities: propertyData.utilities,
                 };
               }
             }
@@ -233,6 +246,7 @@ function App() {
         {propertyInfo && <UnitsPropertyChart properties={propertyInfo} />}
         {propertyInfo && <SubsidyPropertyChart properties={propertyInfo} />}
         {propertyInfo && <CompositionTokenChart properties={propertyInfo} />}
+        {propertyInfo && <MonthlyCostChart properties={propertyInfo} />}
       </div>
 
       {propertyInfo && <PropertyInfo propertyInfo={propertyInfo} />}
