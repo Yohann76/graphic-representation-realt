@@ -6,12 +6,12 @@ const axiosInstance = axios.create({
   baseURL: 'https://api.realt.community/v1',
   headers: {
     "Content-Type" : "application/json",
-    // "X-AUTH-REALT-TOKEN" : "1ccc0d6825c65261f4090266a36bea3b" // key // run on prod
-    "X-AUTH-REALT-TOKEN" : "41cc071a26d0055b1b086efea6d42a41" // dev
+    // "X-AUTH-REALT-TOKEN" : "1ccc0d6825c65261f4090266a36bea3b" // testing key on prod // run on prod
+    "X-AUTH-REALT-TOKEN" : "41cc071a26d0055b1b086efea6d42a41" // dev // staging
   },
 });
 
-// fonction for get property info
+// get property info
 export async function fetchPropertyInfo(propertyAddress) {
   try {
     const response = await axiosInstance.get(`/token/${propertyAddress}`);
@@ -24,8 +24,7 @@ export async function fetchPropertyInfo(propertyAddress) {
   }
 }
 
-
-// function for get list property
+// get list property
 export async function fetchPropertyList() {
   try {
     const response = await axiosInstance.get(`/token`);

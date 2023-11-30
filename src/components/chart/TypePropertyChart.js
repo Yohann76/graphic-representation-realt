@@ -4,13 +4,18 @@ import Chart from 'chart.js/auto';
 
 function TypePropertyChart({ properties }) {
 
+  // for detect number type
+  const filteredProperties = properties.filter((property) => [5, 7, 8, 9].includes(property.type));
+  console.log("property type 5, 7, 8 et 9 :", filteredProperties);
+
   const propertyTypes = {
     1: 'Single Family',
     2: 'Multi Family',
     3: 'Duplex',
     4: 'Condominium',
     6: 'Mixed-Use',
-    10: 'Holding',
+    10: 'Holding SFR',
+    11: 'Holding MFR',
   };
 
   const typeValues = {};
@@ -33,13 +38,10 @@ function TypePropertyChart({ properties }) {
     return total + propertyValue;
   }, 0);
 
-  console.log(totalPortfolioValue);
-
   const labels = Object.keys(typeValues);
   const data = labels.map((type) =>
     ((typeValues[type] / totalPortfolioValue) * 100).toFixed(2)
   );
-
 
   const chartData = {
     labels: labels.map((type) => `${type}: ${((typeValues[type] / totalPortfolioValue) * 100).toFixed(2)}%`),

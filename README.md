@@ -1,4 +1,4 @@
-# Graphic-representation-realt
+# Graphic-representation-realt project (MyRealtStat)
 
 RealT is a company that does real estate tokenization on blockchain, with the aim of exploring blockchain in order to make statistics.
 This project allows me to learn react and explore blockchain
