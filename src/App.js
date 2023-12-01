@@ -37,7 +37,9 @@ function App() {
          const allPropertyData = await fetchPropertyList();
 
          if (allPropertyData && Array.isArray(allPropertyData)) {
-           const propertyInfoData = allPropertyData.map((property) => {
+           const propertyInfoData = allPropertyData
+            .filter((property) => !property.fullName.includes('OLD-')) // exclude tokens with "OLD-" in fullName
+           .map((property) => {
              const uuid = property.uuid || 'N/A';
              const totalValue = (parseFloat(property.tokenPrice) * parseFloat(property.totalTokens)).toFixed(2);
 
@@ -215,6 +217,8 @@ function App() {
         // Filter out properties with uuid set to 'N/A'
         const propertyInfoData = propertyInfoPromises.filter((property) => property && property.uuid !== 'N/A');
 
+        // TODO : filter to exclude "OLD-" in fullname
+
         setPropertyInfo(propertyInfoData);
       } catch (error) {
         console.error('Erreur lors de la recherche :', error);
@@ -245,7 +249,7 @@ function App() {
         {propertyInfo && <SubsidyPropertyChart properties={propertyInfo} />}
         {propertyInfo && <CompositionTokenChart properties={propertyInfo} />}
         {propertyInfo && <MonthlyCostChart properties={propertyInfo} />}
-        
+
         {propertyInfo && <CurrencieExpositionChart properties={propertyInfo} />}
         {propertyInfo && <UnitsPropertyChart properties={propertyInfo} />}
       </div>
