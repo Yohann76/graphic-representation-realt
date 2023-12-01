@@ -16,6 +16,13 @@ function PropertyInfo({ propertyInfo }) {
     } else {
       property.pricePerSqft = '-';
     }
+
+    // Calculate percentage of rented units
+    if (property.totalUnits > 0) {
+      property.percentageRentedUnits = Math.round((property.rentedUnits / property.totalUnits) * 100);
+    } else {
+      property.percentageRentedUnits = '-';
+    }
   });
 
   return (
@@ -28,6 +35,7 @@ function PropertyInfo({ propertyInfo }) {
             <th>Property name</th>
             <th>Token price</th>
             <th>Number of tokens</th>
+            <th>Rented Units</th>
             <th>Price per door</th>
             <th>Price per sqft</th>
             <th>Total Value</th>
@@ -39,6 +47,7 @@ function PropertyInfo({ propertyInfo }) {
               <td>{property.uuid}</td>
               <td>{property.fullName}</td>
               <td>{property.tokenPrice}</td>
+              <td>{property.rentedUnits}/{property.totalUnits} ({property.percentageRentedUnits}%)</td>
               <td>{formatNumberWithSpaces(property.amount)}</td>
               <td>{formatNumberWithSpaces(property.pricePerDoor)}</td>
               <td>{formatNumberWithSpaces(property.pricePerSqft)}</td>

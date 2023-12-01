@@ -17,15 +17,7 @@ This project aims to produce reliable statistics on a realT wallet.
 - % of portfolio in currency
 - % of portfolio is located, not located
 - % of portfolio in section 8, section 42, normal
-
-- % add composition on wallet fee/construction/value asset property/renovation/insurance/utility
-  - fee
-  - value asset property
-  - renovation
-  - construction
-  - insurance
-  - utility
-```
+- % of portfolio composition (asset value, renovation, fee...)
 
 ## How To create/use
 
