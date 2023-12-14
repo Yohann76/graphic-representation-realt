@@ -55,6 +55,31 @@ code {
   padding: 25px;
 }
 
+.header-info-container .flex {
+  display:flex;
+  justify-content: space-between;
+}
+
+.header-info-container .content-flex {
+  text-align: left;
+  flex: 1;
+  margin: 0 10px;
+}
+
+.header-info-container h2 {
+  font-size: 20px;
+  color: #ED8510;
+  text-align: left;
+}
+
+.header-info-container p {
+  margin: 5px 0;
+}
+
+.header-info-container .special-info {
+  font-weight: bold;
+}
+
 /* Property Info List / array  */
 .property-info-container {
   font-family: Arial, sans-serif;
@@ -65,6 +90,7 @@ code {
 .title-property-info {
   color: white;
 }
+
 table {
   width: 100%;
   border-collapse: collapse;

@@ -20,9 +20,8 @@
 - Loader component when wait response api and calculate all data for each property (async response?)
   - or update system for compare TheGraph request and fetch all api (not property per property) (Save time)
 
-- manage OLD- token and filtre this
+- manage OLD- token and filtre this (verify this)
 
 ## Header (link dashboard):
-- improve design for header (rent section, fee section...)
 - Number city  (use state ..? )
 - Number country (use state ..? )

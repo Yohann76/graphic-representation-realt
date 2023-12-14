@@ -1,6 +1,6 @@
 # Netlify
 
-domains : https://graphic-realt-application.netlify.app/
+domains : https://myrealtstat.netlify.app
 
 # Construct project in website :
 
@@ -14,5 +14,5 @@ CI='' npm exécuter la construction
 
 branch in project :
 
-master = production on https://graphic-realt-application.netlify.app/
-develop = staging on [TODO]
+master = production on https://myrealtstat.netlify.app
+develop = dev branch (staging localhost)
