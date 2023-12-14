@@ -6,7 +6,7 @@ function SubsidyPropertyChart({ properties }) {
   const subsidyTotals = {};
 
   properties.forEach((property) => {
-    const subsidyBy = property.subsidyBy || 'Non Subventionné';
+    const subsidyBy = property.subsidyBy || 'Unsubsidized';
 
     if (!subsidyTotals[subsidyBy]) {
       subsidyTotals[subsidyBy] = 0;

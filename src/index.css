@@ -72,23 +72,27 @@ table {
 }
 
 thead {
-  background-color: #ED8510; /* realT color */
-  color: black;
+  /* background-color: #ED8510; */ /* realT color */
+  color: white;
+  font-size: 0.875rem
+
 }
 
 thead th {
   text-align: left;
   padding: 10px;
   font-weight: bold;
-  border-bottom: 2px solid #ccc;
+  border-bottom: 0.0625rem solid rgb(55, 58, 64);
 }
 
 tbody tr {
-  background-color: #1A1B1E;
+  /* background-color: #1A1B1E; */
+  background-color: #25262B;
   color: white;
+  text-align: left;
 }
 
 tbody td {
   padding: 10px;
-  border-bottom: 1px solid #ccc;
+  border-top: 0.0625rem solid rgb(55, 58, 64);
 }

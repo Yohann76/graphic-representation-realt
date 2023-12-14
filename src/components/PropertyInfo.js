@@ -31,11 +31,11 @@ function PropertyInfo({ propertyInfo }) {
       <table>
         <thead>
           <tr>
-            <th>Contract address</th>
             <th>Property name</th>
+            <th>Contract address</th>
             <th>Token price</th>
-            <th>Number of tokens</th>
             <th>Rented Units</th>
+            <th>Number of tokens</th>
             <th>Price per door</th>
             <th>Price per sqft</th>
             <th>Total Value</th>
@@ -44,8 +44,8 @@ function PropertyInfo({ propertyInfo }) {
         <tbody>
           {propertyInfo.map((property, index) => (
             <tr>
-              <td>{property.uuid}</td>
               <td>{property.fullName}</td>
+              <td>{property.uuid}</td>
               <td>{property.tokenPrice}</td>
               <td>{property.rentedUnits}/{property.totalUnits} ({property.percentageRentedUnits}%)</td>
               <td>{formatNumberWithSpaces(property.amount)}</td>

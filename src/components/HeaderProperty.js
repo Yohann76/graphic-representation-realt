@@ -25,9 +25,12 @@ function HeaderProperty({ properties }) {
 
   properties.forEach((property) => {
 
-    if (property.fullName) {
+    // // exclude OLD- (already filter in request)
+    if (property.fullName && !property.fullName.includes('OLD-')) {
       numberOfProperties += 1;
+    }
 
+    if (property.fullName ) {
       const propertyValue = parseFloat(property.tokenPrice) * parseFloat(property.amount);
       totalTokenValue += propertyValue;
     }

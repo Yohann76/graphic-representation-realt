@@ -18,8 +18,8 @@ function UnitsPropertyChart({ properties }) {
 
   const chartData = {
     labels: [
-      `Unité louée: ${percentageRentedUnits}%`,
-      `Unité non louée: ${(100 - percentageRentedUnits).toFixed(2)}%`,
+      `Rented units: ${percentageRentedUnits}%`,
+      `Not rented units: ${(100 - percentageRentedUnits).toFixed(2)}%`,
     ],
     datasets: [
       {

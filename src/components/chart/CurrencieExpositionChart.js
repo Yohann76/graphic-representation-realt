@@ -90,7 +90,7 @@ function CurrencieExposition({ properties }) {
       },
       title: {
         display: false,
-        text: 'Répartition de la valeur du portefeuille par ville',
+        text: 'Breakdown of portfolio value by currency',
         fontSize: 16,
       },
     },
@@ -98,7 +98,7 @@ function CurrencieExposition({ properties }) {
 
   return (
     <div className="component-graph section">
-    <h2>Répartition de la valeur du portefeuille par monnaie</h2>
+    <h2>Breakdown of portfolio value by currency</h2>
       <div class="graph">
         <Pie data={chartData} options={chartOptions} />
       </div>
