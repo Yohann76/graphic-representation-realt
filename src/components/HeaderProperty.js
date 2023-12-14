@@ -103,20 +103,27 @@ function HeaderProperty({ properties }) {
       <h2>Property information :</h2>
       <div class="flex">
         <div class="content-flex">
+          <p class="title">Various :</p>
           <p>Number of properties : {formatNumberWithSpaces(numberOfProperties)}</p>
           <p>Average age of portfolio construction : {formatNumberWithSpaces(roundedAverageConstructionYear)} ans</p>
           <p>Total value of tokens : {formatNumberWithSpaces(totalTokenValue)}</p>
+          <p>Rented Units {totalRentedUnits} / {totalUnits} ({percentageRentedUnits} %)</p>
         </div>
-        <div class="content-flex">
 
-        <p>Rented Units {totalRentedUnits} / {totalUnits} ({percentageRentedUnits} %)</p>
-        </div>
         <div class="content-flex">
-        <p>Total RealT rent charges : {formatNumberWithSpaces(feePerMonthTotal)} ({averagePlatformPercent}%)</p>
-        <p>Total RealT listing costs : {formatNumberWithSpaces(listingFeeTotal)} ({averageListingFeePercent}%)</p>
-        <p>Total Rents per day : {formatNumberWithSpaces(totalNetRentDay)}</p>
-        <p>Total Rents per month : {formatNumberWithSpaces(totalNetRentMonth)}</p>
-        <p>Total Rents per year : {formatNumberWithSpaces(totalNetRentYear)}</p>
+          <p class="title">Fees :</p>
+          <p>Total RealT rent charges : {formatNumberWithSpaces(feePerMonthTotal)} ({averagePlatformPercent}%)</p>
+          <p>Total RealT listing costs : {formatNumberWithSpaces(listingFeeTotal)} ({averageListingFeePercent}%)</p>
+        </div>
+
+        <div class="content-flex">
+          <p class="title">Rents</p>
+          <p>Daily rents : {formatNumberWithSpaces(totalNetRentDay)}</p>
+          <p>Monthly rents : {formatNumberWithSpaces(totalNetRentMonth)}</p>
+          <p>Annual rent {formatNumberWithSpaces(totalNetRentYear)}</p>
+          <p>Daily rents (with rent start date) : </p>
+          <p>Monthly rents (with rent start date) : </p>
+          <p>Annual rent (with rent start date) </p>
         </div>
       </div>
     </div>

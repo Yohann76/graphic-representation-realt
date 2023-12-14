@@ -1,4 +1,4 @@
-## Versionning
+## Versionning & Roadmap
 
 ## V1 :
 
@@ -7,19 +7,22 @@
 
 ## V2 :
 
-- V2.1 : page (for each market) to compare different real estate markets according to your portfolio (on purchase price, rent..)
-  - realt wallet average purchase price
-  - purchase price of realt estate market (from zillow...?)
-  - my average wallet purchase price
-
-- V2.2 : page single property
-  - display information : picture, link realT, active, distribution, start value, all invest return in this property)
+- V2.1 : page single property
+  - display information : picture, link realT, active, distribution, start value
   - need nodeJS API with Express ? Why ?
   Purpose : picture of property in background css single page
 
-- V2.3 : add data
+- V2.2 : page (for each market by city & Neighborhood ) to compare different real estate markets according to your portfolio (on purchase price, rent..)
+  - need api for request by city and Neighborhood .. ?
 
-for Need V2.3 :
+- V2.3 : data : add personnal retribution (in %) for each property (include informations from PropertyData Array) (informations in blockchain)
+
+## V3 :
+
+- V3.1 SecondPage : Calculate total invest return with CSV distribution, CSV reevaluation (where CSV, methods? necessary discussion)
+- V3.2 : add nodeJS or Symfony  project with API for calculate invest return ??
+
+Need for V3 :
 - house purchase date (from blockchain)
 - CSV revaluation
 - CSV retribution (or from blockchain)
@@ -27,13 +30,6 @@ for Need V2.3 :
 - V2 : data : number of first revaluation
 - V2 : data : number of second revaluation
 - V2 : data : add personnal average revaluation total (from CSV) (include this data in PropertyData array)
-
-- V2 : data : add personnal retribution (in %) for each property (include informations from PropertyData Array)
-
-## V3 :
-
-- V3.1 SecondPage : Calculate total invest return with CSV distribution, CSV reevaluation (where CSV, methods? necessary discussion)
-- V3.2 : add nodeJS project with API for calculate invest return ??
 
 ## V4 :
 

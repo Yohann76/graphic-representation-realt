@@ -21,6 +21,7 @@
   - or update system for compare TheGraph request and fetch all api (not property per property) (Save time)
 
 - manage OLD- token and filtre this (verify this)
+- remove ",00" on header, info property array..
 
 ## Header (link dashboard):
 - Number city  (use state ..? )

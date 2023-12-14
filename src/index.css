@@ -34,6 +34,8 @@ code {
 .graph {
   max-width: 90%; /* old max-width on component is 600px */
   width: 90%;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 .container-graph > div {
@@ -47,6 +49,13 @@ code {
   width: 49% ;
   max-width: 49%;
   padding-bottom: 25px;
+}
+
+.component-graph h2 {
+  color: white;
+  font-size: 19px;
+  text-align: center;
+  margin: 15px;
 }
 
 /* header Info Container */
@@ -64,6 +73,11 @@ code {
   text-align: left;
   flex: 1;
   margin: 0 10px;
+}
+
+.header-info-container .title {
+  font-weight: bold;
+  padding-bottom: 5px;
 }
 
 .header-info-container h2 {

@@ -132,7 +132,7 @@ function CompositionTokenChart({ properties }) {
       },
       title: {
         display: false,
-        text: 'Distributing the value of your tokens',
+        text: 'breakdown of the value of your tokens',
         fontSize: 16,
       },
     },
@@ -140,7 +140,7 @@ function CompositionTokenChart({ properties }) {
 
   return (
     <div className="component-graph section">
-      <h2>Distributing the value of your tokens</h2>
+      <h2>Breakdown of the value of your tokens</h2>
       <div className="graph">
         <Pie data={chartData} options={chartOptions} />
       </div>
