@@ -12,14 +12,9 @@
 - Can sort each table column
 - Total yield in % (Total Value Actual / TT rent per Years) (purchase price and actualValue)
 
-V2 : see single property on click fullName
-V2 : see contract address on blockscout
-
 ## Other :
-- Design input (in navbar in header?)
 - Add analyctics link for calculate trafic
 - If input is empty, run useEffect for load data when website is load
-
 - Loader component when wait response api and calculate all data for each property (async response?)
   - or update system for compare TheGraph request and fetch all api (not property per property) (Save time)
 

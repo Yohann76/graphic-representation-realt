@@ -7,8 +7,12 @@
 
 ## V2 :
 
+V2.0 : see single property on click fullName (property table)
+V2.0 : see contract address on blockscout (property table)
+
 - V2.1 : page single property
   - display information : picture, link realT, active, distribution, start value
+  - property follow-up (description, work follow-up, CC...)
   - need nodeJS API with Express ? Why ?
   Purpose : picture of property in background css single page
 

@@ -99,6 +99,7 @@ function App() {
   // user wallet from input
   const handleSearchSubmit = async (event) => {
     event.preventDefault();
+    console.log('Recherche effectuée avec la valeur :', searchValue);
 
     // if input have ethereum address
     try {
@@ -229,15 +230,20 @@ function App() {
   return (
     <div className="App">
 
-      <form onSubmit={handleSearchSubmit}>
-        <input
-          type="text"
-          placeholder="Entrez une adresse"
-          value={searchValue}
-          onChange={(e) => setSearchValue(e.target.value)}
-        />
-        <button type="submit">Rechercher</button>
-      </form>
+    <header>
+        <nav>
+            <div class="logo">MyRealTStat</div>
+            <form id="search-form" onSubmit={handleSearchSubmit}>
+              <input
+                type="text"
+                placeholder="Entrez une adresse"
+                value={searchValue}
+                onChange={(e) => setSearchValue(e.target.value)}
+              />
+              <button type="submit">Rechercher</button>
+            </form>
+        </nav>
+    </header>
 
       {propertyInfo && <HeaderProperty properties={propertyInfo} />}
 
