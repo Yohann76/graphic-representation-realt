@@ -46,12 +46,12 @@ function PropertyInfo({ propertyInfo }) {
             <tr>
               <td>{property.fullName}</td>
               <td>{property.uuid}</td>
-              <td>{property.tokenPrice}</td>
+              <td>{property.tokenPrice} $</td>
               <td>{property.rentedUnits}/{property.totalUnits} ({property.percentageRentedUnits}%)</td>
               <td>{formatNumberWithSpacesAndWithoutvirgul(property.amount)}</td>
-              <td>{formatNumberWithSpacesAndWithoutvirgul(property.pricePerDoor)}</td>
-              <td>{formatNumberWithSpacesAndWithoutvirgul(property.pricePerSqft)}</td>
-              <td>{formatNumberWithSpacesAndWithoutvirgul(property.totalValue)}</td>
+              <td>{formatNumberWithSpacesAndWithoutvirgul(property.pricePerDoor)} {property.pricePerDoor !== '-' ? '$' : ''}</td>
+              <td>{formatNumberWithSpacesAndWithoutvirgul(property.pricePerSqft)} $</td>
+              <td>{formatNumberWithSpacesAndWithoutvirgul(property.totalValue)} $</td>
             </tr>
           ))}
         </tbody>
