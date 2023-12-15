@@ -38,7 +38,10 @@ function App() {
 
          if (allPropertyData && Array.isArray(allPropertyData)) {
            const propertyInfoData = allPropertyData
+
             .filter((property) => !property.fullName.includes('OLD-')) // exclude tokens with "OLD-" in fullName
+            .filter((property) => !property.sellPropertyTo.includes('us_investors_only')) // exclude us_investors_only // manage REG D & S for not double property
+
            .map((property) => {
              const uuid = property.uuid || 'N/A';
              const totalValue = (parseFloat(property.tokenPrice) * parseFloat(property.totalTokens)).toFixed(2);
@@ -80,6 +83,9 @@ function App() {
                propertyTaxes: property.propertyTaxes,
                insurance: property.insurance,
                utilities: property.utilities,
+               // invest :
+               sellPropertyTo : property.sellPropertyTo
+
              };
            });
 
@@ -205,6 +211,8 @@ function App() {
                   propertyTaxes: propertyData.propertyTaxes,
                   insurance: propertyData.insurance,
                   utilities: propertyData.utilities,
+                  // invest :
+                  sellPropertyTo : propertyData.sellPropertyTo
                 };
               }
             }

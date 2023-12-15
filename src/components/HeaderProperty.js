@@ -24,8 +24,6 @@ function HeaderProperty({ properties }) {
   let totalUnits = 0;
 
   properties.forEach((property) => {
-
-    // // exclude OLD- (already filter in request)
     if (property.fullName && !property.fullName.includes('OLD-')) {
       numberOfProperties += 1;
     }

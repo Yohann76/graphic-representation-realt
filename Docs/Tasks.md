@@ -18,8 +18,6 @@
 - Loader component when wait response api and calculate all data for each property (async response?)
   - or update system for compare TheGraph request and fetch all api (not property per property) (Save time)
 
-- manage OLD- token and filtre this (verify this)
-
 ## Header (link dashboard):
 - Number city  (use state ..? )
 - Number country (use state ..? )
