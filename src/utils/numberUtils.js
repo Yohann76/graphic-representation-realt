@@ -9,8 +9,25 @@ export function formatNumberWithSpaces(value) {
     }
     const numericValue = parseFloat(value);
     if (!isNaN(numericValue)) {
-      return formatNumberWithSpaces(numericValue); // Récursion pour formater le nombre
+      return formatNumberWithSpaces(numericValue);
     }
   }
-  return value; // Si la valeur n'est ni un nombre ni "-", retourne la valeur telle quelle
+  return value;
+}
+
+export function formatNumberWithSpacesAndWithoutvirgul(value) {
+  if (typeof value === 'number') {
+    const integerValue = Math.floor(value);
+    const formattedValue = integerValue.toLocaleString();
+    return formattedValue.replace(/,/g, '');
+  } else if (typeof value === 'string') {
+    if (value === '-') {
+      return value;
+    }
+    const numericValue = parseFloat(value);
+    if (!isNaN(numericValue)) {
+      return formatNumberWithSpacesAndWithoutvirgul(numericValue);
+    }
+  }
+  return value;
 }

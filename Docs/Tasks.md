@@ -12,6 +12,9 @@
 - Can sort each table column
 - Total yield in % (Total Value Actual / TT rent per Years) (purchase price and actualValue)
 
+V2 : see single property on click fullName
+V2 : see contract address on blockscout
+
 ## Other :
 - Design input (in navbar in header?)
 - Add analyctics link for calculate trafic
@@ -21,7 +24,6 @@
   - or update system for compare TheGraph request and fetch all api (not property per property) (Save time)
 
 - manage OLD- token and filtre this (verify this)
-- remove ",00" on header, info property array..
 
 ## Header (link dashboard):
 - Number city  (use state ..? )

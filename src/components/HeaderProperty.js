@@ -1,5 +1,5 @@
 import React from 'react';
-import { formatNumberWithSpaces } from '../utils/numberUtils';
+import { formatNumberWithSpaces, formatNumberWithSpacesAndWithoutvirgul } from '../utils/numberUtils';
 
 function HeaderProperty({ properties }) {
 
@@ -104,16 +104,16 @@ function HeaderProperty({ properties }) {
       <div class="flex">
         <div class="content-flex">
           <p class="title">Various :</p>
-          <p>Number of properties : {formatNumberWithSpaces(numberOfProperties)}</p>
-          <p>Average age of portfolio construction : {formatNumberWithSpaces(roundedAverageConstructionYear)} ans</p>
-          <p>Total value of tokens : {formatNumberWithSpaces(totalTokenValue)}</p>
+          <p>Number of properties : {formatNumberWithSpacesAndWithoutvirgul(numberOfProperties)}</p>
+          <p>Average age of portfolio construction : {formatNumberWithSpacesAndWithoutvirgul(roundedAverageConstructionYear)} ans</p>
+          <p>Total value of tokens : {formatNumberWithSpacesAndWithoutvirgul(totalTokenValue)}</p>
           <p>Rented Units {totalRentedUnits} / {totalUnits} ({percentageRentedUnits} %)</p>
         </div>
 
         <div class="content-flex">
           <p class="title">Fees :</p>
-          <p>Total RealT rent charges : {formatNumberWithSpaces(feePerMonthTotal)} ({averagePlatformPercent}%)</p>
-          <p>Total RealT listing costs : {formatNumberWithSpaces(listingFeeTotal)} ({averageListingFeePercent}%)</p>
+          <p>Total RealT rent charges : {formatNumberWithSpacesAndWithoutvirgul(feePerMonthTotal)} ({averagePlatformPercent}%)</p>
+          <p>Total RealT listing costs : {formatNumberWithSpacesAndWithoutvirgul(listingFeeTotal)} ({averageListingFeePercent}%)</p>
         </div>
 
         <div class="content-flex">
