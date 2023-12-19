@@ -4,6 +4,7 @@
 
 - V1.1 : Homepage : Statistic on wallet (graph, % wallet)
 - V1.1 : page for manage version and add contact informations for manage idee (in nav header next to input)
+  - Use reactRouter for change page without reload page (and save address in input)
 
 ## V2 :
 
@@ -15,6 +16,7 @@ V2.0 : see contract address on blockscout (property table)
   - property follow-up (description, work follow-up, CC...)
   - need nodeJS API with Express ? Why ?
   Purpose : picture of property in background css single page
+  - single graph with monthly cost, composition of this token
 
 - V2.2 : page (for each market by city & Neighborhood ) to compare different real estate markets according to your portfolio (on purchase price, rent..)
   - need api for request by city and Neighborhood .. ?

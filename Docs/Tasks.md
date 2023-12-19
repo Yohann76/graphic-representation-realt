@@ -1,11 +1,10 @@
 ## TODO LIST (V1)
 
 ## Graphics :
+- Legend for each graphic must be is white & Position graphics to better view legend
+  - maybe remove legend, keep graphic, make the legend manually (with a maximum number of elements,sorted by size,with a scrool to the left in each frame?)
 
-- Position graphics to better view legend
-- Legend for each graphic must be is white
 - manage different currency for each graphic (convert each monney in $ for have correct proportion in %)
-
 - Check that the data is correct in relation to the portfolio in $ and not in relation to the number of houses.
 
 ## PropertyInfo Table :
@@ -18,6 +17,14 @@
 - Loader component when wait response api and calculate all data for each property (async response?)
   - or update system for compare TheGraph request and fetch all api (not property per property) (Save time)
 
+- edit app.js dor difference propertyRealT and propertyWallet, we must have two data for comparate models (ex: myproperty/allproperty%))
+
 ## Header (link dashboard):
 - Number city  (use state ..? )
 - Number country (use state ..? )
+
+- Global wallet yields (with rent start date)
+- Global wallet yields (without rent start date)
+
+- rent daily/monthly/annual (with rent start date)
+- daily/monthly/annual (without rent start date)
