@@ -39,52 +39,53 @@ function App() {
          if (allPropertyData && Array.isArray(allPropertyData)) {
            const propertyInfoData = allPropertyData
 
-            .filter((property) => !property.fullName.includes('OLD-')) // exclude tokens with "OLD-" in fullName
-            .filter((property) => !property.sellPropertyTo.includes('us_investors_only')) // exclude us_investors_only // manage REG D & S for not double property
+            .filter((realtProperty) => !realtProperty.fullName.includes('OLD-')) // exclude tokens with "OLD-" in fullName
+            .filter((realtProperty) => !realtProperty.sellPropertyTo.includes('us_investors_only')) // exclude us_investors_only // manage REG D & S for not double property
 
-           .map((property) => {
-             const uuid = property.uuid || 'N/A';
-             const totalValue = (parseFloat(property.tokenPrice) * parseFloat(property.totalTokens)).toFixed(2);
+           .map((realtProperty) => {
+
+             const uuid = realtProperty.uuid || 'N/A';
+             const totalValue = (parseFloat(realtProperty.tokenPrice) * parseFloat(realtProperty.totalTokens)).toFixed(2);
 
              return {
                uuid: uuid,
-               marketplaceLink: property.marketplaceLink,
-               fullName: property.fullName,
-               currency: property.currency,
-               tokenPrice: property.tokenPrice,
-               amount: property.totalTokens, // amount from blockchain
+               marketplaceLink: realtProperty.marketplaceLink,
+               fullName: realtProperty.fullName,
+               currency: realtProperty.currency,
+               tokenPrice: realtProperty.tokenPrice,
+               amount: realtProperty.totalTokens, // amount from blockchain
                totalValue: totalValue, // amount * tokenPrice
-               type: property.propertyType,
-               constructionYear: property.constructionYear,
-               totalInvestment: property.totalInvestment, // total value
-               squareFeet : property.squareFeet, // interior sqft
+               type: realtProperty.propertyType,
+               constructionYear: realtProperty.constructionYear,
+               totalInvestment: realtProperty.totalInvestment, // total value
+               squareFeet : realtProperty.squareFeet, // interior sqft
                // fee
-               realtPlatform: property.realtPlatform, // realt Fee per Month
-               realtPlatformPercent: property.realtPlatformPercent, // % realT fee per Month
-               realtListingFee: property.realtListingFee, // RealT Listing Fee
-               realtListingFeePercent: property.realtListingFeePercent, // RealT Listing %
+               realtPlatform: realtProperty.realtPlatform, // realt Fee per Month
+               realtPlatformPercent: realtProperty.realtPlatformPercent, // % realT fee per Month
+               realtListingFee: realtProperty.realtListingFee, // RealT Listing Fee
+               realtListingFeePercent: realtProperty.realtListingFeePercent, // RealT Listing %
                // rent
-               netRentDayPerToken: property.netRentDayPerToken,  // netRentDayPerToken
-               netRentMonthPerToken: property.netRentMonthPerToken,  // netRentMonthPerToken
-               netRentYearPerToken: property.netRentYearPerToken,  // netRentYearPerToken
+               netRentDayPerToken: realtProperty.netRentDayPerToken,  // netRentDayPerToken
+               netRentMonthPerToken: realtProperty.netRentMonthPerToken,  // netRentMonthPerToken
+               netRentYearPerToken: realtProperty.netRentYearPerToken,  // netRentYearPerToken
                // unit
-               totalUnits: property.totalUnits,
-               rentedUnits: property.rentedUnits,
+               totalUnits: realtProperty.totalUnits,
+               rentedUnits: realtProperty.rentedUnits,
                // subsidy
-               subsidyBy:property.subsidyBy,
+               subsidyBy:realtProperty.subsidyBy,
                // composition token
-               underlyingAssetPrice: property.underlyingAssetPrice,
-               miscellaneousCosts: property.miscellaneousCosts,
-               renovationReserve: property.renovationReserve,
-               initialMaintenanceReserve: property.initialMaintenanceReserve,
+               underlyingAssetPrice: realtProperty.underlyingAssetPrice,
+               miscellaneousCosts: realtProperty.miscellaneousCosts,
+               renovationReserve: realtProperty.renovationReserve,
+               initialMaintenanceReserve: realtProperty.initialMaintenanceReserve,
                // monthly Costs
-               propertyManagement: property.propertyManagement,
-               propertyMaintenanceMonthly: property.propertyMaintenanceMonthly,
-               propertyTaxes: property.propertyTaxes,
-               insurance: property.insurance,
-               utilities: property.utilities,
+               propertyManagement: realtProperty.propertyManagement,
+               propertyMaintenanceMonthly: realtProperty.propertyMaintenanceMonthly,
+               propertyTaxes: realtProperty.propertyTaxes,
+               insurance: realtProperty.insurance,
+               utilities: realtProperty.utilities,
                // invest :
-               sellPropertyTo : property.sellPropertyTo
+               sellPropertyTo : realtProperty.sellPropertyTo
 
              };
            });
@@ -225,8 +226,6 @@ function App() {
 
         // Filter out properties with uuid set to 'N/A'
         const propertyInfoData = propertyInfoPromises.filter((property) => property && property.uuid !== 'N/A');
-
-        // TODO : filter to exclude "OLD-" in fullname
 
         setPropertyInfo(propertyInfoData);
       } catch (error) {

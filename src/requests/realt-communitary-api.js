@@ -3,13 +3,12 @@ import axios from 'axios';
 // docs : https://api.realt.community/
 
 const axiosInstance = axios.create({
-  baseURL: 'https://api.realt.community/v1',
-  // baseURL: 'https://api.preprod.realt.community/v1',
+  // baseURL: 'https://api.realt.community/v1',
+  baseURL: 'https://api.preprod.realt.community/v1',
   headers: {
     "Content-Type" : "application/json",
-    "X-AUTH-REALT-TOKEN" : "a515f19d41c6a766d9757c5a6807afc13fca309c2ffe49bf4f959c50bad08d7b" // https://myrealtstat.netlify.app
-    // "X-AUTH-REALT-TOKEN" : "d96a32592f1774f69c184efefe5afa1759f2ad1a81e827ac64b4a1d730aeaf7a" // dev api.preprod // run
-    //"X-AUTH-REALT-TOKEN" : "41cc071a26d0055b1b086efea6d42a41" // dev localhost https://api.realt.community/v1
+    // "X-AUTH-REALT-TOKEN" : "a515f19d41c6a766d9757c5a6807afc13fca309c2ffe49bf4f959c50bad08d7b" // https://myrealtstat.netlify.app
+    "X-AUTH-REALT-TOKEN" : "d96a32592f1774f69c184efefe5afa1759f2ad1a81e827ac64b4a1d730aeaf7a" // dev api.preprod // staging localhost
   },
 });
 
