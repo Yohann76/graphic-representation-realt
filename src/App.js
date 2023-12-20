@@ -109,7 +109,11 @@ function App() {
   // user wallet from input
   const handleSearchSubmit = async (event) => {
     event.preventDefault();
-    console.log('Recherche effectuée avec la valeur :', searchValue);
+    console.log('searc value :', searchValue);
+
+    if (searchValue === '') {
+      window.location.reload(); // fix for moment, TODO : load use effect for get realT data
+    }
 
     // if input have ethereum address
     try {
