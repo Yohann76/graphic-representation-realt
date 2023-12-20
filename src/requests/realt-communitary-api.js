@@ -17,7 +17,7 @@ export async function fetchPropertyInfo(propertyAddress) {
   try {
     const response = await axiosInstance.get(`/token/${propertyAddress}`);
     const responseData = response.data;
-    console.log('Réponse de l\'API :', responseData);
+    // console.log('Réponse de l\'API :', responseData);
     return responseData;
   } catch (error) {
     console.error(`Erreur lors de la récupération des informations pour la propriété ${propertyAddress}:`, error);
@@ -30,7 +30,7 @@ export async function fetchPropertyList() {
   try {
     const response = await axiosInstance.get(`/token`);
     const responseData = response.data;
-    console.log('Réponse de l\'API :', responseData);
+    // console.log('Réponse de l\'API :', responseData);
     return responseData;
   } catch (error) {
     console.error(`Erreur lors de la récupération des informations sur la liste des propriétés :`, error);

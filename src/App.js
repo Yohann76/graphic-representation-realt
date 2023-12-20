@@ -34,6 +34,7 @@ function App() {
   useEffect(() => {
      const fetchData = async () => {
        try {
+         console.log("fetch property list")
          const allPropertyData = await fetchPropertyList();
 
          if (allPropertyData && Array.isArray(allPropertyData)) {
@@ -103,6 +104,8 @@ function App() {
 
    }, []);
 
+
+
   // user wallet from input
   const handleSearchSubmit = async (event) => {
     event.preventDefault();
@@ -112,14 +115,11 @@ function App() {
     try {
       // if have address in input
       console.log(searchValue);
+
       const xdaiData = await fetchGraphQLData(searchValue);
       console.log(xdaiData);
-
-      console.log(searchValue);
       const ethData = await fetchETHGraphQLData(searchValue);
       console.log(ethData);
-
-      console.log(searchValue);
       const rmmData = await fetchRMMGraphQLData(searchValue);
       console.log(rmmData);
 
@@ -130,113 +130,98 @@ function App() {
       if (xdaiData.data && xdaiData.data.accounts && xdaiData.data.accounts[0] && xdaiData.data.accounts[0].balances) {
         xdaiPropertyAddresses = xdaiData.data.accounts[0].balances.map((balance) => balance.token.address);
       }
-
       if (ethData.data && ethData.data.accounts && ethData.data.accounts[0] && ethData.data.accounts[0].balances) {
         ethPropertyAddresses = ethData.data.accounts[0].balances.map((balance) => balance.token.address);
       }
-
       if (rmmData.data && rmmData.data.users && rmmData.data.users[0] && rmmData.data.users[0].reserves) {
         rmmPropertyAddresses = rmmData.data.users[0].reserves.map((reserve) => reserve.reserve.underlyingAsset);
       }
-
       const combinedPropertyAddresses = [...xdaiPropertyAddresses, ...ethPropertyAddresses, ...rmmPropertyAddresses];
-      const propertyInfoPromises = [];
 
-      // TODO : fix MAX_CONCURRENT_REQUESTS with all https://dashboard.realt.community/api/properties data
-      const MAX_CONCURRENT_REQUESTS = 3; // limit 3 concurent request for CORS bug from localhost
+      const allProperties = await fetchPropertyList(); // get all property for compare with combinedPropertyAddresses
 
-      for (let i = 0; i < combinedPropertyAddresses.length; i += MAX_CONCURRENT_REQUESTS) {
-        const batch = combinedPropertyAddresses.slice(i, i + MAX_CONCURRENT_REQUESTS);
+      let filteredProperties = allProperties.filter(property =>
+          combinedPropertyAddresses.includes(property.uuid.toLowerCase())
+      );
 
-        const batchPromises = batch.map(async (address) => {
-          const propertyData = await fetchPropertyInfo(address);
-          let amount = null;
+      const calculatePropertyDetails = (property) => {
 
-            if (propertyData) { // Check if propertyData is defined
-              if (rmmPropertyAddresses.includes(address)) {
-                const rmmReserve = rmmData.data.users[0].reserves.find((reserve) => reserve.reserve.underlyingAsset === address);
-                if (rmmReserve) {
-                  amount = parseFloat(rmmReserve.currentATokenBalance) / Math.pow(10, 18);
-                  amount = amount.toFixed(2);
-                }
-              } else if (xdaiPropertyAddresses.includes(address) || ethPropertyAddresses.includes(address)) {
-                const balanceData = xdaiData.data.accounts[0].balances.find((balance) => balance.token.address === address) ||
-                                    ethData.data.accounts[0].balances.find((balance) => balance.token.address === address);
+        let amount = null;
+        const address = property.uuid.toLowerCase();
 
-                if (balanceData) {
-                  amount = parseFloat(balanceData.amount);
-                }
-              }
-
-              if (amount !== null) { // Check if amount is not null
-                propertyData.amount = amount;
-
-                // If uuid is not available, use a placeholder value (e.g., 'N/A')
-                const uuid = propertyData.uuid || 'N/A';
-                const totalValue = (parseFloat(propertyData.tokenPrice) * parseFloat(propertyData.amount)).toFixed(2);
-
-                return {
-                  uuid: uuid,
-                  marketplaceLink: propertyData.marketplaceLink,
-                  fullName: propertyData.fullName,
-                  currency: propertyData.currency,
-                  tokenPrice: propertyData.tokenPrice,
-                  amount: propertyData.amount, // amount from blockchain
-                  totalValue: totalValue, // amount * tokenPrice
-                  type: propertyData.propertyType,
-                  constructionYear: propertyData.constructionYear,
-                  totalInvestment: propertyData.totalInvestment, // total value
-                  squareFeet : propertyData.squareFeet, // interior sqft
-                  // fee
-                  realtPlatform: propertyData.realtPlatform, // realt Fee per Month
-                  realtPlatformPercent: propertyData.realtPlatformPercent, // % realT fee per Month
-                  realtListingFee: propertyData.realtListingFee, // RealT Listing Fee
-                  realtListingFeePercent:propertyData.realtListingFeePercent,  // RealT Listing %
-                  // rent
-                  netRentDayPerToken: propertyData.netRentDayPerToken,  // totalNetRentDay
-                  netRentMonthPerToken: propertyData.netRentMonthPerToken,  // totalNetRentMonth
-                  netRentYearPerToken: propertyData.netRentYearPerToken,  // totalNetRentYear
-                  // unit
-                  totalUnits: propertyData.totalUnits,
-                  rentedUnits: propertyData.rentedUnits,
-                  // subsidy
-                  subsidyBy:propertyData.subsidyBy,
-                  // composition token
-                  underlyingAssetPrice: propertyData.underlyingAssetPrice,
-                  miscellaneousCosts: propertyData.miscellaneousCosts,
-                  renovationReserve: propertyData.renovationReserve,
-                  initialMaintenanceReserve: propertyData.initialMaintenanceReserve,
-                  // monthly Costs
-                  propertyManagement: propertyData.propertyManagement,
-                  propertyMaintenanceMonthly: propertyData.propertyMaintenanceMonthly,
-                  propertyTaxes: propertyData.propertyTaxes,
-                  insurance: propertyData.insurance,
-                  utilities: propertyData.utilities,
-                  // invest :
-                  sellPropertyTo : propertyData.sellPropertyTo
-                };
-              }
+        if (rmmPropertyAddresses.includes(address)) {
+            const rmmReserve = rmmData.data.users[0].reserves.find(reserve => reserve.reserve.underlyingAsset === address);
+            if (rmmReserve) {
+                amount = parseFloat(rmmReserve.currentATokenBalance) / Math.pow(10, 18);
             }
-            return null; // Exclude this property if any condition above is not met
-          });
-
-          const batchResults = await Promise.all(batchPromises);
-          propertyInfoPromises.push(...batchResults);
+        } else if (xdaiPropertyAddresses.includes(address) || ethPropertyAddresses.includes(address)) {
+            const balanceData = xdaiData.data.accounts[0].balances.find(balance => balance.token.address === address) ||
+                                ethData.data.accounts[0].balances.find(balance => balance.token.address === address);
+            if (balanceData) {
+                amount = parseFloat(balanceData.amount);
+            }
         }
+        if (amount !== null) {
+            const uuid = property.uuid || 'N/A';
+            const totalValue = (parseFloat(property.tokenPrice) * amount).toFixed(2);
+            return {
+               uuid: uuid,
+               marketplaceLink: property.marketplaceLink,
+               fullName: property.fullName,
+               currency: property.currency,
+               tokenPrice: property.tokenPrice,
+               amount: amount, // amount from blockchain
+               totalValue: totalValue, // amount * tokenPrice
+               type: property.propertyType,
+               constructionYear: property.constructionYear,
+               totalInvestment: property.totalInvestment, // total value
+               squareFeet : property.squareFeet, // interior sqft
+               // fee
+               realtPlatform: property.realtPlatform, // realt Fee per Month
+               realtPlatformPercent: property.realtPlatformPercent, // % realT fee per Month
+               realtListingFee: property.realtListingFee, // RealT Listing Fee
+               realtListingFeePercent:property.realtListingFeePercent,  // RealT Listing %
+               // rent
+               netRentDayPerToken: property.netRentDayPerToken,  // totalNetRentDay
+               netRentMonthPerToken: property.netRentMonthPerToken,  // totalNetRentMonth
+               netRentYearPerToken: property.netRentYearPerToken,  // totalNetRentYear
+               // unit
+               totalUnits: property.totalUnits,
+               rentedUnits: property.rentedUnits,
+               // subsidy
+               subsidyBy:property.subsidyBy,
+               // composition token
+               underlyingAssetPrice: property.underlyingAssetPrice,
+               miscellaneousCosts: property.miscellaneousCosts,
+               renovationReserve: property.renovationReserve,
+               initialMaintenanceReserve: property.initialMaintenanceReserve,
+               // monthly Costs
+               propertyManagement: property.propertyManagement,
+               propertyMaintenanceMonthly: property.propertyMaintenanceMonthly,
+               propertyTaxes: property.propertyTaxes,
+               insurance: property.insurance,
+               utilities: property.utilities,
+               // invest :
+               sellPropertyTo : property.sellPropertyTo
+            };
+          }
+      };
 
-        // Filter out properties with uuid set to 'N/A'
-        const propertyInfoData = propertyInfoPromises.filter((property) => property && property.uuid !== 'N/A');
+      filteredProperties = filteredProperties
+        .map(property => calculatePropertyDetails(property))
+        .filter(property => property && property.uuid !== 'N/A');
 
-        setPropertyInfo(propertyInfoData);
-      } catch (error) {
-        console.error('Erreur lors de la recherche :', error);
-        setPropertyInfo([]);
-      }
-    };
+      setPropertyInfo(filteredProperties);
+
+    } catch (error) {
+      console.error('Erreur lors de la recherche :', error);
+      setPropertyInfo([]);
+
+    } // end try/catch
+  }; // end app function
 
   return (
     <div className="App">
-
     <header>
         <nav>
             <div class="logo">MyRealTStat</div>
@@ -268,7 +253,6 @@ function App() {
       </div>
 
       {propertyInfo && <PropertyInfo propertyInfo={propertyInfo} />}
-
     </div>
   );
 }
