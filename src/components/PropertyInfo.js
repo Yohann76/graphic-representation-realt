@@ -45,7 +45,11 @@ function PropertyInfo({ propertyInfo }) {
           {propertyInfo.map((property, index) => (
             <tr>
               <td>{property.fullName}</td>
-              <td>{property.uuid}</td>
+              <td>    
+                <a href={`https://gnosis.blockscout.com/token/${property.uuid}`} target="_blank">
+                    {property.uuid}
+                </a>
+              </td>
               <td>{property.tokenPrice} $</td>
               <td>{property.rentedUnits}/{property.totalUnits} ({property.percentageRentedUnits}%)</td>
               <td>{property.amount}</td>

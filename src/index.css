@@ -186,3 +186,9 @@ tbody td {
   padding: 10px;
   border-top: 0.0625rem solid rgb(55, 58, 64);
 }
+
+tbody td a {
+  color : #ED8510;
+  text-decoration: none;
+  font-weight: bold;
+}
