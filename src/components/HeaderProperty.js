@@ -1,9 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { formatNumberWithSpaces, formatNumberWithSpacesAndWithoutvirgul } from '../utils/numberUtils';
+import { fetchPropertyList } from '../requests/realt-communitary-api';
 
 function HeaderProperty({ properties }) {
+  const [totalNumberOfProperty, setTotalNumberOfProperty] = useState(0);
+
+  async function loadPropertyDataRealT() {
+    const allPropertyData = await fetchPropertyList();
+
+    const filteredPropertyData = allPropertyData
+      .filter(realtProperty => !realtProperty.fullName.includes('OLD-'))
+      .filter(realtProperty => !realtProperty.sellPropertyTo.includes('us_investors_only'));
+
+    setTotalNumberOfProperty(filteredPropertyData.length);
+  }
+
+  useEffect(() => {
+    loadPropertyDataRealT();
+  }, []);
 
   let numberOfProperties = 0;
+
   let totalTokenValue = 0;
   let totalConstructionYears = 0;
   let numberOfPropertiesWithConstructionYear = 0
@@ -49,11 +66,11 @@ function HeaderProperty({ properties }) {
     }
 
     if (property.realtPlatformPercent) {
-      platformPercentTotal += parseFloat(property.realtPlatformPercent);
+        platformPercentTotal += parseFloat(property.realtPlatformPercent) * 100;
     }
 
     if (property.realtListingFeePercent) {
-      listingFeePercentTotal += parseFloat(property.realtListingFeePercent);
+        listingFeePercentTotal += parseFloat(property.realtListingFeePercent) * 100;
     }
     // rent
     if (property.netRentDayPerToken) {
@@ -102,7 +119,7 @@ function HeaderProperty({ properties }) {
       <div class="flex">
         <div class="content-flex">
           <p class="title">Various :</p>
-          <p>Number of properties : {formatNumberWithSpacesAndWithoutvirgul(numberOfProperties)}</p>
+          <p>Number of properties : {formatNumberWithSpacesAndWithoutvirgul(numberOfProperties)}/{formatNumberWithSpacesAndWithoutvirgul(totalNumberOfProperty)}</p>
           <p>Average age of portfolio construction : {formatNumberWithSpacesAndWithoutvirgul(roundedAverageConstructionYear)} ans</p>
           <p>Total value of tokens : {formatNumberWithSpacesAndWithoutvirgul(totalTokenValue)} $</p>
           <p>Rented Units {totalRentedUnits} / {totalUnits} ({percentageRentedUnits} %)</p>
@@ -119,6 +136,7 @@ function HeaderProperty({ properties }) {
           <p>Daily rents : {formatNumberWithSpaces(totalNetRentDay)} $</p>
           <p>Monthly rents : {formatNumberWithSpaces(totalNetRentMonth)} $</p>
           <p>Annual rent {formatNumberWithSpaces(totalNetRentYear)} $</p>
+          <p>-</p>
           <p>Daily rents (with rent start date) : </p>
           <p>Monthly rents (with rent start date) : </p>
           <p>Annual rent (with rent start date) </p>

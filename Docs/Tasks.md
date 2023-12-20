@@ -16,8 +16,6 @@
 - If input is empty, run useEffect for load data when website is load
 - Loader component when wait response api and calculate all data for each property (async response?)
 
-- edit app.js dor difference propertyRealT and propertyWallet, we must have two data for comparate models (ex: myproperty/allproperty%))
-
 ## Header (link dashboard):
 - Number city  (use state ..? )
 - Number country (use state ..? )
