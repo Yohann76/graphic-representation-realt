@@ -108,7 +108,7 @@ function UnitsPropertyChart({ properties }) {
        <div key={label}>
          <span className="legend-color-dot" style={dotStyle}></span>
          <span className="legend-label" style={textStyle}>
-           {`${label}: ${percentage}%`}
+           {label}
          </span>
        </div>
      );

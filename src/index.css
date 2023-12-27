@@ -73,23 +73,18 @@ button:hover {
   padding-bottom: 25px;
 }
 
+.container-graph > div {
+  flex-basis: calc(100% - 10px);
+  margin: 5px;
+}
+
+/* one graph component */
+
 .section {
   border-radius: 0.5rem;
   background-color: #25262B;
   color : #C1C2C5;
   margin: 20px;
-
-}
-
-.graph {
-overflow: auto;
-  margin-top: 25px;
-  margin-bottom: 25px;
-}
-
-.container-graph > div {
-  flex-basis: calc(100% - 10px);
-  margin: 5px;
 }
 
 .component-graph {
@@ -107,7 +102,11 @@ overflow: auto;
   margin: 15px;
 }
 
-/* new graph */
+.graph {
+overflow: auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
 
 .graph-and-legend {
   display: flex;
@@ -116,6 +115,8 @@ overflow: auto;
   justify-content: center;
 }
 
+/* no scrool */
+/*
 .legend {
   max-height: 200px;
   overflow-y: auto;
@@ -123,6 +124,38 @@ overflow: auto;
   column-gap: 20px;
   text-align: left;
 }
+*/
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  max-height: 200px;
+  overflow-y: auto;
+  column-count: 2;
+  column-gap: 20px;
+  text-align: left;
+  width: 65%;
+}
+
+/* overflow scroll design  */
+.legend::-webkit-scrollbar {
+  width: 12px;
+}
+
+.legend::-webkit-scrollbar-track {
+  background: #1A1B1E;
+}
+
+.legend::-webkit-scrollbar-thumb {
+  background-color: #ED8510;
+  border-radius: 6px;
+}
+
+.legend::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+/* end one graph component */
 
 /* header Info Container */
 .header-info-container {
