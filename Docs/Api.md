@@ -15,7 +15,6 @@ the database must be able to self-fill with the community api, my api would be a
 ## Database and Data
 
 ### Property
-
 - uuid (token)
 - name (token)
 - active
@@ -40,18 +39,13 @@ the database must be able to self-fill with the community api, my api would be a
 - RentedUnits
 - RentedUnitsPercent
 
-
-
-
 - SquareMeterPrice
 - DoorPrice
 
 ## endpoint
-
 - GET /v1/uuid (authorize all person)
 - PUT /v1/uuid (just me with token)
 - DELETE /v1/uuid (just me with token)
 
-
-- GET /v1/uuid/city
-- GET /v1/uuid/city
+- GET /v1/city (get all data city)
+- GET /v1/Neighborhood (get all data Neighborhood)

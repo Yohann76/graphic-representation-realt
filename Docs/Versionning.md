@@ -33,8 +33,6 @@ Need for V3 :
 - CSV revaluation
 - CSV retribution (or from blockchain)
 
-
-
 ## V4 :
 - V4.1 : add graph return distribution per week, and previzualise
 - V4.2 : add gain % (include start price, rent, evaluation..) for each row in property info
