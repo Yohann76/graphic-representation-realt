@@ -3,8 +3,6 @@
 ## Graphics :
 - manage different currency for each graphic (convert each monney in $ for have correct proportion in %)
 
-- Check that the data is correct in relation to the portfolio in $ and not in relation to the number of houses.
-
 - Set a general button for all graphs to "show realT data".
   for example in the legend  
   Birmingham: 0.98% would be replaced by :
@@ -13,6 +11,11 @@
 ## PropertyInfo Table :
 - Can sort each table column
 - Total yield in % (Total Value Actual / TT rent per Years) (purchase price and actualValue)
+
+- on PropertyName : add hover animation for display many link (open in a new tab)
+  - see details on MyRealTStat (future)
+  - see on realT
+  - see on googleMaps
 
 ## Other :
 - Add analyctics link for calculate trafic
