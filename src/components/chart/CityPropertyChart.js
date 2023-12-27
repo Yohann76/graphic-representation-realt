@@ -83,7 +83,7 @@ function PropertyPercentage({ properties }) {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        display: true,
+        display: false,
         position: 'right',
         labels: {
           generateLabels: function (chart) {
@@ -111,11 +111,36 @@ function PropertyPercentage({ properties }) {
     },
   };
 
+  const legendItems = labels.map((city, index) => {
+    const backgroundColor = chartData.datasets[0].backgroundColor[index];
+    const percentage = data[index];
+
+    const dotStyle = {
+      backgroundColor: backgroundColor,
+    };
+
+    const textStyle = {
+      color: backgroundColor,
+    };
+
+    return (
+      <div key={city}>
+        <span className="legend-color-dot" style={dotStyle}></span>
+        <span className="legend-label" style={textStyle}>
+          {`${city}: ${percentage}%`}
+        </span>
+      </div>
+    );
+  });
+
   return (
     <div className="component-graph section">
-    <h2>Breakdown of portfolio value by city</h2>
-      <div class="graph">
-        <Pie data={chartData} options={chartOptions} />
+      <h2>Breakdown of portfolio value by city</h2>
+      <div className="graph-and-legend">
+        <div class="graph">
+          <Pie data={chartData} options={chartOptions} />
+        </div>
+        <div className="legend">{legendItems}</div>
       </div>
     </div>
   );
