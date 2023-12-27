@@ -121,6 +121,7 @@ overflow: auto;
   overflow-y: auto;
   column-count: 2;
   column-gap: 20px;
+  text-align: left;
 }
 
 /* header Info Container */

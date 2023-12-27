@@ -16,10 +16,13 @@ function UnitsPropertyChart({ properties }) {
 
   const percentageRentedUnits = totalUnits > 0 ? ((totalRentedUnits / totalUnits) * 100).toFixed(2) : 0;
 
+  const rentedUnitsPercentage = parseFloat(percentageRentedUnits);
+  const notRentedUnitsPercentage = parseFloat(100 - percentageRentedUnits);
+
   const chartData = {
     labels: [
-      `Rented units: ${percentageRentedUnits}%`,
-      `Not rented units: ${(100 - percentageRentedUnits).toFixed(2)}%`,
+      `Rented units: ${isNaN(rentedUnitsPercentage) ? 0 : rentedUnitsPercentage.toFixed(2)}%`,
+      `Not rented units: ${isNaN(notRentedUnitsPercentage) ? 0 : notRentedUnitsPercentage.toFixed(2)}%`,
     ],
     datasets: [
       {
@@ -50,7 +53,7 @@ function UnitsPropertyChart({ properties }) {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        display: true,
+        display: false,
         position: 'right',
         labels: {
           generateLabels: function (chart) {
@@ -78,11 +81,36 @@ function UnitsPropertyChart({ properties }) {
     },
   };
 
+  const legendItems = chartData.labels.map((label, index) => {
+    const backgroundColor = chartData.datasets[0].backgroundColor[index];
+    const percentage = [percentageRentedUnits, 100 - percentageRentedUnits][index];
+
+    const dotStyle = {
+      backgroundColor: backgroundColor,
+    };
+
+    const textStyle = {
+      color: backgroundColor,
+    };
+
+    return (
+      <div key={label}>
+        <span className="legend-color-dot" style={dotStyle}></span>
+        <span className="legend-label" style={textStyle}>
+          {`${label}: ${percentage}%`}
+        </span>
+      </div>
+    );
+  });
+
   return (
     <div className="component-graph section">
       <h2>Breakdown of portfolio value by location</h2>
-      <div className="graph">
-        <Pie data={chartData} options={chartOptions} />
+      <div className="graph-and-legend">
+        <div class="graph">
+          <Pie data={chartData} options={chartOptions} />
+        </div>
+        <div className="legend">{legendItems}</div>
       </div>
     </div>
   );

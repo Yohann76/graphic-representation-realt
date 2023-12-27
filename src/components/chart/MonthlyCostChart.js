@@ -45,7 +45,7 @@ function MonthlyCostChart({ properties }) {
   const labels = [
     'Property Management',
     'Realt Platform',
-    'Property MaintenanceMonthly',
+    'Maintenance Monthly',
     'Property Taxes',
     'Insurance',
     'Utilities',
@@ -82,7 +82,7 @@ function MonthlyCostChart({ properties }) {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        display: true,
+        display: false,
         position: 'right',
         labels: {
           generateLabels: function (chart) {
@@ -111,11 +111,37 @@ function MonthlyCostChart({ properties }) {
     },
   };
 
+  const legendItems = labels.map((label, index) => {
+    const backgroundColor = chartData.datasets[0].backgroundColor[index];
+    const percentage = percentages[index];
+
+    const dotStyle = {
+      backgroundColor: backgroundColor,
+    };
+
+    const textStyle = {
+      color: backgroundColor,
+    };
+
+    return (
+      <div key={label}>
+        <span className="legend-color-dot" style={dotStyle}></span>
+        <span className="legend-label" style={textStyle}>
+          {`${label}: ${percentage.toFixed(2)}%`}
+        </span>
+      </div>
+    );
+  });
+
+
   return (
     <div className="component-graph section">
       <h2>Breakdown of rental charges (gross)</h2>
-      <div className="graph">
-        <Pie data={chartData} options={chartOptions} />
+      <div className="graph-and-legend">
+        <div class="graph">
+          <Pie data={chartData} options={chartOptions} />
+        </div>
+        <div className="legend">{legendItems}</div>
       </div>
     </div>
   );

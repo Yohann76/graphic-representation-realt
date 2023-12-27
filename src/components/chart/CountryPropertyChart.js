@@ -142,7 +142,7 @@ function CountryPropertyChart({ properties }) {
       maintainAspectRatio: false,
       plugins: {
         legend: {
-          display: true,
+          display: false,
           position: 'right',
           labels: {
             generateLabels: function (chart) {
@@ -170,12 +170,37 @@ function CountryPropertyChart({ properties }) {
       },
     };
 
+    const legendItems = countryLabels.map((city, index) => {
+      const backgroundColor = chartDataCountry.datasets[0].backgroundColor[index];
+      const percentage = countryData[index];
+
+      const dotStyle = {
+        backgroundColor: backgroundColor,
+      };
+
+      const textStyle = {
+        color: backgroundColor,
+      };
+
+      return (
+        <div key={city}>
+          <span className="legend-color-dot" style={dotStyle}></span>
+          <span className="legend-label" style={textStyle}>
+            {`${city}: ${percentage}%`}
+          </span>
+        </div>
+      );
+    });
+
   return (
     <div className="component-graph section">
-    <h2>Breakdown of portfolio value by country</h2>
-    <div className="graph">
-      <Pie data={chartDataCountry} options={chartOptions} />
-    </div>
+      <h2>Breakdown of portfolio value by country</h2>
+      <div className="graph-and-legend">
+        <div class="graph">
+          <Pie data={chartDataCountry} options={chartOptions} />
+        </div>
+        <div className="legend">{legendItems}</div>
+      </div>
     </div>
   );
 }
