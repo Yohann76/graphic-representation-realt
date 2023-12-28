@@ -1,0 +1,10 @@
+{
+  "various": "Various",
+  "PropertyInformation": "Information about your properties",
+  "Numberofproperties": "Number of properties",
+  "AverageAgeOfPortfolioConstruction": "Average age of portfolio construction",
+  "TotalValueOfTokens": "Total value of tokens",
+  "RentedUnits": "Rented Units",
+  "TotalRealTRentCharges": "monthly realT charges on portfolio rents",
+  "TotalRealTListingCosts": "realT fees on your portfolio listings"
+}

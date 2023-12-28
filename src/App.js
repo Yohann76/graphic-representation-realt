@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useTranslation } from "react-i18next";
 import i18n from "../src/utils/i18n.js";
 
+
 import logo from './logo.svg';
 import './App.css';
 
@@ -251,7 +252,6 @@ function App() {
               <option value="en">English</option>
               <option value="fr">Français</option>
             </select>
-
         </nav>
     </header>
 

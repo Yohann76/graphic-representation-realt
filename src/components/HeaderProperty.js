@@ -121,22 +121,22 @@ function HeaderProperty({ properties }) {
   return (
     <div className="header-info-container section">
 
-      <h2>Property information :</h2>
+      <h2>{t("PropertyInformation")} :</h2>
       <div class="flex">
         <div class="content-flex">
           <p class="title">
           {t("various")} :
           </p>
-          <p>Number of properties : {formatNumberWithSpacesAndWithoutvirgul(numberOfProperties)}/{formatNumberWithSpacesAndWithoutvirgul(totalNumberOfProperty)}</p>
-          <p>Average age of portfolio construction : {formatNumberWithSpacesAndWithoutvirgul(roundedAverageConstructionYear)} ans</p>
-          <p>Total value of tokens : {formatNumberWithSpacesAndWithoutvirgul(totalTokenValue)} $</p>
-          <p>Rented Units {totalRentedUnits} / {totalUnits} ({percentageRentedUnits} %)</p>
+          <p>{t("Numberofproperties")} : {formatNumberWithSpacesAndWithoutvirgul(numberOfProperties)}/{formatNumberWithSpacesAndWithoutvirgul(totalNumberOfProperty)}</p>
+          <p>{t("AverageAgeOfPortfolioConstruction")} : {formatNumberWithSpacesAndWithoutvirgul(roundedAverageConstructionYear)} ans</p>
+          <p>{t("TotalValueOfTokens")} : {formatNumberWithSpacesAndWithoutvirgul(totalTokenValue)} $</p>
+          <p>{t("RentedUnits")} {totalRentedUnits} / {totalUnits} ({percentageRentedUnits} %)</p>
         </div>
 
         <div class="content-flex">
           <p class="title">Fees :</p>
-          <p>Total RealT rent charges : {formatNumberWithSpacesAndWithoutvirgul(feePerMonthTotal)} $ ({averagePlatformPercent}%)</p>
-          <p>Total RealT listing costs : {formatNumberWithSpacesAndWithoutvirgul(listingFeeTotal)} $ ({averageListingFeePercent}%)</p>
+          <p>{t("TotalRealTRentCharges")} : {formatNumberWithSpacesAndWithoutvirgul(feePerMonthTotal)} $ ({averagePlatformPercent}%)</p>
+          <p>{t("TotalRealTListingCosts")} : {formatNumberWithSpacesAndWithoutvirgul(listingFeeTotal)} $ ({averageListingFeePercent}%)</p>
         </div>
 
         <div class="content-flex">

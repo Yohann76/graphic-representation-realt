@@ -10,14 +10,12 @@ i18n
     resources: {
       en: {
         translation: {
-          greeting: "Hello, World!",
-          various: "Various",
+          ...require('../i18next/locales/en/translation.json')
         },
       },
       fr: {
         translation: {
-          greeting: "Bonjour, le monde !",
-          various: "Divers",
+          ...require('../i18next/locales/fr/translation.json')
         },
       },
     },
