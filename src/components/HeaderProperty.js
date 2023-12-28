@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
+
+import { useTranslation } from "react-i18next";
+
 import { formatNumberWithSpaces, formatNumberWithSpacesAndWithoutvirgul } from '../utils/numberUtils';
 import { fetchPropertyList } from '../requests/realt-communitary-api';
 
 function HeaderProperty({ properties }) {
+
   const [totalNumberOfProperty, setTotalNumberOfProperty] = useState(0);
 
   async function loadPropertyDataRealT() {
@@ -112,13 +116,17 @@ function HeaderProperty({ properties }) {
       // round averageConstructionYear
   const roundedAverageConstructionYear = Math.round(averageConstructionYear);
 
+  const { t } = useTranslation();
+
   return (
     <div className="header-info-container section">
 
       <h2>Property information :</h2>
       <div class="flex">
         <div class="content-flex">
-          <p class="title">Various :</p>
+          <p class="title">
+          {t("various")} :
+          </p>
           <p>Number of properties : {formatNumberWithSpacesAndWithoutvirgul(numberOfProperties)}/{formatNumberWithSpacesAndWithoutvirgul(totalNumberOfProperty)}</p>
           <p>Average age of portfolio construction : {formatNumberWithSpacesAndWithoutvirgul(roundedAverageConstructionYear)} ans</p>
           <p>Total value of tokens : {formatNumberWithSpacesAndWithoutvirgul(totalTokenValue)} $</p>

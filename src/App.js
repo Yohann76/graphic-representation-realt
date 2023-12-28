@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from 'react';
 
+import { useTranslation } from "react-i18next";
+import i18n from "../src/utils/i18n.js";
+
 import logo from './logo.svg';
 import './App.css';
 
@@ -29,6 +32,8 @@ function App() {
   const [searchValue, setSearchValue] = useState('');
   const [searchResults, setSearchResults] = useState(null);
   const [propertyInfo, setPropertyInfo] = useState(null);
+
+  const { i18n, t } = useTranslation();
 
   // realT wallet
   useEffect(() => {
@@ -238,6 +243,15 @@ function App() {
               />
               <button type="submit">Rechercher</button>
             </form>
+
+            <select
+              value={i18n.language}
+              onChange={(e) => i18n.changeLanguage(e.target.value)}
+            >
+              <option value="en">English</option>
+              <option value="fr">Français</option>
+            </select>
+
         </nav>
     </header>
 
