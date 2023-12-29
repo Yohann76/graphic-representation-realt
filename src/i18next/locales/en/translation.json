@@ -24,5 +24,17 @@
     "PricePerDoor": "Price per door",
     "PricePerSqft": "Price per sqft",
     "TotalValue": "Total Value"
+  },
+  "CityPropertyChart": {
+    "BreakdownOfPortfolioValueByCity": "Breakdown of portfolio value by city"
+  },
+  "StatePropertyChart": {
+    "BreakdownOfPortfolioValueByState": "Breakdown of portfolio value by state"
+  },
+  "CountryPropertyChart": {
+    "BreakdownOfPortfolioValueByCountry": "Breakdown of portfolio value by country"
+  },
+  "TypePropertyChart": {
+    "BreakdownOfPortfolioValueByType": "Breakdown of portfolio value by type"
   }
 }

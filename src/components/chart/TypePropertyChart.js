@@ -2,6 +2,8 @@ import React from 'react';
 import { Pie } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 
+import { useTranslation } from "react-i18next";
+
 function TypePropertyChart({ properties }) {
 
   // for detect number type
@@ -128,9 +130,11 @@ function TypePropertyChart({ properties }) {
     );
   });
 
+  const { t } = useTranslation();
+
   return (
     <div className="component-graph section">
-      <h2>Breakdown of portfolio value by type</h2>
+      <h2>{t("TypePropertyChart.BreakdownOfPortfolioValueByType")}</h2>
       <div className="graph-and-legend">
         <div class="graph">
           <Pie data={chartData} options={chartOptions} />

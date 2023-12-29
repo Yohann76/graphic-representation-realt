@@ -24,5 +24,17 @@
     "PricePerDoor": "Prix par porte",
     "PricePerSqft": "Prix par pied carré",
     "TotalValue": "Valeur totale"
+  },
+  "CityPropertyChart": {
+    "BreakdownOfPortfolioValueByCity": "Répartition de la valeur du portefeuille par ville"
+  },
+  "StatePropertyChart": {
+    "BreakdownOfPortfolioValueByState": "Répartition de la valeur du portefeuille par État d'Amérique"
+  },
+  "CountryPropertyChart": {
+    "BreakdownOfPortfolioValueByCountry": "Répartition de la valeur du portefeuille par pays"
+  },
+  "TypePropertyChart": {
+    "BreakdownOfPortfolioValueByType": "Répartition de la valeur du portefeuille par type d'immobilier"
   }
 }

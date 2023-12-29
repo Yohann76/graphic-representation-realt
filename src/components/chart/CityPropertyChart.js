@@ -2,6 +2,8 @@ import React from 'react';
 import { Pie } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 
+import { useTranslation } from "react-i18next";
+
 /*
 This component calculates the % of the city in the portfolio
 For the moment, cities must be in the constant for this to work. In the future, I'll need to create a function to automatically search by property address.
@@ -133,9 +135,11 @@ function PropertyPercentage({ properties }) {
     );
   });
 
+  const { t } = useTranslation();
+
   return (
     <div className="component-graph section">
-      <h2>Breakdown of portfolio value by city</h2>
+      <h2>{t("CityPropertyChart.BreakdownOfPortfolioValueByCity")}</h2>
       <div className="graph-and-legend">
         <div class="graph">
           <Pie data={chartData} options={chartOptions} />

@@ -2,6 +2,8 @@ import React from 'react';
 import { Pie } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 
+import { useTranslation } from "react-i18next";
+
 function CountryPropertyChart({ properties }) {
 
   const countryNames = ['France', 'Panama', 'Canada','Espagne', 'Angleterre', 'Argentine', 'Allemagne'];
@@ -192,9 +194,11 @@ function CountryPropertyChart({ properties }) {
       );
     });
 
+  const { t } = useTranslation();
+
   return (
     <div className="component-graph section">
-      <h2>Breakdown of portfolio value by country</h2>
+      <h2>{t("CountryPropertyChart.BreakdownOfPortfolioValueByCountry")}</h2>
       <div className="graph-and-legend">
         <div class="graph">
           <Pie data={chartDataCountry} options={chartOptions} />
