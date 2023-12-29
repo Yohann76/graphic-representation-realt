@@ -1,6 +1,8 @@
 import React from 'react';
 import { formatNumberWithSpaces, formatNumberWithSpacesAndWithoutvirgul } from '../utils/numberUtils';
 
+import { useTranslation } from "react-i18next";
+
 function PropertyInfo({ propertyInfo }) {
 
   propertyInfo.forEach((property) => {
@@ -25,27 +27,28 @@ function PropertyInfo({ propertyInfo }) {
     }
   });
 
+  const { t } = useTranslation();
   return (
     <div className="property-info-container section">
       <h2 class="title-property-info">Property information :</h2>
       <table>
         <thead>
           <tr>
-            <th>Property name</th>
-            <th>Contract address</th>
-            <th>Token price</th>
-            <th>Rented Units</th>
-            <th>Number of tokens</th>
-            <th>Price per door</th>
-            <th>Price per sqft</th>
-            <th>Total Value</th>
+            <th>{t("propertyInfo.PropertyName")}</th>
+            <th>{t("propertyInfo.ContractAddress")}</th>
+            <th>{t("propertyInfo.TokenPrice")}</th>
+            <th>{t("propertyInfo.RentedUnits")}</th>
+            <th>{t("propertyInfo.NumberOfTokens")}</th>
+            <th>{t("propertyInfo.PricePerDoor")}</th>
+            <th>{t("propertyInfo.PricePerSqft")}</th>
+            <th>{t("propertyInfo.TotalValue")}</th>
           </tr>
         </thead>
         <tbody>
           {propertyInfo.map((property, index) => (
             <tr>
               <td>{property.fullName}</td>
-              <td>    
+              <td>
                 <a href={`https://gnosis.blockscout.com/token/${property.uuid}`} target="_blank">
                     {property.uuid}
                 </a>

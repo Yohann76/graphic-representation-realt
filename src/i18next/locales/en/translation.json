@@ -1,10 +1,28 @@
 {
-  "various": "Various",
-  "PropertyInformation": "Information about your properties",
-  "Numberofproperties": "Number of properties",
-  "AverageAgeOfPortfolioConstruction": "Average age of portfolio construction",
-  "TotalValueOfTokens": "Total value of tokens",
-  "RentedUnits": "Rented Units",
-  "TotalRealTRentCharges": "monthly realT charges on portfolio rents",
-  "TotalRealTListingCosts": "realT fees on your portfolio listings"
+  "header": {
+    "Various": "Various",
+    "PropertyInformation": "Information about your properties",
+    "Numberofproperties": "Number of properties",
+    "AverageAgeOfPortfolioConstruction": "Average age of portfolio construction",
+    "TotalValueOfTokens": "Total value of tokens",
+    "RentedUnits": "Rented Units",
+    "TotalRealTRentCharges": "Monthly realT charges on portfolio rents",
+    "TotalRealTListingCosts": "RealT fees on your portfolio listings",
+    "Fees": "Fees",
+    "Rents": "Rents",
+    "DailyRents": "Daily Rents",
+    "MonthlyRents": "Monthly Rents",
+    "AnnualRents": "Annual Rents",
+    "WithRentStartDate": "WithRentStartDate"
+  },
+  "propertyInfo": {
+    "PropertyName": "Property name",
+    "ContractAddress": "Contract address",
+    "RentedUnits": "Rented Units",
+    "TokenPrice": "Token price",
+    "NumberOfTokens": "Number of tokens",
+    "PricePerDoor": "Price per door",
+    "PricePerSqft": "Price per sqft",
+    "TotalValue": "Total Value"
+  }
 }

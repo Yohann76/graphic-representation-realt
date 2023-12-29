@@ -121,33 +121,33 @@ function HeaderProperty({ properties }) {
   return (
     <div className="header-info-container section">
 
-      <h2>{t("PropertyInformation")} :</h2>
+      <h2>{t("header.PropertyInformation")} :</h2>
       <div class="flex">
         <div class="content-flex">
           <p class="title">
-          {t("various")} :
+          {t("header.Various")} :
           </p>
-          <p>{t("Numberofproperties")} : {formatNumberWithSpacesAndWithoutvirgul(numberOfProperties)}/{formatNumberWithSpacesAndWithoutvirgul(totalNumberOfProperty)}</p>
-          <p>{t("AverageAgeOfPortfolioConstruction")} : {formatNumberWithSpacesAndWithoutvirgul(roundedAverageConstructionYear)} ans</p>
-          <p>{t("TotalValueOfTokens")} : {formatNumberWithSpacesAndWithoutvirgul(totalTokenValue)} $</p>
-          <p>{t("RentedUnits")} {totalRentedUnits} / {totalUnits} ({percentageRentedUnits} %)</p>
+          <p>{t("header.Numberofproperties")} : {formatNumberWithSpacesAndWithoutvirgul(numberOfProperties)}/{formatNumberWithSpacesAndWithoutvirgul(totalNumberOfProperty)}</p>
+          <p>{t("header.AverageAgeOfPortfolioConstruction")} : {formatNumberWithSpacesAndWithoutvirgul(roundedAverageConstructionYear)} ans</p>
+          <p>{t("header.TotalValueOfTokens")} : {formatNumberWithSpacesAndWithoutvirgul(totalTokenValue)} $</p>
+          <p>{t("header.RentedUnits")} {totalRentedUnits} / {totalUnits} ({percentageRentedUnits} %)</p>
         </div>
 
         <div class="content-flex">
-          <p class="title">Fees :</p>
-          <p>{t("TotalRealTRentCharges")} : {formatNumberWithSpacesAndWithoutvirgul(feePerMonthTotal)} $ ({averagePlatformPercent}%)</p>
-          <p>{t("TotalRealTListingCosts")} : {formatNumberWithSpacesAndWithoutvirgul(listingFeeTotal)} $ ({averageListingFeePercent}%)</p>
+          <p class="title">{t("header.Fees")} :</p>
+          <p>{t("header.TotalRealTRentCharges")} : {formatNumberWithSpacesAndWithoutvirgul(feePerMonthTotal)} $ ({averagePlatformPercent}%)</p>
+          <p>{t("header.TotalRealTListingCosts")} : {formatNumberWithSpacesAndWithoutvirgul(listingFeeTotal)} $ ({averageListingFeePercent}%)</p>
         </div>
 
         <div class="content-flex">
-          <p class="title">Rents</p>
-          <p>Daily rents : {formatNumberWithSpaces(totalNetRentDay)} $</p>
-          <p>Monthly rents : {formatNumberWithSpaces(totalNetRentMonth)} $</p>
-          <p>Annual rent {formatNumberWithSpaces(totalNetRentYear)} $</p>
+          <p class="title">{t("header.Rents")}</p>
+          <p>{t("header.DailyRents")} : {formatNumberWithSpaces(totalNetRentDay)} $</p>
+          <p>{t("header.MonthlyRents")} : {formatNumberWithSpaces(totalNetRentMonth)} $</p>
+          <p>{t("header.AnnualRents")} : {formatNumberWithSpaces(totalNetRentYear)} $</p>
           <p>-</p>
-          <p>Daily rents (with rent start date) : </p>
-          <p>Monthly rents (with rent start date) : </p>
-          <p>Annual rent (with rent start date) </p>
+          <p>{t("header.DailyRents")} ({t("header.WithRentStartDate")}) : </p>
+          <p>{t("header.MonthlyRents")} ({t("header.WithRentStartDate")}) : </p>
+          <p>{t("header.AnnualRents")} ({t("header.WithRentStartDate")}) : </p>
         </div>
       </div>
     </div>

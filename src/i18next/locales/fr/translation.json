@@ -1,10 +1,28 @@
 {
-  "various": "Divers",
-  "PropertyInformation": "Informations sur vos propriétées",
-  "Numberofproperties": "Nombre de propriétés",
-  "AverageAgeOfPortfolioConstruction": "Âge moyen de construction du portefeuille",
-  "TotalValueOfTokens": "Valeur totale des tokens",
-  "RentedUnits": "Unités louées",
-  "TotalRealTRentCharges": "Frais realT mensuelles sur les loyers du portefeuille",
-  "TotalRealTListingCosts": "Frais realT sur les inscriptions de votre portefeuille"
+  "header": {
+    "Various": "Divers",
+    "PropertyInformation": "Informations sur vos propriétés",
+    "Numberofproperties": "Nombre de propriétés",
+    "AverageAgeOfPortfolioConstruction": "Âge moyen de construction du portefeuille",
+    "TotalValueOfTokens": "Valeur totale des tokens",
+    "RentedUnits": "Unités louées",
+    "TotalRealTRentCharges": "Frais realT mensuelles sur les loyers du portefeuille",
+    "TotalRealTListingCosts": "Frais realT sur les inscriptions de votre portefeuille",
+    "Fees": "Frais",
+    "Rents": "Loyer",
+    "DailyRents": "Loyers journaliers",
+    "MonthlyRents": "Loyers mensuels",
+    "AnnualRents": "Loyers annuels",
+    "WithRentStartDate": "Avec date de début de location"
+  },
+  "propertyInfo": {
+    "PropertyName": "Nom de la propriété",
+    "ContractAddress": "Adresse du contrat",
+    "RentedUnits": "Unités louées",
+    "TokenPrice": "Prix du token",
+    "NumberOfTokens": "Nombre de tokens",
+    "PricePerDoor": "Prix par porte",
+    "PricePerSqft": "Prix par pied carré",
+    "TotalValue": "Valeur totale"
+  }
 }
