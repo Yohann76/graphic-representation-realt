@@ -122,6 +122,10 @@ function HeaderProperty({ properties }) {
     <div className="header-info-container section">
 
       <h2>{t("header.PropertyInformation")} :</h2>
+      <hr/>
+      <br/>
+      <br/>
+
       <div class="flex">
         <div class="content-flex">
           <p class="title">

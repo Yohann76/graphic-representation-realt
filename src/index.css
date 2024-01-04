@@ -241,7 +241,8 @@ overflow: auto;
 }
 
 .title-property-info {
-  color: white;
+  color: #ED8510;
+  text-align: left;
 }
 
 table {

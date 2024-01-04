@@ -2,6 +2,8 @@ import React from 'react';
 import { Pie } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 
+import { useTranslation } from "react-i18next";
+
 function UnitsPropertyChart({ properties }) {
 
   let totalRentedUnits = 0;
@@ -114,9 +116,11 @@ function UnitsPropertyChart({ properties }) {
      );
    });
 
+   const { t } = useTranslation();
+
    return (
      <div className="component-graph section">
-       <h2>Breakdown of portfolio value by location</h2>
+       <h2>{t("UnitsPropertyChart.BreakdownOfPortfolioValueByLocation")}</h2>
        <div className="graph-and-legend">
          <div className="graph">
            <Pie data={chartData} options={chartOptions} />

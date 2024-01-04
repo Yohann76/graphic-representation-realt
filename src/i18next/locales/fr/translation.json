@@ -36,5 +36,20 @@
   },
   "TypePropertyChart": {
     "BreakdownOfPortfolioValueByType": "Répartition de la valeur du portefeuille par type d'immobilier"
+  },
+  "SubsidyPropertyChart": {
+    "BreakdownOfPortfolioValueBySubsidizedRent": "Répartition de la valeur du portefeuille par loyer subventionné"
+  },
+  "CompositionTokenChart": {
+    "BreakdownOfTheValueOfYourTokens": "Répartition de la valeur de vos tokens"
+  },
+  "MonthlyCostChart": {
+    "BreakdownOfRentalChargesGross": "Répartition des loyers (bruts)"
+  },
+  "CurrencieExpositionChart": {
+    "BreakdownOfPortfolioValueByCurrency": "Répartition de la valeur du portefeuille par devise"
+  },
+  "UnitsPropertyChart": {
+    "BreakdownOfPortfolioValueByLocation": "Répartition de la valeur du portefeuille par logement loué"
   }
 }

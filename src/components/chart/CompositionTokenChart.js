@@ -2,6 +2,8 @@ import React from 'react';
 import { Pie } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 
+import { useTranslation } from "react-i18next";
+
 function CompositionTokenChart({ properties }) {
 
   // data 1 : property.underlyingAssetPrice (from api)
@@ -160,9 +162,11 @@ function CompositionTokenChart({ properties }) {
     );
   });
 
+  const { t } = useTranslation();
+
   return (
     <div className="component-graph section">
-      <h2>Breakdown of the value of your tokens</h2>
+      <h2>{t("CompositionTokenChart.BreakdownOfTheValueOfYourTokens")}</h2>
       <div className="graph-and-legend">
         <div class="graph">
           <Pie data={chartData} options={chartOptions} />

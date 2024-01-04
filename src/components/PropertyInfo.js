@@ -30,7 +30,11 @@ function PropertyInfo({ propertyInfo }) {
   const { t } = useTranslation();
   return (
     <div className="property-info-container section">
-      <h2 class="title-property-info">Property information :</h2>
+      <h2 class="title-property-info">{t("header.PropertyInformation")} :</h2>
+      <hr/>
+      <br/>
+      <br/>
+      <br/>
       <table>
         <thead>
           <tr>

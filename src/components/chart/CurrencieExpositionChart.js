@@ -2,6 +2,8 @@ import React from 'react';
 import { Pie } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 
+import { useTranslation } from "react-i18next";
+
 /*
 this component calculates the % of exposure to a currency in relation to the total value of the portfolio. The data comes from realt's community api.
 */
@@ -118,9 +120,11 @@ function CurrencieExposition({ properties }) {
     );
   });
 
+  const { t } = useTranslation();
+
   return (
     <div className="component-graph section">
-    <h2>Breakdown of portfolio value by currency</h2>
+    <h2>{t("CurrencieExpositionChart.BreakdownOfPortfolioValueByCurrency")}</h2>
     <div className="graph-and-legend">
       <div class="graph">
         <Pie data={chartData} options={chartOptions} />

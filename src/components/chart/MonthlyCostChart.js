@@ -2,6 +2,8 @@ import React from 'react';
 import { Pie } from 'react-chartjs-2';
 import Chart from 'chart.js/auto';
 
+import { useTranslation } from "react-i18next";
+
 function MonthlyCostChart({ properties }) {
 
   const data1 = properties.reduce((propertyManagement, property) => {
@@ -133,10 +135,11 @@ function MonthlyCostChart({ properties }) {
     );
   });
 
+  const { t } = useTranslation();
 
   return (
     <div className="component-graph section">
-      <h2>Breakdown of rental charges (gross)</h2>
+      <h2>{t("MonthlyCostChart.BreakdownOfRentalChargesGross")}</h2>
       <div className="graph-and-legend">
         <div class="graph">
           <Pie data={chartData} options={chartOptions} />

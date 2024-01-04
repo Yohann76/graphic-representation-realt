@@ -36,5 +36,20 @@
   },
   "TypePropertyChart": {
     "BreakdownOfPortfolioValueByType": "Breakdown of portfolio value by type"
+  },
+  "SubsidyPropertyChart": {
+    "BreakdownOfPortfolioValueBySubsidizedRent": "Breakdown of portfolio value by subsidized rent"
+  },
+  "CompositionTokenChart": {
+    "BreakdownOfTheValueOfYourTokens": "Breakdown of the value of your tokens"
+  },
+  "MonthlyCostChart": {
+    "BreakdownOfRentalChargesGross": "Breakdown of rental charges (gross)"
+  },
+  "CurrencieExpositionChart": {
+    "BreakdownOfPortfolioValueByCurrency": "Breakdown of portfolio value by currency"
+  },
+  "UnitsPropertyChart": {
+    "BreakdownOfPortfolioValueByLocation": "Breakdown of portfolio value by location"
   }
 }
