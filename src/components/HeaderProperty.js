@@ -40,6 +40,13 @@ function HeaderProperty({ properties }) {
   let totalNetRentMonth = 0;
   let totalNetRentYear = 0;
 
+  let totalNetRentDayWithRentStartDate = 0;
+  let totalNetRentMonthWithRentStartDate = 0;
+  let totalNetRentYearWithRentStartDate = 0;
+
+  // define current date for calculate rent start date (UTC)
+  const currentDateUTC = new Date().toISOString();
+
   // Unit counts
   let totalRentedUnits = 0;
   let totalUnits = 0;
@@ -76,6 +83,16 @@ function HeaderProperty({ properties }) {
     if (property.realtListingFeePercent) {
         listingFeePercentTotal += parseFloat(property.realtListingFeePercent) * 100;
     }
+
+    // unit
+    if (property.rentedUnits) {
+      totalRentedUnits += parseInt(property.rentedUnits, 10);
+    }
+
+    if (property.totalUnits) {
+      totalUnits += parseInt(property.totalUnits, 10);
+    }
+
     // rent
     if (property.netRentDayPerToken) {
       totalNetRentDay += parseFloat(property.netRentDayPerToken) * parseFloat(property.amount);
@@ -88,13 +105,20 @@ function HeaderProperty({ properties }) {
     if (property.netRentYearPerToken) {
       totalNetRentYear += parseFloat(property.netRentYearPerToken) * parseFloat(property.amount);
     }
-    // unit
-    if (property.rentedUnits) {
-      totalRentedUnits += parseInt(property.rentedUnits, 10);
-    }
 
-    if (property.totalUnits) {
-      totalUnits += parseInt(property.totalUnits, 10);
+    // Rent witt rent start date
+    if (property.rentStartDate) {
+      const startDateObj = new Date(property.rentStartDate.date);
+      const propertyRentStartDate = startDateObj.toISOString();
+
+      if (propertyRentStartDate < currentDateUTC) {
+        console.log(totalNetRentDay);
+        console.log(totalNetRentMonth);
+        console.log(totalNetRentYear);
+        totalNetRentDayWithRentStartDate += parseFloat(property.netRentDayPerToken) * parseFloat(property.amount);
+        totalNetRentMonthWithRentStartDate += parseFloat(property.netRentMonthPerToken) * parseFloat(property.amount);
+        totalNetRentYearWithRentStartDate += parseFloat(property.netRentYearPerToken) * parseFloat(property.amount);
+      }
     }
 
   });
@@ -137,21 +161,30 @@ function HeaderProperty({ properties }) {
           <p>{t("header.RentedUnits")} {totalRentedUnits} / {totalUnits} ({percentageRentedUnits} %)</p>
         </div>
 
+        {/*
+
+        this section must be replace to futur realt statistic page
+
+
         <div class="content-flex">
           <p class="title">{t("header.Fees")} :</p>
           <p>{t("header.TotalRealTRentCharges")} : {formatNumberWithSpacesAndWithoutvirgul(feePerMonthTotal)} $ ({averagePlatformPercent}%)</p>
           <p>{t("header.TotalRealTListingCosts")} : {formatNumberWithSpacesAndWithoutvirgul(listingFeeTotal)} $ ({averageListingFeePercent}%)</p>
         </div>
 
+        */}
+
         <div class="content-flex">
           <p class="title">{t("header.Rents")}</p>
           <p>{t("header.DailyRents")} : {formatNumberWithSpaces(totalNetRentDay)} $</p>
           <p>{t("header.MonthlyRents")} : {formatNumberWithSpaces(totalNetRentMonth)} $</p>
           <p>{t("header.AnnualRents")} : {formatNumberWithSpaces(totalNetRentYear)} $</p>
+
           <p>-</p>
-          <p>{t("header.DailyRents")} ({t("header.WithRentStartDate")}) : </p>
-          <p>{t("header.MonthlyRents")} ({t("header.WithRentStartDate")}) : </p>
-          <p>{t("header.AnnualRents")} ({t("header.WithRentStartDate")}) : </p>
+          <p>{t("header.DailyRents")} ({t("header.WithRentStartDate")}) : {formatNumberWithSpaces(totalNetRentDayWithRentStartDate)} $ </p>
+          <p>{t("header.MonthlyRents")} ({t("header.WithRentStartDate")}) : {formatNumberWithSpaces(totalNetRentMonthWithRentStartDate)} $ </p>
+          <p>{t("header.AnnualRents")} ({t("header.WithRentStartDate")}) : {formatNumberWithSpaces(totalNetRentYearWithRentStartDate)} $ </p>
+
         </div>
       </div>
     </div>

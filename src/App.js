@@ -42,6 +42,7 @@ function App() {
        try {
          console.log("fetch property list")
          const allPropertyData = await fetchPropertyList();
+         console.log(allPropertyData); // for view full data
 
          if (allPropertyData && Array.isArray(allPropertyData)) {
            const propertyInfoData = allPropertyData
@@ -92,7 +93,9 @@ function App() {
                insurance: realtProperty.insurance,
                utilities: realtProperty.utilities,
                // invest :
-               sellPropertyTo : realtProperty.sellPropertyTo
+               sellPropertyTo : realtProperty.sellPropertyTo,
+               // rentStartDate
+               rentStartDate : realtProperty.rentStartDate
 
              };
            });
@@ -212,7 +215,9 @@ function App() {
                insurance: property.insurance,
                utilities: property.utilities,
                // invest :
-               sellPropertyTo : property.sellPropertyTo
+               sellPropertyTo : property.sellPropertyTo,
+               // rentStartDate
+               rentStartDate : property.rentStartDate
             };
           }
       };

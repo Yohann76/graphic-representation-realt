@@ -22,7 +22,7 @@
 - If input is empty, run useEffect for load data when website is load
 - Loader component when wait response api and calculate all data for each property (async response?)
 - keep a portfolio in memory on the site and between pages (like a community dashboard)
-- add translation (EB -> FR) (with flag selection is in navbar)
+- add translation (EN -> FR) (with flag selection is in navbar)
 - V1.1 : page for manage version and roadmap and add contact informations for manage idee (in nav header next to input)
   - Use reactRouter for change page without reload page (and save address in input)
 
@@ -32,6 +32,3 @@
 
 - Global wallet yields (with rent start date)
 - Global wallet yields (without rent start date)
-
-- rent daily/monthly/annual (with rent start date)
-- daily/monthly/annual (without rent start date)
