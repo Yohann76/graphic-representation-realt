@@ -140,6 +140,9 @@ function HeaderProperty({ properties }) {
       // round averageConstructionYear
   const roundedAverageConstructionYear = Math.round(averageConstructionYear);
 
+  // calcul APY
+  const apy = (totalNetRentYear / totalTokenValue) * 100;
+
   const { t } = useTranslation();
 
   return (
@@ -159,19 +162,17 @@ function HeaderProperty({ properties }) {
           <p>{t("header.AverageAgeOfPortfolioConstruction")} : {formatNumberWithSpacesAndWithoutvirgul(roundedAverageConstructionYear)} ans</p>
           <p>{t("header.TotalValueOfTokens")} : {formatNumberWithSpacesAndWithoutvirgul(totalTokenValue)} $</p>
           <p>{t("header.RentedUnits")} {totalRentedUnits} / {totalUnits} ({percentageRentedUnits} %)</p>
+          <p>APY : {formatNumberWithSpaces(apy)} % </p>
         </div>
 
         {/*
-
         this section must be replace to futur realt statistic page
-
 
         <div class="content-flex">
           <p class="title">{t("header.Fees")} :</p>
           <p>{t("header.TotalRealTRentCharges")} : {formatNumberWithSpacesAndWithoutvirgul(feePerMonthTotal)} $ ({averagePlatformPercent}%)</p>
           <p>{t("header.TotalRealTListingCosts")} : {formatNumberWithSpacesAndWithoutvirgul(listingFeeTotal)} $ ({averageListingFeePercent}%)</p>
         </div>
-
         */}
 
         <div class="content-flex">

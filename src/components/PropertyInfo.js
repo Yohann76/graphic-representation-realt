@@ -25,6 +25,14 @@ function PropertyInfo({ propertyInfo }) {
     } else {
       property.percentageRentedUnits = '-';
     }
+
+    // calculate APY for each property
+    if (property.tokenPrice > 0) {
+      property.apy = (property.netRentYearPerToken / property.tokenPrice) * 100;
+    } else {
+      property.apy = '-';
+    }
+
   });
 
   const { t } = useTranslation();
@@ -45,6 +53,7 @@ function PropertyInfo({ propertyInfo }) {
             <th>{t("propertyInfo.NumberOfTokens")}</th>
             <th>{t("propertyInfo.PricePerDoor")}</th>
             <th>{t("propertyInfo.PricePerSqft")}</th>
+            <th>Yiels</th>
             <th>{t("propertyInfo.TotalValue")}</th>
           </tr>
         </thead>
@@ -70,6 +79,7 @@ function PropertyInfo({ propertyInfo }) {
               <td>{property.amount}</td>
               <td>{formatNumberWithSpacesAndWithoutvirgul(property.pricePerDoor)} {property.pricePerDoor !== '-' ? '$' : ''}</td>
               <td>{formatNumberWithSpacesAndWithoutvirgul(property.pricePerSqft)} $</td>
+              <td>{formatNumberWithSpaces(property.apy)} %</td>
               <td>{formatNumberWithSpaces(property.totalValue)} $</td>
             </tr>
           ))}
