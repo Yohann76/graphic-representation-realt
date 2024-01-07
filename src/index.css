@@ -283,3 +283,9 @@ tbody td a {
   text-decoration: none;
   font-weight: bold;
 }
+
+td i {
+  margin-right: 14px;
+  color : #ED8510;
+  font-size: 16px;
+}

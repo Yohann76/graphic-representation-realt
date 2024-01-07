@@ -12,11 +12,6 @@
 - Can sort each table column
 - Total yield in % (Total Value Actual / TT rent per Years) (purchase price and actualValue)
 
-- on PropertyName : add hover animation for display many link (open in a new tab)
-  - see details on MyRealTStat (future)
-  - see on realT
-  - see on googleMaps
-
 ## Other :
 - Add analyctics link for calculate trafic
 - If input is empty, run useEffect for load data when website is load

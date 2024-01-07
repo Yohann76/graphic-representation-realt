@@ -51,7 +51,15 @@ function PropertyInfo({ propertyInfo }) {
         <tbody>
           {propertyInfo.map((property, index) => (
             <tr>
-              <td>{property.fullName}</td>
+              <td>
+              <a href={property.marketplaceLink} target="_blank">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+              <a href={`https://www.google.com/maps?q=${property.fullName}`} target="_blank">
+                <i class="fas fa-map-marker-alt"></i>
+              </a>
+                {property.fullName}
+              </td>
               <td>
                 <a href={`https://gnosis.blockscout.com/token/${property.uuid}`} target="_blank">
                     {property.uuid}
