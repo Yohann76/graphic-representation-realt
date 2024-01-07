@@ -243,11 +243,11 @@ function App() {
             <form id="search-form" onSubmit={handleSearchSubmit}>
               <input
                 type="text"
-                placeholder="Entrez une adresse"
+                placeholder={t("app.EnterAddress")}
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)}
               />
-              <button type="submit">Rechercher</button>
+              <button type="submit">{t("app.search")}</button>
             </form>
 
             <select

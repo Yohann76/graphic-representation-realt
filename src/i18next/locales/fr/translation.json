@@ -1,4 +1,8 @@
 {
+  "app": {
+    "EnterAddress": "Votre adresse RealT",
+    "search": "Rechercher"
+  },
   "header": {
     "Various": "Divers",
     "PropertyInformation": "Informations sur vos propriétés",
