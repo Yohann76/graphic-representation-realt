@@ -53,7 +53,7 @@ function PropertyInfo({ propertyInfo }) {
             <th>{t("propertyInfo.NumberOfTokens")}</th>
             <th>{t("propertyInfo.PricePerDoor")}</th>
             <th>{t("propertyInfo.PricePerSqft")}</th>
-            <th>Yiels</th>
+            <th>APY</th>
             <th>{t("propertyInfo.TotalValue")}</th>
           </tr>
         </thead>
