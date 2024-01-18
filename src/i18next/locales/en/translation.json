@@ -4,7 +4,7 @@
     "search": "Search"
   },
   "header": {
-    "Various": "Various",
+    "Various": "Miscellaneous",
     "PropertyInformation": "Information about your properties",
     "Numberofproperties": "Number of properties",
     "AverageAgeOfPortfolioConstruction": "Average age of portfolio construction",
@@ -15,6 +15,7 @@
     "Fees": "Fees",
     "Rents": "Rents",
     "DailyRents": "Daily Rents",
+    "WeeklyRents": "Weekly Rents",
     "MonthlyRents": "Monthly Rents",
     "AnnualRents": "Annual Rents",
     "WithRentStartDate": "WithRentStartDate"

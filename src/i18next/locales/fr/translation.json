@@ -15,6 +15,7 @@
     "Fees": "Frais",
     "Rents": "Loyer",
     "DailyRents": "Loyers journaliers",
+    "WeeklyRents": "Loyers Hebdomadaire",
     "MonthlyRents": "Loyers mensuels",
     "AnnualRents": "Loyers annuels",
     "WithRentStartDate": "Avec date de début de location"
@@ -26,7 +27,7 @@
     "TokenPrice": "Prix du token",
     "NumberOfTokens": "Nombre de tokens",
     "PricePerDoor": "Prix par porte",
-    "PricePerSqft": "Prix par pied carré",
+    "PricePerSqft": "Prix par sqft",
     "TotalValue": "Valeur totale"
   },
   "CityPropertyChart": {

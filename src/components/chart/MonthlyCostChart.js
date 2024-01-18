@@ -31,8 +31,12 @@ function MonthlyCostChart({ properties }) {
     return property.utilities === 'Tenant-paid' ? utilities : utilities + parseFloat(property.utilities);
   }, 0);
 
+  const data7 = properties.reduce((rentReceived, property) => {
+  return rentReceived + parseFloat(property.netRentMonth);
+  }, 0);
+
   // calcul total // no use for the moment
-  const total = data1 + data2 + data3 + data4 + data5 + data6;
+  const total = data1 + data2 + data3 + data4 + data5 + data6 + + data7;
 
   // calcul percentage
   const percentages = [
@@ -42,6 +46,7 @@ function MonthlyCostChart({ properties }) {
     (data4 / total) * 100,
     (data5 / total) * 100,
     (data6 / total) * 100,
+    (data7 / total) * 100,
   ];
 
   const labels = [
@@ -51,6 +56,7 @@ function MonthlyCostChart({ properties }) {
     'Property Taxes',
     'Insurance',
     'Utilities',
+    'Distributed rent',
   ];
 
   const chartData = {

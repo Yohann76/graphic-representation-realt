@@ -72,10 +72,14 @@ function App() {
                realtPlatformPercent: realtProperty.realtPlatformPercent, // % realT fee per Month
                realtListingFee: realtProperty.realtListingFee, // RealT Listing Fee
                realtListingFeePercent: realtProperty.realtListingFeePercent, // RealT Listing %
-               // rent
+               // rent per token
                netRentDayPerToken: realtProperty.netRentDayPerToken,  // netRentDayPerToken
                netRentMonthPerToken: realtProperty.netRentMonthPerToken,  // netRentMonthPerToken
                netRentYearPerToken: realtProperty.netRentYearPerToken,  // netRentYearPerToken
+               // rent
+               netRentDay: realtProperty.netRentDay,
+               netRentMonth: realtProperty.netRentMonth,
+               netRentYear: realtProperty.netRentYear,
                // unit
                totalUnits: realtProperty.totalUnits,
                rentedUnits: realtProperty.rentedUnits,
@@ -194,10 +198,14 @@ function App() {
                realtPlatformPercent: property.realtPlatformPercent, // % realT fee per Month
                realtListingFee: property.realtListingFee, // RealT Listing Fee
                realtListingFeePercent:property.realtListingFeePercent,  // RealT Listing %
-               // rent
+               // rent per token
                netRentDayPerToken: property.netRentDayPerToken,  // totalNetRentDay
                netRentMonthPerToken: property.netRentMonthPerToken,  // totalNetRentMonth
                netRentYearPerToken: property.netRentYearPerToken,  // totalNetRentYear
+               // rent
+               netRentDay: property.netRentDay,
+               netRentMonth: property.netRentMonth,
+               netRentYear: property.netRentYear,
                // unit
                totalUnits: property.totalUnits,
                rentedUnits: property.rentedUnits,

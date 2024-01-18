@@ -37,10 +37,12 @@ function HeaderProperty({ properties }) {
 
   // Rent
   let totalNetRentDay = 0;
+  let totalNetRentWeek = 0;
   let totalNetRentMonth = 0;
   let totalNetRentYear = 0;
 
   let totalNetRentDayWithRentStartDate = 0;
+  let totalNetRentWeekWithRentStartDate = 0;
   let totalNetRentMonthWithRentStartDate = 0;
   let totalNetRentYearWithRentStartDate = 0;
 
@@ -95,7 +97,7 @@ function HeaderProperty({ properties }) {
 
     // rent
     if (property.netRentDayPerToken) {
-      totalNetRentDay += parseFloat(property.netRentDayPerToken) * parseFloat(property.amount);
+      totalNetRentDay += (parseFloat(property.netRentDayPerToken) * parseFloat(property.amount));
     }
 
     if (property.netRentMonthPerToken) {
@@ -112,9 +114,6 @@ function HeaderProperty({ properties }) {
       const propertyRentStartDate = startDateObj.toISOString();
 
       if (propertyRentStartDate < currentDateUTC) {
-        console.log(totalNetRentDay);
-        console.log(totalNetRentMonth);
-        console.log(totalNetRentYear);
         totalNetRentDayWithRentStartDate += parseFloat(property.netRentDayPerToken) * parseFloat(property.amount);
         totalNetRentMonthWithRentStartDate += parseFloat(property.netRentMonthPerToken) * parseFloat(property.amount);
         totalNetRentYearWithRentStartDate += parseFloat(property.netRentYearPerToken) * parseFloat(property.amount);
@@ -140,6 +139,9 @@ function HeaderProperty({ properties }) {
       // round averageConstructionYear
   const roundedAverageConstructionYear = Math.round(averageConstructionYear);
 
+  totalNetRentWeek = totalNetRentDay * 7;
+  totalNetRentWeekWithRentStartDate = totalNetRentDayWithRentStartDate * 7;
+
   // calcul APY
   const apy = (totalNetRentYear / totalTokenValue) * 100;
 
@@ -162,7 +164,7 @@ function HeaderProperty({ properties }) {
           <p>{t("header.AverageAgeOfPortfolioConstruction")} : {formatNumberWithSpacesAndWithoutvirgul(roundedAverageConstructionYear)} ans</p>
           <p>{t("header.TotalValueOfTokens")} : {formatNumberWithSpacesAndWithoutvirgul(totalTokenValue)} $</p>
           <p>{t("header.RentedUnits")} {totalRentedUnits} / {totalUnits} ({percentageRentedUnits} %)</p>
-          <p>APY : {formatNumberWithSpaces(apy)} % </p>
+          <p>Global APY : {formatNumberWithSpaces(apy)} % </p>
         </div>
 
         {/*
@@ -178,11 +180,13 @@ function HeaderProperty({ properties }) {
         <div class="content-flex">
           <p class="title">{t("header.Rents")}</p>
           <p>{t("header.DailyRents")} : {formatNumberWithSpaces(totalNetRentDay)} $</p>
+          <p>{t("header.WeeklyRents")} : {formatNumberWithSpaces(totalNetRentWeek)} $</p>
           <p>{t("header.MonthlyRents")} : {formatNumberWithSpaces(totalNetRentMonth)} $</p>
           <p>{t("header.AnnualRents")} : {formatNumberWithSpaces(totalNetRentYear)} $</p>
 
           <p>-</p>
           <p>{t("header.DailyRents")} ({t("header.WithRentStartDate")}) : {formatNumberWithSpaces(totalNetRentDayWithRentStartDate)} $ </p>
+          <p>{t("header.WeeklyRents")} ({t("header.WithRentStartDate")}) : {formatNumberWithSpaces(totalNetRentWeekWithRentStartDate)} $ </p>
           <p>{t("header.MonthlyRents")} ({t("header.WithRentStartDate")}) : {formatNumberWithSpaces(totalNetRentMonthWithRentStartDate)} $ </p>
           <p>{t("header.AnnualRents")} ({t("header.WithRentStartDate")}) : {formatNumberWithSpaces(totalNetRentYearWithRentStartDate)} $ </p>
 
