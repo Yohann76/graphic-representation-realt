@@ -108,9 +108,17 @@ function TypePropertyChart({ properties }) {
     },
   };
 
-  const legendItems = labels.map((city, index) => {
-    const backgroundColor = chartData.datasets[0].backgroundColor[index];
-    const percentage = data[index];
+  const legendData = labels.map((type, index) => ({
+    type,
+    percentage: data[index],
+  }));
+
+  legendData.sort((a, b) => b.percentage - a.percentage);
+
+  const legendItems = legendData.map((item) => {
+    const type = item.type;
+    const percentage = item.percentage;
+    const backgroundColor = chartData.datasets[0].backgroundColor[labels.indexOf(type)];
 
     const dotStyle = {
       backgroundColor: backgroundColor,
@@ -121,10 +129,10 @@ function TypePropertyChart({ properties }) {
     };
 
     return (
-      <div key={city}>
+      <div key={type}>
         <span className="legend-color-dot" style={dotStyle}></span>
         <span className="legend-label" style={textStyle}>
-          {`${city}: ${percentage}%`}
+          {`${type}: ${percentage}%`}
         </span>
       </div>
     );
