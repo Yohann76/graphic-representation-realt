@@ -63,6 +63,33 @@ button:hover {
 
 /* end nav */
 
+/* second nav */
+
+.header-second {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.nav-second {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-second a {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+.nav-second a:hover {
+  background-color: grey;
+  color: #000;
+}
+
 /* nav translation */
 select {
   padding: 8px;
