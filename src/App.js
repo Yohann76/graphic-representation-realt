@@ -29,6 +29,21 @@ function App() {
 
   const { i18n, t } = useTranslation();
 
+
+  // save searchValue from form
+  // Load value from localStorage when mounting component
+  useEffect(() => {
+    const savedSearchValue = localStorage.getItem('searchValue');
+    if (savedSearchValue) {
+      setSearchValue(savedSearchValue);
+    }
+  }, []);
+
+  // Save value to localStorage every time it changes
+  useEffect(() => {
+    localStorage.setItem('searchValue', searchValue);
+  }, [searchValue]);
+
   return (
     <Router>
       <div className="App">
