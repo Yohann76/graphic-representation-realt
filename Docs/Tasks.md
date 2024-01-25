@@ -24,6 +24,3 @@
 ## Header (link dashboard):
 - Number city  (use state ..? )
 - Number country (use state ..? )
-
-- Global wallet yields (with rent start date)
-- Global wallet yields (without rent start date)

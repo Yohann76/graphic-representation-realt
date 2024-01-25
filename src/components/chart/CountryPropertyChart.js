@@ -172,9 +172,17 @@ function CountryPropertyChart({ properties }) {
       },
     };
 
-    const legendItems = countryLabels.map((city, index) => {
-      const backgroundColor = chartDataCountry.datasets[0].backgroundColor[index];
-      const percentage = countryData[index];
+    const legendData = countryLabels.map((country, index) => ({
+      country,
+      percentage: countryData[index],
+    }));
+
+    legendData.sort((a, b) => b.percentage - a.percentage);
+    
+    const legendItems = legendData.map((item) => {
+      const country = item.country;
+      const percentage = item.percentage;
+      const backgroundColor = chartDataCountry.datasets[0].backgroundColor[countryLabels.indexOf(country)];
 
       const dotStyle = {
         backgroundColor: backgroundColor,
@@ -185,10 +193,10 @@ function CountryPropertyChart({ properties }) {
       };
 
       return (
-        <div key={city}>
+        <div key={country}>
           <span className="legend-color-dot" style={dotStyle}></span>
           <span className="legend-label" style={textStyle}>
-            {`${city}: ${percentage}%`}
+            {`${country}: ${percentage}%`}
           </span>
         </div>
       );

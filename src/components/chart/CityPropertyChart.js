@@ -75,6 +75,21 @@ function PropertyPercentage({ properties }) {
           '#7B68EE',
           '#D2B48C',
           '#FFA07A',
+          '#FF1493',
+          '#228B22',
+          '#FFD700',
+          '#BA55D3',
+          '#808000',
+          '#20B2AA',
+          '#FF4500',
+          '#5F9EA0',
+          '#7FFF00',
+          '#B0E0E6',
+          '#9932CC',
+          '#FF8C00',
+          '#8A2BE2',
+          '#F0E68C',
+          '#9370DB',
         ],
       },
     ],
@@ -113,9 +128,17 @@ function PropertyPercentage({ properties }) {
     },
   };
 
-  const legendItems = labels.map((city, index) => {
-    const backgroundColor = chartData.datasets[0].backgroundColor[index];
-    const percentage = data[index];
+  const legendData = labels.map((city, index) => ({
+    city,
+    percentage: data[index],
+  }));
+
+  legendData.sort((a, b) => b.percentage - a.percentage);
+
+  const legendItems = legendData.map((item) => {
+    const city = item.city;
+    const percentage = item.percentage;
+    const backgroundColor = chartData.datasets[0].backgroundColor[labels.indexOf(city)];
 
     const dotStyle = {
       backgroundColor: backgroundColor,

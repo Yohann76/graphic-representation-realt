@@ -140,9 +140,15 @@ function CompositionTokenChart({ properties }) {
     },
   };
 
-  const legendItems = labels.map((label, index) => {
+  const legendData = labels.map((label, index) => ({
+    label,
+    percentage: percentages[index],
+  }));
+
+  legendData.sort((a, b) => b.percentage - a.percentage);
+
+  const legendItems = legendData.map((item, index) => {
     const backgroundColor = chartData.datasets[0].backgroundColor[index];
-    const percentage = percentages[index];
 
     const dotStyle = {
       backgroundColor: backgroundColor,
@@ -153,10 +159,10 @@ function CompositionTokenChart({ properties }) {
     };
 
     return (
-      <div key={label}>
+      <div key={item.label}>
         <span className="legend-color-dot" style={dotStyle}></span>
         <span className="legend-label" style={textStyle}>
-          {`${label}: ${percentage.toFixed(2)}%`}
+          {`${item.label}: ${item.percentage.toFixed(2)}%`}
         </span>
       </div>
     );

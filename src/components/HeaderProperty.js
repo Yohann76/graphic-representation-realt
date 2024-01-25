@@ -145,6 +145,10 @@ function HeaderProperty({ properties }) {
   // calcul APY
   const apy = (totalNetRentYear / totalTokenValue) * 100;
 
+  // calcul APY (with rent start date)
+  const apyWithRentStartDate = (totalNetRentYearWithRentStartDate / totalTokenValue) * 100;
+
+
   const { t } = useTranslation();
 
   return (
@@ -164,7 +168,8 @@ function HeaderProperty({ properties }) {
           <p>{t("header.AverageAgeOfPortfolioConstruction")} : {formatNumberWithSpacesAndWithoutvirgul(roundedAverageConstructionYear)} ans</p>
           <p>{t("header.TotalValueOfTokens")} : {formatNumberWithSpacesAndWithoutvirgul(totalTokenValue)} $</p>
           <p>{t("header.RentedUnits")} {totalRentedUnits} / {totalUnits} ({percentageRentedUnits} %)</p>
-          <p>Global APY : {formatNumberWithSpaces(apy)} % </p>
+          <p>APY : {formatNumberWithSpaces(apy)} % </p>
+          <p>APY ({t("header.WithRentStartDate")}) : {formatNumberWithSpaces(apyWithRentStartDate)} % </p>
         </div>
 
         {/*

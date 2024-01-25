@@ -172,9 +172,17 @@ function StatePropertyChart({ properties }) {
     },
   };
 
-  const legendItems = labels.map((city, index) => {
-    const backgroundColor = chartData.datasets[0].backgroundColor[index];
-    const percentage = data[index];
+  const legendData = labels.map((state, index) => ({
+    state,
+    percentage: data[index],
+  }));
+
+  legendData.sort((a, b) => b.percentage - a.percentage);
+
+  const legendItems = legendData.map((item) => {
+    const state = item.state;
+    const percentage = item.percentage;
+    const backgroundColor = chartData.datasets[0].backgroundColor[labels.indexOf(state)];
 
     const dotStyle = {
       backgroundColor: backgroundColor,
@@ -185,10 +193,10 @@ function StatePropertyChart({ properties }) {
     };
 
     return (
-      <div key={city}>
+      <div key={state}>
         <span className="legend-color-dot" style={dotStyle}></span>
         <span className="legend-label" style={textStyle}>
-          {`${city}: ${percentage}%`}
+          {`${state}: ${percentage}%`}
         </span>
       </div>
     );
