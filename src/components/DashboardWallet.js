@@ -23,7 +23,13 @@ import MonthlyCostChart from '../components/chart/MonthlyCostChart';
 import PropertyInfo from '../components/PropertyInfo';
 import HeaderProperty from '../components/HeaderProperty';
 
+import { fetchInfoForOneWallet, mergeDifferentWallet } from '../utils/walletData';
+
+// props must be is walletAddresses (array wallet)
 const DashboardWallet = ({ searchValue }) => {
+
+// need use fetchInfoForOneWallet from utils/walletData
+// need use mergeDifferentWallet from utils/walletData
 
   const [propertyInfo, setPropertyInfo] = useState(null);
 
@@ -161,8 +167,7 @@ const DashboardWallet = ({ searchValue }) => {
        </nav>
      </header>
 
-     <h1> {searchValue} Stats wallet, get info from props for display graph link data realt</h1>
-
+     <h1> search for {searchValue} </h1>
 
 
      {propertyInfo && <HeaderProperty properties={propertyInfo} />}

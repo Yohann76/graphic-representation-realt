@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import ReactModal from 'react-modal';
 
 import { useTranslation } from "react-i18next";
 import i18n from "../src/utils/i18n.js";
@@ -29,6 +30,28 @@ function App() {
 
   const { i18n, t } = useTranslation();
 
+  // try find many wallet
+  const [walletAddresses, setWalletAddresses] = useState(['']); // array wallet
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleWalletChange = (index, value) => {
+  const newWallets = [...walletAddresses];
+    newWallets[index] = value;
+    setWalletAddresses(newWallets);
+  };
+
+  const addWalletField = () => {
+    setWalletAddresses([...walletAddresses, '']);
+  };
+
+  const removeWalletField = index => {
+    const newWallets = walletAddresses.filter((_, i) => i !== index);
+    setWalletAddresses(newWallets);
+  };
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+  // end try find many wallet
 
   // save searchValue from form
   // Load value from localStorage when mounting component
@@ -58,15 +81,29 @@ function App() {
 
 
             <div class="nav-right">
-              <form id="search-form">
-                <input
-                  type="text"
-                  placeholder={t("app.EnterAddress")}
-                  value={searchValue}
-                  onChange={(e) => setSearchValue(e.target.value)}
-                />
 
-              </form>
+              <button onClick={openModal}>Gérer les Wallets</button>
+
+              <ReactModal isOpen={isModalOpen} onRequestClose={closeModal} contentLabel="Gestion des Wallets">
+                <h2>Gérer les Wallets</h2>
+                {walletAddresses.map((address, index) => (
+                  <div key={index}>
+                    <input
+                      type="text"
+                      placeholder={t("app.EnterWalletAddress")}
+                      value={address}
+                      onChange={(e) => handleWalletChange(index, e.target.value)}
+                    />
+                    {index > 0 && (
+                      <button type="button" onClick={() => removeWalletField(index)}>
+                        Supprimer
+                      </button>
+                    )}
+                  </div>
+                ))}
+                <button type="button" onClick={addWalletField}>Ajouter un autre Wallet</button>
+                <button onClick={closeModal}>Fermer</button>
+              </ReactModal>
 
               <select
                 value={i18n.language}
