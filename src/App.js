@@ -30,8 +30,12 @@ function App() {
 
   const { i18n, t } = useTranslation();
 
-  // try find many wallet
-  const [walletAddresses, setWalletAddresses] = useState(['']); // array wallet
+  // try find many wallet and save in localStorage
+  const [walletAddresses, setWalletAddresses] = useState(() => {
+    const savedWalletAddresses = localStorage.getItem('savedWalletAddresses');
+    return savedWalletAddresses ? JSON.parse(savedWalletAddresses) : [''];
+  });
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleWalletChange = (index, value) => {
@@ -52,6 +56,12 @@ function App() {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
   // end try find many wallet
+
+  // set address
+  useEffect(() => {
+    // Sauvegarder les adresses de wallet dans le localStorage
+    localStorage.setItem('savedWalletAddresses', JSON.stringify(walletAddresses));
+  }, [walletAddresses]);
 
 
   return (
