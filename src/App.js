@@ -24,7 +24,7 @@ import { fetchETHGraphQLData } from './requests/ethGraphQLRequest';
 
 function App() {
   const [data, setData] = useState(null);
-  const [searchValue, setSearchValue] = useState('');
+
   const [searchResults, setSearchResults] = useState(null);
   const [propertyInfo, setPropertyInfo] = useState(null);
 
@@ -53,19 +53,6 @@ function App() {
   const closeModal = () => setIsModalOpen(false);
   // end try find many wallet
 
-  // save searchValue from form
-  // Load value from localStorage when mounting component
-  useEffect(() => {
-    const savedSearchValue = localStorage.getItem('searchValue');
-    if (savedSearchValue) {
-      setSearchValue(savedSearchValue);
-    }
-  }, []);
-
-  // Save value to localStorage every time it changes
-  useEffect(() => {
-    localStorage.setItem('searchValue', searchValue);
-  }, [searchValue]);
 
   return (
     <Router>
@@ -90,7 +77,7 @@ function App() {
                   <div key={index}>
                     <input
                       type="text"
-                      placeholder={t("app.EnterWalletAddress")}
+                      placeholder={t("app.EnterAddress")}
                       value={address}
                       onChange={(e) => handleWalletChange(index, e.target.value)}
                     />
@@ -122,7 +109,7 @@ function App() {
           <Route path="/" element={<Dashboard />} />
           <Route path="/about" element={<About />} />
 
-          <Route path="/dashboard-wallet" element={<DashboardWallet searchValue={searchValue} />} />
+          <Route path="/dashboard-wallet" element={<DashboardWallet walletAddresses={walletAddresses} />} />
         </Routes>
       </div>
     </Router>
